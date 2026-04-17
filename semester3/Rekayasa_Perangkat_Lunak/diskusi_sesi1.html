@@ -1,0 +1,46 @@
+<p>Assalamu'alaikum wr. wb., selamat malam, saya Esa Sya'bani asal UPBJJ Purwokerto prodi S1 sistem informasi izin menanggapi topik diskusi yang bapak berikan.</p>
+<ol>
+    <li>
+        <b>Dampak Negatif dari Tidak Adanya Dokumentasi</b><br>
+        Tidak adanya dokumentasi yang diberikan oleh pihak vendor dari program yang mereka kembangkan kepada PT ABC akan menimbulkan beberapa dampak negatif, di antaranya:
+        <ol type="a">
+            <li>Jika dilihat berdasarkan pengertian perangkat lunak dari sudut pandang rekayasa perangkat lunak, program komputer yang tidak terasosiasi dengan dokumentasinya belum dapat disebut sebagai perangkat lunak yang utuh. Ini berarti perangkat lunak tersebut sudah kehilangan esensi dari perangkat lunak itu sendiri.</li>
+            <li>Salah satu kriteria yang harus dipenuhi oleh sebuah perangkat lunak yaitu <i>maintainability</i>, artinya setelah perangkat lunak selesai di-<i>develop</i>,  harus dapat dipelihara mengikuti perkembangan teknologi dan lingkungannya. Dengan tidak adanya dokumentasi, PT ABC menjadi kehilangan penyimpanan informasi teknis terhadap program tersebut dan akan mengalami kesulitan dalam melakukan pemeliharaan sistem maupun perubahan oleh <i>developer</i> atau <i>engineer</i>-nya. Hal ini berarti program tersebut tidak memenuhi kriterianya sebagai suatu perangkat lunak. </li>
+            <li>Salah satu tantangan dalam proses rekayasa perangkat lunak yaitu tantangan mengenai warisan, dimana perangkat lunak dikembangkan selama bertahun-tahun oleh orang dan pihak yang berbeda, yang pada kasus ini yaitu oleh pihak vendor. Hal ini mengakibatkan ketidakpahaman pihak-pihak yang terkait di internal perusahaan PT ABC, terlebih jika tidak adanya dokumentasi, sehingga program tersebut akan sangat sulit untuk terus dikembangkan di masa mendatang. </li>
+            <li>Tidak adanya acuan yang jelas dari dokumentasi dapat menghambat kolaborasi antar tim, seperti sesama developer, tim QA, PM, hingga klien.</li>
+            <li>Tidak adanya dokumentasi dapat meningkatkan risiko miskomunikasi antara vendor dengan PT ABC.</li>
+        </ol>
+    </li>
+    <li>
+        <b>Dampak Operasional dan Biaya</b> <br>
+        Dengan tidak adanya dokumentasi dari suatu perangkat lunak, tentu akan mempengaruhi operasional dan biaya perusahaan dalam jangka panjang. Perubahan <i>source code</i> yang dipaksakan tanpa adanya dokumentasi akan menyebabkan struktur kode semakin rapuh dan tidak modular lagi, sehingga perubahan kecil saja dapat berpotensi memunculkan banyak bug. Melakukan modifikasi tanpa informasi arsitektur dan rancangan yang jelas, maka perangkat lunak yang dihasilkan akan menjadi sistem "tambal sulam". Hal ini dapat mengakibatkan waktu pengerjaan membengkak yang tentu akan membutuhkan sumber daya serta biaya pemeliharaan yang jauh lebih besar di masa mendatang. 
+        
+    </li>
+    <li>
+        <b>Solusi</b> <br>
+        Solusi yang bisa saya sarankan untuk kasus ini yaitu: <br>
+        <ol type="a">
+            <li>Berdasarkan saran dari IBM mengenai penanganan kode lama, tim PT ABC dapat menggunakan alat analisis kode statis yang secara otomatis akan memeriksa kode, serta alat visualisasi untuk menampilkan <i>source code</i> secara grafis untuk memvisualisasikan cara kerjanya secara lebih jelas.</li>
+            <li>Melakukan <i>refactoring</i> oleh tim <i>engineer</i>, yaitu merestrukturisasi kode secara internal untuk meningkatkan keterbacaannya tanpa mengubah fungsi luarnya.</li>
+            <li>PT ABC dapat mengimplementasikan alat dokumentasi otomatis seperti Swagger, Doxygen, Sphinx yang terintegrasi di dalam <i>repository</i> agar dokumentasi dapat di-<i>generate</i> lebih cepat dan konsisten bersamaan dengan penulisan kode.</li>
+        </ol>
+    </li>
+</ol>
+<h2>Sumber Referensi</h2>
+<ul>
+  <li>
+    Sukamto, R. A. (n.d.). <i>MSIM4303 - Rekayasa Perangkat Lunak</i>. Tangerang Selatan: Universitas Terbuka.
+  </li>
+  <li>
+    CSIRT Universitas Teknokrat Indonesia. (n.d.). <i>Cara Menyusun Dokumentasi Perangkat Lunak yang Profesional</i>. Diakses dari <a href="https://csirt.teknokrat.ac.id/cara-menyusun-dokumentasi-perangkat-lunak-yang-profesional/" target="_blank">Teknokrat CSIRT</a>
+  </li>
+  <li>
+    Fasha, A. (n.d.). <i>Refactoring pada kode Legacy: Solusi Modern untuk Masalah Lama</i>. Kompasiana. Diakses dari <a href="https://www.kompasiana.com/azmifashaazmi0594/68137d87ed64154fb07cbee2/refactoring-pada-kode-legacy-solusi-modern-untuk-masalah-lama" target="_blank">Kompasiana</a>
+  </li>
+  <li>
+    IBM. (n.d.). <i>What is legacy code?</i>. Diakses dari <a href="https://www.ibm.com/think/topics/legacy-code" target="_blank">IBM Think</a>
+  </li>
+  <li>
+    Telkom University. (n.d.). <i>Dokumentasi Otomatis dalam Rekayasa Perangkat Lunak Modern</i>. Diakses dari <a href="https://bse.telkomuniversity.ac.id/dokumentasi-otomatis-dalam-rekayasa-perangkat-lunak-modern/" target="_blank">BSE Telkom University</a>
+  </li>
+</ul>
