@@ -4,14 +4,103 @@
 # ======================================
 
 # 1.
-y <- 10
-z <- 5
-x <- y*z
-print("=== Hasil Nomor 1 ===")
-print(x)
+angka <- seq(from=0, to=3, length=6)
+tipeData <- class(angka)
+statusNumerik <- is.character(tipeData)
+cekAtribut <- list(angka,tipeData,statusNumerik)
+print("=== Output Nomor 1 ===")
+print(cekAtribut)
 
 # 2.
-c <- 30
-f <- (9/5*c)+32
-print("=== Hasil Nomor 2 ===")
-print(f)
+data1 <- seq(from=1, to=8, length=10)
+data2 <- rep(rep(2:6,each=3),3)
+data3 <- c(rep(2,3), rep(5,5), rep(8,7))
+dataFrame <- data.frame(
+  "Data 1"=c(mean(data1), median(data1), sum(data1)),
+  "Data 2"=c(mean(data2), median(data2), sum(data2)),
+  "Data 3"=c(mean(data3), median(data3), sum(data3))
+)
+row.names(dataFrame) <- c("Mean","Median","Jumlah")
+print("=== Output Nomor 2 ===")
+print(dataFrame)
+
+
+
+
+# 1. Membuat data (diperpendek dengan argumen times & each)
+# data1 <- seq(from=1, to=8, length=10)
+# data2 <- rep(2:4, each=3, times=3) 
+# data3 <- rep(c(2, 5, 8), times=c(3, 5, 7))
+
+# # 2. Menghitung dan menggabungkan langsung ke dalam data frame
+# dataFrame <- data.frame(
+#   Data_1 = c(mean(data1), median(data1), sum(data1)),
+#   Data_2 = c(mean(data2), median(data2), sum(data2)),
+#   Data_3 = c(mean(data3), median(data3), sum(data3))
+# )
+
+# # 3. Opsional: Memberi nama baris agar tabel mudah dibaca
+# row.names(dataFrame) <- c("Mean", "Median", "Sum")
+
+# print(dataFrame)
+
+
+
+# Jurusan <- c(rep("Statistika", 2), "Matematika", "Fisika")
+# Kota <- c(rep("Jakarta", 2), "Bandung", "Surabaya")
+# Angkatan <- 2021:2024
+# dataMahasiswa <- data.frame(Jurusan,Kota,Angkatan)
+# print(dataMahasiswa)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 1.
+# a <- 5:10
+# print("=== Value Variabel a ===")
+# print(a)
+
+# # 2.
+# b <- seq(from=10, to=2, length=5)
+# print("=== Value Variabel b ===")
+# print(b)
+
+# # 3.
+# c <- seq(from=0, to=1, length=6)
+# print("=== Value Variabel c ===")
+# print(c)
+
+# # 4.
+# d <- c(rep(3, 3), rep(7, 3), rep(9, 2))
+# print("=== Value Variabel d ===")
+# print(d)
+
+# # 5.
+# e <- rep(c(1,2),4)
+# print("=== Value Variabel e ===")
+# print(e)
