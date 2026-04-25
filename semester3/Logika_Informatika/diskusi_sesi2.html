@@ -1,0 +1,46 @@
+<p>Assalamu'alaikum wr. wb., selamat malam, saya Esa Sya'bani asal UPBJJ Purwokerto prodi S1 sistem informasi izin menanggapi topik diskusi yang bapak berikan.</p>
+<p>Ya, mungkin terdapat interpretasi yang membuat kalimat F bernilai false. Berikut ini penjelasannya</p>
+<h2>Penjelasan</h2>
+<ol>
+    <li>
+        Kalimat <span style="font-family: 'Brush Script MT';">F</span>:<b> if not(</b><i>P</i><b> or</b> <i>Q</i><b>) then (not</b><i>P</i><b> and</b> <i>R</i><b>) </b> memilki bentuk luar berupa implikasi (if-then), yang terdiri dari:
+<ul>
+    <li><i>Antecedent</i> (klausa if): <b>not(</b><i>P</i><b> or</b> <i>Q</i><b>)</b> </li>
+    <li><i>Consequent</i> (klausa then): <b>(not</b><i>P</i><b> and</b> <i>R</i><b>) </b></li>
+</ul>
+Karena bentuknya berupa implikasi, maka berdasarkan aturan semantik, untuk menghasilkan nilai kebenaran false <i>antecedent</i>/klausa if-nya harus bernilai true dan <i>consequent</i>/klausa then-nya harus bernilai false.
+    </li>
+    <li>
+        Pada bagian klausa if, <b>not(</b><i>P</i><b> or</b> <i>Q</i><b>)</b> harus bernilai true. 
+        <ul>
+            <li>Berdasarkan aturan semantik negasi, kalimat <b>(</b><i>P</i><b> or</b> <i>Q</i><b>)</b> harus bernilai false untuk menghasilkan nilai true.</li>
+            <li>
+                Berdasarkan aturan semantik disjungsi, simbol proposisional <i>P</i> dan <i>Q</i> harus bernilai false untuk menghasilkan nilai kebenaran false.
+            </li>
+            <li>
+                Sehingga diperoleh interpretasi sebagian <i>I</i>:{<i>P</i>←false, <i>Q</i>←false}
+            </li>
+        </ul>
+    </li>
+    <li>
+        Pada bagian klausa then, <b>(not</b><i>P</i><b> and</b> <i>R</i><b>) </b> harus bernilai false.
+        <ul>
+            <li>
+                Karena <i>P</i> bernilai false, maka berdasarkan aturan negasi, <b>not</b><i>P</i> bernilai true.
+            </li>
+            <li>
+                Berdasarkan aturan semantik konjungsi, untuk menghasilkan nilai false yaitu salah satu atau kedua simbol proposisionalnya harus bernilai false. Karena <b>not</b><i>P</i> sudah bernilai true, maka <i>R</i> harus bernilai false.
+            </li>
+            <li>
+                Sehingga diperoleh interpretasi sebagian <i>I</i>:{<i>R</i>←false}
+            </li>
+        </ul>
+    </li>
+</ol>
+<h2>Kesimpulan</h2>
+<p>Jadi, kalimat <span style="font-family: 'Brush Script MT';">F</span>:<b> if not(</b><i>P</i><b> or</b> <i>Q</i><b>) then (not</b><i>P</i><b> and</b> <i>R</i><b>) </b> dapat bernilai false jika diberikan interpretasi <i>I</i>:{<i>P</i>←false, <i>Q</i>←false, <i>R</i>←false}.</p>
+<h2>Sumber Referensi</h2>
+<ul>
+  <li>Suprapto. (2020). <i>Logika Informatika (BMP)</i>. Edisi 2. Tangerang Selatan: Universitas Terbuka.</li>
+  <li>Universitas Terbuka. (n.d.). <i>Materi Inisiasi 2: Aturan Semantik Logika Proposisional, Interpretasi yang Diperluas. STSI4106 - Logika Informatika</i>. Tangerang Selatan.</li>
+</ul>
