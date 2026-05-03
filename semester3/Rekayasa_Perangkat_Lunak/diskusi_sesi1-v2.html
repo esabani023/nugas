@@ -1,46 +1,43 @@
-<p>Assalamu'alaikum wr. wb., selamat malam, saya Esa Sya'bani asal UPBJJ Purwokerto prodi S1 sistem informasi izin menanggapi topik diskusi yang bapak berikan.</p>
+<p>Assalamu'alaikum wr. wb., selamat malam, saya Esa Sya'bani asal UPBJJ Purwokerto prodi S1 sistem informasi izin merevisi jawaban saya sebelumnya.</p>
 <ol>
     <li>
         <b>Dampak Negatif dari Tidak Adanya Dokumentasi</b><br>
-        Tidak adanya dokumentasi yang diberikan oleh pihak vendor dari program yang mereka kembangkan kepada PT ABC akan menimbulkan beberapa dampak negatif, di antaranya:
+        Tidak adanya dokumentasi teknis dari vendor bukan sekadar masalah administrasi, melainkan ancaman sistemik terhadap operasional PT ABC. Berikut adalah analisis dampak negatif beserta konsekuensi operasionalnya:
         <ol type="a">
-            <li>Jika dilihat berdasarkan pengertian perangkat lunak dari sudut pandang rekayasa perangkat lunak, program komputer yang tidak terasosiasi dengan dokumentasinya belum dapat disebut sebagai perangkat lunak yang utuh. Ini berarti perangkat lunak tersebut sudah kehilangan esensi dari perangkat lunak itu sendiri.</li>
-            <li>Salah satu kriteria yang harus dipenuhi oleh sebuah perangkat lunak yaitu <i>maintainability</i>, artinya setelah perangkat lunak selesai di-<i>develop</i>,  harus dapat dipelihara mengikuti perkembangan teknologi dan lingkungannya. Dengan tidak adanya dokumentasi, PT ABC menjadi kehilangan penyimpanan informasi teknis terhadap program tersebut dan akan mengalami kesulitan dalam melakukan pemeliharaan sistem maupun perubahan oleh <i>developer</i> atau <i>engineer</i>-nya. Hal ini berarti program tersebut tidak memenuhi kriterianya sebagai suatu perangkat lunak. </li>
-            <li>Salah satu tantangan dalam proses rekayasa perangkat lunak yaitu tantangan mengenai warisan, dimana perangkat lunak dikembangkan selama bertahun-tahun oleh orang dan pihak yang berbeda, yang pada kasus ini yaitu oleh pihak vendor. Hal ini mengakibatkan ketidakpahaman pihak-pihak yang terkait di internal perusahaan PT ABC, terlebih jika tidak adanya dokumentasi, sehingga program tersebut akan sangat sulit untuk terus dikembangkan di masa mendatang. </li>
-            <li>Tidak adanya acuan yang jelas dari dokumentasi dapat menghambat kolaborasi antar tim, seperti sesama developer, tim QA, PM, hingga klien.</li>
-            <li>Tidak adanya dokumentasi dapat meningkatkan risiko miskomunikasi antara vendor dengan PT ABC.</li>
+            <li><b>Kehilangan Esensi Perangkat Lunak dan Terbentuknya "Black Box":</b> Berdasarkan prinsip rekayasa perangkat lunak, program komputer tanpa dokumentasi bukanlah perangkat lunak yang utuh. Secara operasional, hal ini mengubah sistem menjadi <i>black box</i> (kotak hitam), di mana tim internal tidak memiliki visibilitas terhadap alur logika sistem. Konsekuensinya, PT ABC kehilangan kendali penuh atas aset digital yang mendukung operasional pentingnya.</li>
+            <li><b>Kegagalan Kriteria <i>Maintainability</i> yang Menghambat Adaptasi:</b> Tanpa dokumentasi arsitektur, kriteria <i>maintainability</i> (kemampuan pemeliharaan) tidak terpenuhi. Konsekuensi operasionalnya adalah PT ABC akan mengalami kesulitan ekstrem saat harus melakukan modifikasi fitur untuk mengikuti kebutuhan pasar. Tim internal akan cenderung menghindari pembaruan karena risiko kerusakan sistem yang tidak terduga, sehingga perusahaan kehilangan fleksibilitas bisnis.</li>
+            <li><b>Hambatan Transfer Pengetahuan dan Penurunan Produktivitas:</b> Ketiadaan acuan tertulis membuat transfer pengetahuan antar-anggota tim menjadi mustahil. Jika terjadi pergantian personel IT (<i>turnover</i>), proses pelajari sistem (<i>onboarding</i>) akan memakan waktu sangat lama. Waktu produktif perusahaan terbuang hanya untuk menebak-nebak struktur kode, yang seharusnya bisa digunakan untuk pengembangan fitur baru.</li>
+            <li><b>Risiko Pemadaman Sistem (<i>Downtime</i>) yang Berkepanjangan:</b> Saat terjadi gangguan teknis atau <i>bug</i> kritis, ketiadaan dokumentasi akan memperlambat proses pencarian penyebab masalah (<i>troubleshooting</i>). Hal ini mengakibatkan durasi pemulihan sistem atau <i>downtime</i> menjadi sangat lama, yang secara langsung menghentikan layanan operasional perusahaan dan merugikan pelanggan.</li>
+            <li><b>Terjadinya <i>Vendor Lock-in</i> (Ketergantungan Ekstrem):</b> Tanpa dokumen teknis, pengetahuan sistem hanya dikuasai oleh vendor awal. Hal ini menciptakan ketergantungan yang tidak sehat (<i>vendor lock-in</i>), di mana PT ABC tidak memiliki posisi tawar jika vendor menaikkan biaya kontrak secara sepihak atau jika kualitas layanan mereka menurun, karena sistem sulit dialihkan ke tim internal maupun vendor lain.</li>
         </ol>
     </li>
+
     <li>
-        <b>Dampak Operasional dan Biaya</b> <br>
-        Dengan tidak adanya dokumentasi dari suatu perangkat lunak, tentu akan mempengaruhi operasional dan biaya perusahaan dalam jangka panjang. Perubahan <i>source code</i> yang dipaksakan tanpa adanya dokumentasi akan menyebabkan struktur kode semakin rapuh dan tidak modular lagi, sehingga perubahan kecil saja dapat berpotensi memunculkan banyak bug. Melakukan modifikasi tanpa informasi arsitektur dan rancangan yang jelas, maka perangkat lunak yang dihasilkan akan menjadi sistem "tambal sulam". Hal ini dapat mengakibatkan waktu pengerjaan membengkak yang tentu akan membutuhkan sumber daya serta biaya pemeliharaan yang jauh lebih besar di masa mendatang. 
-        
-    </li>
-    <li>
-        <b>Solusi</b> <br>
-        Solusi yang bisa saya sarankan untuk kasus ini yaitu: <br>
+        <b>Pengaruh terhadap Operasional dan Biaya Jangka Panjang</b><br>
+        Ketidaklengkapan dokumentasi akan menciptakan beban finansial dan operasional yang membengkak di masa depan:
         <ol type="a">
-            <li>Berdasarkan saran dari IBM mengenai penanganan kode lama, tim PT ABC dapat menggunakan alat analisis kode statis yang secara otomatis akan memeriksa kode, serta alat visualisasi untuk menampilkan <i>source code</i> secara grafis untuk memvisualisasikan cara kerjanya secara lebih jelas.</li>
-            <li>Melakukan <i>refactoring</i> oleh tim <i>engineer</i>, yaitu merestrukturisasi kode secara internal untuk meningkatkan keterbacaannya tanpa mengubah fungsi luarnya.</li>
-            <li>PT ABC dapat mengimplementasikan alat dokumentasi otomatis seperti Swagger, Doxygen, Sphinx yang terintegrasi di dalam <i>repository</i> agar dokumentasi dapat di-<i>generate</i> lebih cepat dan konsisten bersamaan dengan penulisan kode.</li>
+            <li><b>Pembengkakan Biaya Pemeliharaan:</b> Perusahaan harus membayar lebih mahal untuk setiap modifikasi karena tim pengembang harus melakukan <i>Reverse Engineering</i> (membedah ulang kode dari nol) untuk memahami logika sistem.</li>
+            <li><b><i>Opportunity Cost</i> (Biaya Kesempatan):</b> Kelambatan dalam merespons perubahan pasar akibat sulitnya modifikasi sistem akan membuat perusahaan kehilangan peluang bisnis, yang secara finansial jauh lebih besar nilainya daripada biaya pembuatan dokumen di awal.</li>
+            <li><b>Tumpukan Utang Teknis (<i>Technical Debt</i>):</b> Modifikasi yang dilakukan secara "meraba-raba" tanpa dokumentasi akan menghasilkan struktur kode yang rapuh (tambal sulam), yang di masa depan akan semakin sulit dan mahal untuk diperbaiki.</li>
+        </ol>
+    </li>
+
+    <li>
+        <b>Solusi yang Disarankan</b><br>
+        <ol type="a">
+            <li><b>Jangka Pendek (Penyelamatan Sistem):</b> Tim internal harus segera memulai proses dokumentasi mandiri melalui analisis sistem ulang dan melakukan <i>refactoring</i> kode (merestrukturisasi kode agar lebih mudah dibaca) serta memberikan komentar pada bagian-bagian yang kompleks.</li>
+            <li><b>Jangka Panjang (Mitigasi Kontrak):</b> Mewajibkan klausul "Kebutuhan Dokumentasi" (<i>Documentation Requirement</i>) dalam setiap kontrak dengan pihak ketiga. Vendor wajib menyerahkan dokumen perencanaan, analisis, desain, pengujian, hingga <i>user manual</i> sebagai syarat pelunasan pembayaran.</li>
+            <li><b>Otomatisasi Dokumentasi:</b> Mengimplementasikan alat bantuan seperti Swagger atau Doxygen agar dokumentasi teknis (seperti API) dapat dihasilkan secara otomatis dan konsisten bersamaan dengan penulisan kode.</li>
         </ol>
     </li>
 </ol>
+
 <h2>Sumber Referensi</h2>
 <ul>
-  <li>
-    Sukamto, R. A. (n.d.). <i>MSIM4303 - Rekayasa Perangkat Lunak</i>. Tangerang Selatan: Universitas Terbuka.
-  </li>
-  <li>
-    CSIRT Universitas Teknokrat Indonesia. (n.d.). <i>Cara Menyusun Dokumentasi Perangkat Lunak yang Profesional</i>. Diakses dari <a href="https://csirt.teknokrat.ac.id/cara-menyusun-dokumentasi-perangkat-lunak-yang-profesional/" target="_blank">Teknokrat CSIRT</a>
-  </li>
-  <li>
-    Fasha, A. (n.d.). <i>Refactoring pada kode Legacy: Solusi Modern untuk Masalah Lama</i>. Kompasiana. Diakses dari <a href="https://www.kompasiana.com/azmifashaazmi0594/68137d87ed64154fb07cbee2/refactoring-pada-kode-legacy-solusi-modern-untuk-masalah-lama" target="_blank">Kompasiana</a>
-  </li>
-  <li>
-    IBM. (n.d.). <i>What is legacy code?</i>. Diakses dari <a href="https://www.ibm.com/think/topics/legacy-code" target="_blank">IBM Think</a>
-  </li>
-  <li>
-    Telkom University. (n.d.). <i>Dokumentasi Otomatis dalam Rekayasa Perangkat Lunak Modern</i>. Diakses dari <a href="https://bse.telkomuniversity.ac.id/dokumentasi-otomatis-dalam-rekayasa-perangkat-lunak-modern/" target="_blank">BSE Telkom University</a>
-  </li>
+  <li>Sukamto, R. A. (n.d.). <i>MSIM4303 - Rekayasa Perangkat Lunak</i>. Tangerang Selatan: Universitas Terbuka.</li>
+  <li>CSIRT Universitas Teknokrat Indonesia. (n.d.). <i>Cara Menyusun Dokumentasi Perangkat Lunak yang Profesional</i>. Diakses dari <a href="https://csirt.teknokrat.ac.id/cara-menyusun-dokumentasi-perangkat-lunak-yang-profesional/" target="_blank">Teknokrat CSIRT</a></li>
+  <li>Fasha, A. (n.d.). <i>Refactoring pada kode Legacy: Solusi Modern untuk Masalah Lama</i>. Kompasiana. Diakses dari <a href="https://www.kompasiana.com/azmifashaazmi0594/68137d87ed64154fb07cbee2/refactoring-pada-kode-legacy-solusi-modern-untuk-masalah-lama" target="_blank">Kompasiana</a></li>
+  <li>Red Hat. (n.d.). <i>What is vendor lock-in?</i>. Diakses dari <a href="https://www.redhat.com/en/topics/cloud-computing/what-is-vendor-lock-in" target="_blank">Red Hat</a></li>
+  <li>Atlassian. (n.d.). <i>Why software documentation matters</i>. Diakses dari <a href="https://www.atlassian.com/software/confluence/documentation/software-documentation" target="_blank">Atlassian Agile Coach</a></li>
+  <li>IBM. (n.d.). <i>What is legacy code?</i>. Diakses dari <a href="https://www.ibm.com/think/topics/legacy-code" target="_blank">IBM Think</a></li>
 </ul>
