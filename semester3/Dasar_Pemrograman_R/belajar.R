@@ -3,26 +3,78 @@
 # NIM: 053060168
 # ======================================
 
-# 1.
-angka <- seq(from=0, to=3, length=6)
-tipeData <- class(angka)
-statusNumerik <- is.character(tipeData)
-cekAtribut <- list(angka,tipeData,statusNumerik)
-print("=== Output Nomor 1 ===")
-print(cekAtribut)
+# a.
+data_waktu <- c(480, 30, 45, 60, 30, 45, 90, 60, 30, 120, 120, 30, 90, 45, 45, 30, 30, 30, 15, 15)
+print("=== Data waktu ===")
+print(data_waktu)
 
-# 2.
-data1 <- seq(from=1, to=8, length=10)
-data2 <- rep(rep(2:6,each=3),3)
-data3 <- c(rep(2,3), rep(5,5), rep(8,7))
-dataFrame <- data.frame(
-  "Data 1"=c(mean(data1), median(data1), sum(data1)),
-  "Data 2"=c(mean(data2), median(data2), sum(data2)),
-  "Data 3"=c(mean(data3), median(data3), sum(data3))
-)
-row.names(dataFrame) <- c("Mean","Median","Jumlah")
-print("=== Output Nomor 2 ===")
-print(dataFrame)
+# b.
+matriks_waktu <- matrix(data = data_waktu, nrow = 4, ncol = 5, byrow = TRUE)
+print("=== Matriks data waktu ===")
+print(matriks_waktu)
+
+# c.
+print("=== Nilai minimum, maksimum, rata-rata, median, dan modus ===")
+# m
+nilai_min <- min(data_waktu)
+print(paste("Nilai minimum:", nilai_min)) 
+nilai_max <- max(data_waktu)
+print(paste("Nilai maksimum:", nilai_max))
+nilai_mean <- mean(data_waktu)
+print(paste("Nilai rata-rata:", nilai_mean))
+nilai_median <- median(data_waktu)
+print(paste("Nilai median:", nilai_median))
+modus <- function(y) {
+    uy <- unique(y)
+    uy[which.max(tabulate(match(y,uy)))]
+}
+nilai_modus <- modus(data_waktu)
+print(paste("Nilai modus:", nilai_modus))
+
+
+# Prodi <- rep(c("Matematika","Statistika","Biologi"),6)
+# asal_daerah <- rep(c("Jakarta","Bogor","Bandung"),each=3,2)
+# usia <- rep(c(22,26),each=9)
+# data_frame <- data.frame(Prodi,asal_daerah,usia)
+# print(data_frame)
+
+
+
+# a.
+
+# biaya <- 5000000; modal <- 10000000; karyawan <- 15; proyeksi <- 12000000; stok_barang <- 250
+# list <- ls(pat="y")
+# print("=== output a ===")
+# print(list)
+
+# # b.
+# print("=== output b ===")
+# for (i in 1:25) {print(i)}
+
+# c.
+
+
+
+# 1.
+# angka <- seq(from=0, to=3, length=6)
+# tipeData <- class(angka)
+# statusNumerik <- is.character(tipeData)
+# cekAtribut <- list(angka,tipeData,statusNumerik)
+# print("=== Output Nomor 1 ===")
+# print(cekAtribut)
+
+# # 2.
+# data1 <- seq(from=1, to=8, length=10)
+# data2 <- rep(rep(2:6,each=3),3)
+# data3 <- c(rep(2,3), rep(5,5), rep(8,7))
+# dataFrame <- data.frame(
+#   "Data 1"=c(mean(data1), median(data1), sum(data1)),
+#   "Data 2"=c(mean(data2), median(data2), sum(data2)),
+#   "Data 3"=c(mean(data3), median(data3), sum(data3))
+# )
+# row.names(dataFrame) <- c("Mean","Median","Jumlah")
+# print("=== Output Nomor 2 ===")
+# print(dataFrame)
 
 
 
