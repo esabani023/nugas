@@ -1,35 +1,145 @@
-# ======================================
-# NAMA: Esa Sya'bani
-# NIM: 053060168
-# ======================================
+print("======================================")
+print("NAMA: Esa Sya'bani")
+print("NIM: 053060168")
+print("======================================")
+cat("\n")
+
+# 1.
+print("####### Program 1 #######")
+M <- matrix(c(5:14), 2)
+print("--- Matriks awal ---")
+print(M)
+cat("\n")
+
+cross_product <- crossprod(M)
+print("--- Hasil cross product ---")
+print(cross_product)
+cat("\n")
+
+anak_matriks <- matrix(cross_product[c(1:10)], 5)
+gabung <- cbind(cross_product, anak_matriks)
+print("--- Hasil duplikat 2 kolom pertama ke kolom akhir ---")
+print(gabung)
+cat("\n")
+
+# 2.
+print("####### Program 2 #######")
+B <- matrix(c(10, 3, 15, 7, 2, 20, 8, 12), 4)
+print("--- Matriks awal ---")
+print(B)
+cat("\n")
+
+perkalian <- B*5
+print("--- Hasil perkalian matriks ---")
+print(perkalian)
+cat("\n")
+
+print("--- Hasil filter ---")
+filter <- perkalian[c(perkalian>15 & perkalian<60)] 
+print(filter)
+
+
+
+# M2 <- cbind(cross_product, c(M[elemen]))
+# print(elemen)
+
+# print(M[-c(2, 3)]) 
+
+# # Membuat matriks M
+# M <- matrix(c(5, 2, 3, 8, 7, 9, 3, 1, 5, 7, 4, 0, 4, 5, 2, 3),4)
+# print("--- Matriks M ---")
+# print(M)
+
+# # a.
+# M1 <- matrix(c(M[2,c(2,1)], M[1], M[4,2]),2)
+# cat("\n")
+# print("Hasil anak matriks M (M1)")
+# print(M1)
+
+# # b.
+# M2 <- matrix(c(M[c(2, 3), 3], M[3, c(3, 1)]), 2)
+# cat("\n")
+# print("Hasil anak matriks M (M2)")
+# print(M2)
+
+# # Buat matriks a dan B
+# a <- matrix(c(1, 4, 5, 6), 1)
+# B <- matrix(c(1, 2, 4, 4, 1:4), 2, byrow=T)
+
+# # c.
+# M3 <- rbind(M, a)
+# cat("\n")
+# print("Hasil dari matriks M3")
+# print(M3)
+
+# # d.
+# B_transpos <- t(B)
+# M4 <- cbind(B_transpos, M)
+# cat("\n")
+# print("Hasil dari matriks M4")
+# print(M4)
+
+# # a.
+# M_elemen <- M*M
+# cat("\n")
+# print("--- Hasil perkalian elemen ---")
+# print(M_elemen)
+
+# # b.
+# M_aljabar <- M%*%M
+# cat("\n")
+# print("--- Hasil perkalian secara aljabar ---")
+# print(M_aljabar)
+
+# # c.
+# M_invers <- solve(M)
+# cat("\n")
+# print("--- Hasil invers ---")
+# print(M_invers)
+
+# # d.
+# M_transpos <- t(M)
+# cat("\n")
+# print("--- Hasil transpos ---")
+# print(M_transpos)
+
+# # e.
+# M_hasil <- t(M)%*%M
+# cat("\n")
+# print("--- Hasil keseluruhan ---")
+# print(M_hasil)
+
+
+
+
 
 # a.
-data_waktu <- c(480, 30, 45, 60, 30, 45, 90, 60, 30, 120, 120, 30, 90, 45, 45, 30, 30, 30, 15, 15)
-print("=== Data waktu ===")
-print(data_waktu)
+# data_waktu <- c(480, 30, 45, 60, 30, 45, 90, 60, 30, 120, 120, 30, 90, 45, 45, 30, 30, 30, 15, 15)
+# print("=== Data waktu ===")
+# print(data_waktu)
 
-# b.
-matriks_waktu <- matrix(data = data_waktu, nrow = 4, ncol = 5, byrow = TRUE)
-print("=== Matriks data waktu ===")
-print(matriks_waktu)
+# # b.
+# matriks_waktu <- matrix(data = data_waktu, nrow = 4, ncol = 5, byrow = TRUE)
+# print("=== Matriks data waktu ===")
+# print(matriks_waktu)
 
-# c.
-print("=== Nilai minimum, maksimum, rata-rata, median, dan modus ===")
-# m
-nilai_min <- min(data_waktu)
-print(paste("Nilai minimum:", nilai_min)) 
-nilai_max <- max(data_waktu)
-print(paste("Nilai maksimum:", nilai_max))
-nilai_mean <- mean(data_waktu)
-print(paste("Nilai rata-rata:", nilai_mean))
-nilai_median <- median(data_waktu)
-print(paste("Nilai median:", nilai_median))
-modus <- function(y) {
-    uy <- unique(y)
-    uy[which.max(tabulate(match(y,uy)))]
-}
-nilai_modus <- modus(data_waktu)
-print(paste("Nilai modus:", nilai_modus))
+# # c.
+# print("=== Nilai minimum, maksimum, rata-rata, median, dan modus ===")
+# # m
+# nilai_min <- min(data_waktu)
+# print(paste("Nilai minimum:", nilai_min)) 
+# nilai_max <- max(data_waktu)
+# print(paste("Nilai maksimum:", nilai_max))
+# nilai_mean <- mean(data_waktu)
+# print(paste("Nilai rata-rata:", nilai_mean))
+# nilai_median <- median(data_waktu)
+# print(paste("Nilai median:", nilai_median))
+# modus <- function(y) {
+#     uy <- unique(y)
+#     uy[which.max(tabulate(match(y,uy)))]
+# }
+# nilai_modus <- modus(data_waktu)
+# print(paste("Nilai modus:", nilai_modus))
 
 
 # Prodi <- rep(c("Matematika","Statistika","Biologi"),6)
