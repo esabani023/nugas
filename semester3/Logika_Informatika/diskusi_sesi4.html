@@ -1,0 +1,88 @@
+<p>Assalamu'alaikum wr. wb., selamat malam, saya Esa Sya'bani asal UPBJJ Purwokerto prodi S1 sistem informasi izin menanggapi topik diskusi yang bapak berikan.</p>
+<h2>Definisi Kalimat Valid</h2>
+<p>Valid adalah salah satu sifat dari kalimat logika proposisional. Suatu kalimat <span style="font-family: 'Brush Script MT';">F</span> dikatakan valid jika <span style="font-family: 'Brush Script MT';">F</span> bernilai true di bawah (<i>under</i>) setiap interpretasi <i>I</i> untuk <span style="font-family: 'Brush Script MT';">F</span>. Kalimat valid dalam logika proposisional kadang-kadang disebut <i>tautology</i>. Artinya jika ada satu saja interpretasi <i>J</i> untuk <span style="font-family: 'Brush Script MT';">F</span> dan <span style="font-family: 'Brush Script MT';">F</span> bernilai false di bawah <i>J</i>, kalimat <span style="font-family: 'Brush Script MT';">F</span> dikatakan tidak valid. </p>
+<h2>Pembuktian Validitas</h2>
+<p>Untuk pembuktian validitas suatu kalimat salah satunya dapat menggunakan pohon semantik, berikut ini untuk mempermudah pembuktiannya saya buatkan pohon semantiknya.</p>
+<p>Kalimat: <br>
+<span style="font-family: 'Brush Script MT';">K</span><sub>1</sub>: (<b>if</b> <i>P</i> <b>then</b> <i>Q</i>) <b>if and only if</b> (<b>if not</b><i>Q</i> <b>then not</b><i>P</i>) <br>
+<img src="diskusi4_a.png" alt=""> <br>
+<ol>
+    <li>
+        Jalur node 1-node 2 <br>
+        <i>P</i>: true <br>
+        <b>if</b> <i>P</i> <b>then</b> <i>Q</i>: belum bisa ditentukan nilainya <br>
+        <b>not</b><i>Q</i>: belum bisa ditentukan nilainya <br>
+        <b>not</b><i>P</i>: false <br>
+        <b>if not</b><i>Q</i> <b>then not</b><i>P</i>: belum bisa ditentukan nilainya <br>
+        (<b>if</b> <i>P</i> <b>then</b> <i>Q</i>) <b>if and only if</b> (<b>if not</b><i>Q</i> <b>then not</b><i>P</i>): belum bisa ditentukan nilainya
+    </li>
+    <li>
+        Jalur node 1-node 2-node 3 <br>
+        <i>P</i>: true <br>
+        <i>Q</i>: true <br>
+        <b>if</b> <i>P</i> <b>then</b> <i>Q</i>: true <br>
+        <b>not</b><i>Q</i>: false <br>
+        <b>not</b><i>P</i>: false <br>
+        <b>if not</b><i>Q</i> <b>then not</b><i>P</i>: true <br>
+        (<b>if</b> <i>P</i> <b>then</b> <i>Q</i>) <b>if and only if</b> (<b>if not</b><i>Q</i> <b>then not</b><i>P</i>): true
+    </li>
+    <li>
+        Jalur node 1-node 2-node 4 <br>
+        <i>P</i>: true <br>
+        <i>Q</i>: false <br>
+        <b>if</b> <i>P</i> <b>then</b> <i>Q</i>: false <br>
+        <b>not</b><i>Q</i>: true <br>
+        <b>not</b><i>P</i>: false <br>
+        <b>if not</b><i>Q</i> <b>then not</b><i>P</i>: false <br>
+        (<b>if</b> <i>P</i> <b>then</b> <i>Q</i>) <b>if and only if</b> (<b>if not</b><i>Q</i> <b>then not</b><i>P</i>): true
+    </li>
+    <li>
+        Jalur node 1-node 5 <br>
+        <i>P</i>: false <br>
+        <b>if</b> <i>P</i> <b>then</b> <i>Q</i>: true <br>
+        <b>not</b><i>Q</i>: belum bisa ditentukan nilainya <br>
+        <b>not</b><i>P</i>: true <br>
+        <b>if not</b><i>Q</i> <b>then not</b><i>P</i>: true <br>
+        (<b>if</b> <i>P</i> <b>then</b> <i>Q</i>) <b>if and only if</b> (<b>if not</b><i>Q</i> <b>then not</b><i>P</i>): true
+    </li>
+</ol>
+Dari pohon semantik tersebut didapatkan semua node leaf bernilai true, sehingga bisa disimpulkan kalimat <span style="font-family: 'Brush Script MT';">K</span><sub>1</sub>: (<b>if</b> <i>P</i> <b>then</b> <i>Q</i>) <b>if and only if</b> (<b>if not</b><i>Q</i> <b>then not</b><i>P</i>) bersifat valid.<br><br>
+Kalimat:<br>
+<span style="font-family: 'Brush Script MT';">K</span><sub>2</sub>: (<b>if</b> <i>P</i> <b>then</b> <i>Q</i>) <b>if and only if</b> (<b>if </b><i>Q</i> <b>then </b><i>P</i>) <br>
+<img src="diskusi4_b.png" alt=""> <br>
+<ol>
+    <li>
+        Jalur node 1-node 2 <br>
+        <i>P</i>: true <br>
+        <b>if</b> <i>P</i> <b>then</b> <i>Q</i>: belum bisa ditentukan nilainya <br>        
+        <b>if </b><i>Q</i> <b>then </b><i>P</i>: true <br>
+        (<b>if</b> <i>P</i> <b>then</b> <i>Q</i>) <b>if and only if</b> (<b>if </b><i>Q</i> <b>then </b><i>P</i>): belum bisa ditentukan nilainya
+    </li>
+    <li>
+        Jalur node 1-node 2-node 3 <br>
+        <i>P</i>: true <br>
+        <i>Q</i>: true <br>
+        <b>if</b> <i>P</i> <b>then</b> <i>Q</i>: true <br>
+        <b>if </b><i>Q</i> <b>then </b><i>P</i>: true <br>
+        (<b>if</b> <i>P</i> <b>then</b> <i>Q</i>) <b>if and only if</b> (<b>if </b><i>Q</i> <b>then </b><i>P</i>): true
+    </li>
+    <li>
+        Jalur node 1-node 2-node 4 <br>
+        <i>P</i>: true <br>
+        <i>Q</i>: false <br>
+        <b>if</b> <i>P</i> <b>then</b> <i>Q</i>: false <br>
+        <b>if </b><i>Q</i> <b>then </b><i>P</i>: true <br>
+        (<b>if</b> <i>P</i> <b>then</b> <i>Q</i>) <b>if and only if</b> (<b>if </b><i>Q</i> <b>then </b><i>P</i>): false
+    </li>
+</ol>
+Dari pohon semantik tersebut didapatkan terdapat node leaf yang bernilai false, sehingga tanpa kita harus melanjutkannya lagi sudah dapat disimpulkan bahwa kalimat <span style="font-family: 'Brush Script MT';">K</span><sub>2</sub>: (<b>if</b> <i>P</i> <b>then</b> <i>Q</i>) <b>if and only if</b> (<b>if </b><i>Q</i> <b>then </b><i>P</i>) bersifat tidak valid, namun satisfiable.<br>
+<h2>Kesimpulan</h2>
+<p>Jadi, kalimat <span style="font-family: 'Brush Script MT';">K</span><sub>1</sub> dan <span style="font-family: 'Brush Script MT';">K</span><sub>2</sub> tidak sama-sama kalimat valid. Kalimat <span style="font-family: 'Brush Script MT';">K</span><sub>1</sub> merupakan kalimat valid karena kalimat <span style="font-family: 'Brush Script MT';">K</span><sub>1</sub> bernilai true di bawah setiap interpretasinya, yang ditandai dengan node leaf yang bernilai true. Sedangkan pada kalimat <span style="font-family: 'Brush Script MT';">K</span><sub>2</sub> bukan merupakan kalimat valid karena kalimat <span style="font-family: 'Brush Script MT';">K</span><sub>2</sub> teradapat nilai false di bawah interpretasinya, yang ditandai dengan adanya node leaf yang bernilai false.</p>
+</p>
+<h2>Sumber Referensi</h2>
+<ul>
+  <li>Suprapto. (2020). <i>Logika Informatika (BMP)</i>. Edisi 2. Tangerang Selatan: Universitas Terbuka.</li>
+  <li>Universitas Terbuka. (n.d.). <i>Materi Inisiasi 2: Aturan Semantik Logika Proposisional, Interpretasi yang Diperluas. STSI4106 - Logika Informatika</i>. Tangerang Selatan.</li>
+  <li>Universitas Terbuka. (n.d.). <i>Materi Inisiasi 3: Pohon Semantik dan Sifat-sifat Kalimat. STSI4106 - Logika Informatika</i>. Tangerang Selatan.</li>
+  <li>Universitas Terbuka. (n.d.). <i>Materi Inisiasi 4: Pembuktian Validitas dengan Pohon Semantik dan Proof by Falsification. STSI4106 - Logika Informatika</i>. Tangerang Selatan.</li>
+</ul>
