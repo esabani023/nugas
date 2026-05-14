@@ -1,42 +1,99 @@
-print("======================================")
-print("NAMA: Esa Sya'bani")
-print("NIM: 053060168")
-print("======================================")
-cat("\n")
+# ======================================
+# NAMA: Esa Sya'bani
+# NIM: 053060168
+# ======================================
 
-# 1.
-print("####### Program 1 #######")
-M <- matrix(c(5:14), 2)
-print("--- Matriks awal ---")
-print(M)
-cat("\n")
+setwd("/root/nugas/semester3/Dasar_Pemrograman_R")
 
-cross_product <- crossprod(M)
-print("--- Hasil cross product ---")
-print(cross_product)
-cat("\n")
+data_nilai <- read.table('Nilai_Komputer.txt', header = TRUE,  sep = '	',  stringsAsFactors = FALSE)
+print(data_nilai)
 
-anak_matriks <- matrix(cross_product[c(1:10)], 5)
-gabung <- cbind(cross_product, anak_matriks)
-print("--- Hasil duplikat 2 kolom pertama ke kolom akhir ---")
-print(gabung)
-cat("\n")
+# # 2.
+# nilai <- c(60, 67, 69, 72, 74, 77, 80, 83, 87, 70)
+# frekuensi <- c(3, 5, 6, 8, 9, 2, 6, 8, 1, 4)
 
-# 2.
-print("####### Program 2 #######")
-B <- matrix(c(10, 3, 15, 7, 2, 20, 8, 12), 4)
-print("--- Matriks awal ---")
-print(B)
-cat("\n")
+# # a.
+# plot(nilai, frekuensi,
+#     main = "Scatter Plot Nilai vs Frekuensi",
+#     xlab = "Nilai", 
+#     ylab = "Frekuensi",
+#     pch = 19)
 
-perkalian <- B*5
-print("--- Hasil perkalian matriks ---")
-print(perkalian)
-cat("\n")
+# # b.
+# pie(frekuensi,
+#     labels = nilai,
+#     main = "Pie Chart Distribusi Frekuensi")
 
-print("--- Hasil filter ---")
-filter <- perkalian[c(perkalian>15 & perkalian<60)] 
-print(filter)
+# boxplot(nilai,
+#     main = "Boxplot Nilai Mahasiswa",
+#     ylab = "Nilai")
+
+# # 1.
+# print("################ Soal 1 #################") 
+# M <- matrix(c(10, 2, 4, 5, 6, 2, 6, 8, 7),3)
+# print("--- Matriks M ---")
+# print(M)
+# cat("\n")
+
+# # a.
+# print("================= Soal 1a =================")
+# x <- matrix(c(7, 4, 5), 3)
+
+# M1 <- cbind(M, x)
+# print("--- Matriks M1 ---")
+# print(M1)
+# cat("\n")
+
+# M2 <- cbind(x, M)
+# print("--- Matriks M2 ---")
+# print(M2)
+# cat("\n")
+
+# # b.
+# print("================= Soal 1b =================")
+# perkalian <- M1*M2
+# print("--- Hasil perkalian elemen demi elemen ---")
+# print(perkalian)
+# cat("\n")
+
+# penjumlahan <- M1+M2
+# print("--- Hasil pernjumlahan elemen demi elemen ---")
+# print(penjumlahan)
+
+
+# # 1.
+# print("####### Program 1 #######")
+# M <- matrix(c(5:14), 2)
+# print("--- Matriks awal ---")
+# print(M)
+# cat("\n")
+
+# cross_product <- crossprod(M)
+# print("--- Hasil cross product ---")
+# print(cross_product)
+# cat("\n")
+
+# anak_matriks <- matrix(cross_product[c(1:10)], 5)
+# gabung <- cbind(cross_product, anak_matriks)
+# print("--- Hasil duplikat 2 kolom pertama ke kolom akhir ---")
+# print(gabung)
+# cat("\n")
+
+# # 2.
+# print("####### Program 2 #######")
+# B <- matrix(c(10, 3, 15, 7, 2, 20, 8, 12), 4)
+# print("--- Matriks awal ---")
+# print(B)
+# cat("\n")
+
+# perkalian <- B*5
+# print("--- Hasil perkalian matriks ---")
+# print(perkalian)
+# cat("\n")
+
+# print("--- Hasil filter ---")
+# filter <- perkalian[c(perkalian>15 & perkalian<60)] 
+# print(filter)
 
 
 

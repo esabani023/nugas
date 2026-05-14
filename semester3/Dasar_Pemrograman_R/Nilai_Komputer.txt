@@ -1,0 +1,9 @@
+ NIM 	Nama Mahasiswa 	UT Daerah 	Nilai 
+202110 	Jamal 	Bogor 	80 
+202111 	Erna 	Jakarta 	96 
+202112 	Aliya 	Surabaya 	86 
+202113 	Damar 	Malang 	76 
+202114 	Eri 	Makassar 	65 
+202115 	Ida 	Bogor 	67 
+202116 	Adi 	Aceh 	75 
+
