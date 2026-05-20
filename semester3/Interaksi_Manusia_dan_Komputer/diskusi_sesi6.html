@@ -1,0 +1,64 @@
+<p>Assalamu'alaikum wr. wb., selamat malam, saya Esa Sya'bani asal UPBJJ Purwokerto prodi S1 sistem informasi izin menanggapi topik diskusi yang bapak berikan.</p>
+<p>Berikut ini rancangan tampilan dialog berbasis bahasa alami untuk pembelian buku <i>online</i>.</p>
+<ol>
+    <li>
+        <b>Membuka Kategori Buku</b><br>
+        Sistem: <br>
+        Sistem menyapa pengguna dan menyajikan kategori utama yang tersedia. <br>
+        "Halo! Selamat datang di toko buku Satu Book E-store. Silakan pilih kategori buku:
+        <ol>
+            <li>Fiksi</li>
+            <li>Nonfiksi</li>
+            <li>Pendidikan</li>
+            <li>Komik</li>
+            <li>Agama</li>
+        </ol>
+        Ketik kategori yang anda ingin lihat, ya!"<br>
+        Pengguna: <br>
+        "Saya ingin lihat kategori buku fiksi." <br>
+        Instruksi dari pengguna diterjemahkan oleh penerjemah, misalnya ke dalam instruksi yang sama dengan bahasa FoxPro, sebagai: <br>
+        <table border="1" cellspacing="0"><tr><td><code>DISPLAY ALL FOR KATEGORI = "Fiksi"</code></td></tr></table>
+    </li>
+    <li>
+        <b>Menampilkan Judul Buku per Kategori</b><br>
+        Sistem: <br>
+        Sistem menyaring dan menampilkan daftar judul buku yang ada di dalam kategori pilihan pengguna. <br>
+        "Pilihan yang bagus! Berikut ini daftar judul buku pada kategori fiksi.
+        <ol>
+            <li>Laut Bercerita</li>
+            <li>Bumi</li>
+            <li>Laskar Pelangi</li>
+            <li>Home Sweet Loan</li>
+            <li>Gadis Kretek</li>
+        </ol>
+        Ketikan judul atau nomor buku yang anda ingininkan." <br>
+        Pengguna: <br>
+        "Home Sweet Loan sepertinya menarik, saya ingin buku itu." <br>
+        Instruksi ini diterjemahkan misalnya ke dalam bahasa FoxPro menjadi: <br>
+        <table border="1" cellspacing="0"><tr><td><code>DISPLAY ALL FOR JUDUL = "Home Sweet Loan"</code></td></tr></table>
+    </li>
+    <li>
+        <b>Menampilkan Stok, Harga, dan Pemesanan Buku yang Dipilih</b><br>
+        Sistem: <br>
+        Sistem mengonfirmasi pilihan, lalu menampilkan informasi ketersediaan (stok) dan harga dari buku tersebut. <br>
+        "Home Sweet Loan adalah pilihan yang bagus untuk novel tentang kehidupan sebagai <i>sandwich generation</i>! Berikut detail untuk buku tersebut:
+        <ul>
+            <li>Harga: Rp 95.000</li>
+            <li>Stok: 12</li>
+        </ul>
+        Apakah anda ingin memesan buku ini sekarang? Jika ya, berapa buku yang ingin anda pesan?" <br>
+        Pengguna: <br>
+        "Ya, saya ingin memesannya 1." <br>
+        Instruksi ini diterjemahkan misalnya ke dalam bahasa FoxPro menjadi: <br>
+        <table border="1" cellspacing="0"><tr><td><code>REPLACE STOK WITH STOK - 1 FOR JUDUL = "Home Sweet Loan"</code></td></tr></table>
+        Sistem: <br>
+        "Pesananmu berhasil dicatat! 1 buku Home Sweet Loan dengan total Rp 95.000 telah dimasukkan ke keranjang belanja. Silakan ketik 'Bayar' untuk melanjutkan ke pembayaran, atau ketik 'Menu' jika masih ingin mencari buku lain."
+    </li>
+</ol>
+<h2>Sumber Referensi</h2>
+<ul>
+    <li>Santosa, P. I. <i>Interaksi Manusia dan Komputer</i>. Buku Materi Pokok MSIM4208. Tangerang Selatan: Penerbit Universitas Terbuka.</li>
+    <li>VJY Softworx Inc. <i>FoxPro : LIST and DISPLAY</i>. https://vjy-softworx.blogspot.com/2012/04/foxpro-list-and-display.html</li>
+    <li>Yaldex. <i>Visual FoxPro 9.0 Language Reference</i>. https://www.yaldex.com/fox_pro_tutorial/html/7f52db34-68fc-4f9e-abca-fa3f7f02ca19.htm</li>
+    <li>Hacker’s Guide to Visual FoxPro. <ii>Replace</ii></i>. https://hackfox.github.io/section4/s4g086.html</li>
+</ul>
