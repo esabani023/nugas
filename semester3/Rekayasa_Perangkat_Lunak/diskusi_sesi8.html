@@ -1,0 +1,77 @@
+<p>Assalamu'alaikum wr. wb., selamat malam, saya Esa Sya'bani asal UPBJJ Purwokerto prodi S1 sistem informasi izin menanggapi topik diskusi yang bapak berikan.</p>
+<p>Berikut ini langkah-langkah sistematis untuk mengidentifikasi, memperkirakan, memantau, dan mengurangi risiko dalam proyek E-Gov Smart City agar tidak mengalami kegagalan.</p>
+<ol>
+  <li>
+    <b>Perubahan Strategi Utama</b><br>
+    Pendekatan yang seharusnya diambil oleh tim proyek vendor TI dan pemerintah Kota X yaitu strategi proaktif sebelum pekerjaan teknis pengembangan dimulai, bukan strategi reaktif yang baru bertindak secara terburu-buru setelah masalah kompatibilitas, performa buruk, dan kebocoran data benar-benar terjadi. Strategi ini berfokus untuk mengelola risiko sebelum muncul dengan menyiapkan tim secara teknis untuk mengidentifikasi probabilitas, menilai dampak, membuat peringkat risiko, serta menyusun rencana cadangan agar respons pengendalian berjalan efektif.
+  </li>
+  <li>
+    <b>Cara Mengidentifikasi Risiko Sejak Awal</b><br>
+    Identifikasi risiko merupakan upaya sistematis untuk menentukan ancaman terhadap rencana proyek seperti estimasi, jadwal, dan sumber daya. Langkah operasional yang seharusnya dilakukan antara lain:
+    <ol type="a">
+      <li>
+        Membuat <i>Checklist</i> Risiko <br>
+        Vendor harus menyusun <i>checklist</i> berdasarkan kategori risiko umum dan khusus perangkat lunak. Dari kasus E-Gov Smart City, indikator <i>checklist</i> yang wajib dianalisis meliputi:
+        <ul>
+          <li>Lingkungan pembangunan dan alat: Menilai kualitas dan ketersediaan infrastruktur, termasuk mengidentifikasi lebih awal masalah ketidaksesuaian sistem dengan komputer lama milik instansi pemerintah setempat.</li>
+          <li>Teknologi yang akan dibangun: Menganalisis tingkat kompleksitas sistem dan "kebaruan" yang digunakan sistem untuk mengantisipasi risiko performa buruk sejak tahap desain rancangan.</li>
+          <li>Karakteristik <i>stakeholder</i>: Menilai kerumitan pemangku kepentingan dan menetapkan pola komunikasi berkala agar fitur yang dibangun sesuai dengan kebutuhan riil pengguna akhir.</li>
+          <li>Definisi proses: Menilai sejauh mana organisasi mendefinisikan dan mengikuti proses pengembangan agar penambahan fitur di tengah jalan tidak mengacaukan anggaran dan <i>timeline</i> proyek.</li>
+        </ul>
+      </li>
+      <li>
+        Menilai Keseluruhan Risiko Proyek melalui Survei <br>
+        Manajer proyek harus mengajukan pertanyaan krusial kepada manajemen dan tim sebelum memulai. Pertanyaan tersebut mencakup stabilitas ruang lingkup proyek, pemahaman tim terhadap kebutuhan sistem, serta dukungan penuh dari pengguna akhir. Jika ada tanggapan yang bernilai negatif, langkah mitigasi harus segera dibuat karena tingkat kegagalan proyek berbanding lurus dengan jumlah jawaban negatif yang didapatkan.
+      </li>
+    </ol>
+  </li>
+  <li>
+      <b>Cara Memperkirakan (Proyeksi) dan Memperbaiki Risiko</b><br>
+        Setelah risiko terdata, tim harus melakukan proyeksi risiko untuk menilai probabilitas kejadian dan konsekuensi dampaknya demi menentukan skala prioritas. Tahapannya meliputi:
+        <ol type="a">
+          <li>
+            Menyusun Tabel Risiko <br>
+            Membuat tabel yang memuat daftar risiko, kategori (seperti teknologi [TE], bisnis [BU], ukuran proyek [PS]), probabilitas dalam persentase, skala dampak, dan rencana RMMM. Nilai probabilitas dapat diukur secara akurat melalui survei bersama seluruh anggota tim.
+          </li>
+          <li>
+            Menentukan Garis Batas (<i>Cutoff</i>)<br>
+            Mengurutkan tabel risiko berdasarkan nilai probabilitas dan dampaknya, lalu menarik garis batas horizontal. Risiko yang berada di atas garis <i>cutoff</i> (seperti performa sistem hancur atau penolakan otoritas siber) wajib mendapatkan perhatian manajemen utama, sementara risiko di bawah garis akan dievaluasi ulang.
+          </li>
+          <li>
+            Menghitung <i>Risk Exposure</i> (RE) <br>
+            Mengukur penyingkapan risiko finansial secara matematis dengan rumus <i>RE = P × C</i>, di mana <i>P</i> adalah probabilitas risiko dan <i>C</i> adalah biaya atau kerugian proyek saat risiko terjadi. Total nilai <i>RE</i> ini membantu vendor memprediksi perkiraan biaya akhir serta kebutuhan penambahan staf cadangan.
+          </li>
+          <li>
+            Menggunakan Format CTC (<i>condition-transition-consequence</i>) <br>
+            Menyempurnakan deskripsi risiko ke dalam format: "Mengingat  maka ada kekhawatiran bahwa (mungkin) ". Contoh: "Mengingat sistem tidak dilengkapi enkripsi data, maka ada kekhawatiran bahwa informasi warga akan bocor sehingga otoritas siber menolak sistem ini." Format ini mempermudah tim mengisolasi masalah dan menyusun respons yang tepat.
+          </li>
+        </ol>
+      </li>
+      <li>
+        <b>Metode Mitigasi, Pemantauan, dan Manajemen (RMMM) untuk Menghindari Kegagalan</b><br>
+        Strategi efektif untuk menghindari kegagalan total wajib diintegrasikan ke dalam rencana atau dokumen RMMM terpisah melalui tiga aktivitas utama:
+        <ol type="a">
+          <li>
+            Mitigasi Risiko <br>
+            Merupakan langkah preventif yang dilakukan sebelum risiko menjadi nyata. Dalam kasus ini, mitigasi yang harus dilakukan mencakup penguncian ruang lingkup (<i>scope definition</i>) untuk mencegah perubahan spesifikasi di tengah jalan, serta menyisipkan fitur enkripsi dan standar keamanan nasional sejak awal fase rekayasa kualitas perangkat lunak.
+          </li>
+          <li>
+            Pemantauan Masalah <br>
+            Manajer proyek secara berkala memantau indikator atau faktor pemicu risiko sepanjang proyek berjalan. Pemantauan ini bertujuan untuk menilai apakah risiko yang diprediksi benar-benar terjadi, memastikan langkah mitigasi diterapkan dengan benar, serta mengumpulkan data evaluasi.
+          </li>
+          <li>
+            Manajemen Risiko (Rencana Cadangan) <br>
+            Menyusun rencana kemungkinan operasional dan mengalokasikan cadangan anggaran dari perhitungan <i>RE</i>. Jika gangguan performa atau penolakan regulasi tetap terjadi, tim sudah siap dengan arsitektur alternatif atau penyesuaian teknis tanpa mengorbankan seluruh proyek.
+          </li>
+          <li>
+            Dokumentasi Lembar Informasi Risiko atau <i>Risk Information Sheet</i>(RIS) <br>
+            Setiap detail risiko harus dicatat dalam RIS dan disimpan dalam sistem basis data komputer. Hal ini penting agar manajer proyek dapat dengan mudah melakukan proses pemasukan data, penyortiran prioritas, pencarian, dan peninjauan tabel risiko secara teratur sepanjang 18 bulan target proyek.
+          </li>
+        </ol>
+      </li>
+</ol>
+
+<h2>Sumber Referensi</h2>
+<ul>
+  <li>BMP MSIM4303 – Rekayasa Perangkat Lunak</li>
+</ul>
