@@ -3,10 +3,60 @@
 # NIM: 053060168
 # ======================================
 
-setwd("/root/nugas/semester3/Dasar_Pemrograman_R")
+# Pertanyaan 1
+cat("################ Pertanyaan 1 ################# \n")
+cat("NIlai ganjil di antara 1 sampai dengan 25: \n")
+for (i in 1:25) {
+   if (!i%% 2) {
+    next
+   }
+print(i)
+}
 
-data_nilai <- read.table('Nilai_Komputer.txt', header = TRUE,  sep = '	',  stringsAsFactors = FALSE)
-print(data_nilai)
+# Pertanyaan 2
+cat("\n################ Pertanyaan 2 ################# \n")
+v <- c(rnorm(20))
+cat("Isi 20 nilai normal acak pada vektor v: \n")
+print(v)
+cat("Apakah v merupakan vektor? \n")
+print(is.vector(v))
+cat("Hasil perkalian v(i) × v(i) dengan i=1,2,3,4,5: \n")
+for (i in 1:5) {
+   hasil <- v[i]*v[i]
+   cat("Untuk i =", i, "dan v =", v[i], "hasilnya =", hasil, "\n")
+}
+
+# Pertanyaan 3
+cat("\n################ Pertanyaan 3 ################# \n")
+# Contoh 1
+cat("---- Contoh 1 ---- \n")
+data_binom <- c(rbinom(15, size=10, prob=0.5))
+cat("Isi 15 nilai distribusi binomial acak pada vektor data_binom: \n")
+print(data_binom)
+cat("Apakah data_binom merupakan vektor? \n")
+print(is.vector(data_binom))
+cat("Nilai distribusi binomial yang lebih besar atau sama dengan 7: \n")
+for (i in 1:15) {
+   if (!data_binom[i] >= 7) {
+      next
+   }
+   print(data_binom[i])
+}
+
+# Contoh 2
+cat("---- Contoh 2 ---- \n")
+cat("Bilangan yang merupakan kelipatan 3 antara 1 sampai 12: \n")
+for (i in 1:12) {
+   cek <- ifelse (i %% 3 == 0, "adalah kelipatan 3", "bukan kelipatan 3")
+   cat(i, cek, "\n")
+}
+
+
+
+# setwd("/root/nugas/semester3/Dasar_Pemrograman_R")
+
+# data_nilai <- read.table('Nilai_Komputer.txt', header = TRUE,  sep = '	',  stringsAsFactors = FALSE)
+# print(data_nilai)
 
 # # 2.
 # nilai <- c(60, 67, 69, 72, 74, 77, 80, 83, 87, 70)
