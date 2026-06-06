@@ -1,0 +1,32 @@
+<p>Assalamu'alaikum wr. wb., selamat malam, saya Esa Sya'bani asal UPBJJ Purwokerto prodi S1 sistem informasi izin menanggapi topik diskusi yang bapak berikan.</p>
+<h2>Definisi (<i>Satisfiable</i>, <i>Contradictory</i>, <i>Valid</i>)</h2>
+<ol type="i">
+    <li>Suatu kalimat tertutup (<i>closed sentence</i>) <span style="font-family: 'Brush Script MT';">F</span> adalah <i><b>satisfiable</b></i> jika bernilai <i>true</i> di bawah suatu interpretasi untuk <span style="font-family: 'Brush Script MT';">F</span>.</li>
+    <li>Suatu kalimat tertutup <span style="font-family: 'Brush Script MT';">F</span> adalah <i>contradictory</i> (atau <i><b>unsatisfiable</b></i>) jika bernilai <i>false</i> di bawah setiap interpretasi untuk <span style="font-family: 'Brush Script MT';">F</span>. </li>
+    <li>Suatu kalimat <span style="font-family: 'Brush Script MT';">F</span> dikatakan valid jika <span style="font-family: 'Brush Script MT';">F</span> bernilai <i>true</i> di bawah setiap interpretasi untuk <span style="font-family: 'Brush Script MT';">F</span> </li>
+</ol>
+<h2>Pengecekan Sifat Kalimat (<i>Satisfiable</i>/<i>Contradictory</i>/<i>Valid</i>)</h2>
+<p><span style="font-family: 'Brush Script MT';">G</span>: (<b>for all</b> <i>x</i>)<i>p</i>(<i>x</i>) <b>and</b> (<b>for some</b> <i>x</i>) (<b>not</b> <i>p</i>(<i>x</i>)) <br>
+Kalimat tersebut memiliki struktur utama berupa hubungan konjungsi (<b>and</b>) antara dua sub-kalimat terkuantifikasi:
+<ol>
+    <li><i>Conjunct</i> 1: (<b>for all</b> <i>x</i>)<i>p</i>(<i>x</i>)</li>
+    <li><i>Conjunct</i> 2: (<b>for some</b> <i>x</i>) (<b>not</b> <i>p</i>(<i>x</i>))</li>
+</ol>
+Sesuai dengan aturan semantik operator <b>and</b>, suatu kalimat konjungsi hanya akan bernilai <i>true</i> di bawah suatu interpretasi <i>I</i> jika dan hanya jika kedua sub-kalimatnya sama-sama bernilai <i>true</i> di bawah interpretasi <i>I</i> tersebut. <br>
+Uji asumsi bahwa kalimat <span style="font-family: 'Brush Script MT';">G</span> bernilai <i>true</i> di bawah interpretasi <i>I</i> atas suatu domain <i>D</i>.
+<ol type="i">
+    <li>(<b>for all</b> <i>x</i>)<i>p</i>(<i>x</i>) <i>true</i> di bawah <i>I</i>, menurut aturan <i><b>for-all</b></i>: untuk setiap <i>d</i> ∈ <i>D</i>, <i>p</i>(<i>x</i>) <i>true</i> di bawah <<i>x</i> ← <i>d</i>> • <i>I</i>.</li>
+    <li>(<b>for some</b> <i>x</i>) (<b>not</b> <i>p</i>(<i>x</i>)) <i>true</i> di bawah <i>I</i>, menurut aturan <i><b>for-some</b></i>: ada suatu <i>e</i> ∈ <i>D</i>, <b>not</b> <i>p</i>(<i>x</i>) <i>true</i> di bawah <<i>x</i> ← <i>e</i>> • <i>I</i>, dan menurut aturan <b>not</b> <i>p</i>(<i>x</i>) <i>false</i> di bawah <<i>x</i> ← <i>e</i>> • <i>I</i>.</li>
+</ol>
+Berdasarkan pernyataan (i) dan (ii) di atas, terbukti bahwa terjadi kontradiksi antara pernyataan (i) dengan (ii), sementara kesimpulan (i) dan (ii) diperoleh dari asumsi bahwa kalimat <span style="font-family: 'Brush Script MT';">G</span> bernilai <i>true</i> atau tidak <b><i>contradictory</i></b>. Oleh karena itu, asumsi harus diingkar yang artinya harus diakui bahwa <span style="font-family: 'Brush Script MT';">G</span> merupakan kalimat yang <b><i>contradictory</i></b>. <br>
+Untuk lebih memudah memahaminya, berikut saya buatkan gambarannya untuk mengilustrasikan metode <i>Proof by Falsification</i> untuk kalimat <span style="font-family: 'Brush Script MT';">G</span>. <br>
+img diskusi8 <br>
+Berdasarkan gambar tersebut, didapati hasil evaluasi diperoleh bahwa terdapat kontradiksi nilai kebenaran dari <i>p</i>(<i>x</i>). Berdasarkan asumsi bahwa kalimat <span style="font-family: 'Brush Script MT';">G</span> bernilai <i>true</i>, ternyata didapati kalimat tersebut terdapat kontradiksi. </p>
+<h2>Kesimpulan</h2>
+<p>Karena didapati terjadi kontradiksi pada kalimat <span style="font-family: 'Brush Script MT';">G</span>: (<b>for all</b> <i>x</i>)<i>p</i>(<i>x</i>) <b>and</b> (<b>for some</b> <i>x</i>) (<b>not</b> <i>p</i>(<i>x</i>)) maka asumsi bahwa kalimat <span style="font-family: 'Brush Script MT';">G</span> tidak <i>contradictory</i> adalah salah dan interpretasi <i>I</i> yang membuat kalimat bernilai <i>true</i> tersebut terbukti mustahil untuk dibuat. Oleh karena itu, haruslahh kalimat <span style="font-family: 'Brush Script MT';">G</span> bersifat <i>contradictory</i>. Jadi, kalimat <span style="font-family: 'Brush Script MT';">G</span>: (<b>for all</b> <i>x</i>)<i>p</i>(<i>x</i>) <b>and</b> (<b>for some</b> <i>x</i>) (<b>not</b> <i>p</i>(<i>x</i>)) merupakan kalimat <i>contradictory</i>.</p>
+<h2>Sumber Referensi</h2>
+<ul>
+  <li>Suprapto. (2020). <i>Logika Informatika (BMP)</i>. Edisi 2. Tangerang Selatan: Universitas Terbuka.</li>
+  <li>Universitas Terbuka. (n.d.). <i>Materi Inisiasi 8: Konsep Tambahan, Agreement, dan Closure. STSI4106 - Logika Informatika</i>. Tangerang Selatan.</li>
+  <li>Universitas Terbuka. (n.d.). <i>Materi Inisiasi 4: Pembuktian Validitas dengan Pohon Semantik dan Proof by Falsification. STSI4106 - Logika Informatika</i>. Tangerang Selatan.</li>
+</ul>
