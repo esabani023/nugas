@@ -3,53 +3,77 @@
 # NIM: 053060168
 # ======================================
 
-# Pertanyaan 1
-cat("################ Pertanyaan 1 ################# \n")
-cat("NIlai ganjil di antara 1 sampai dengan 25: \n")
-for (i in 1:25) {
-   if (!i%% 2) {
-    next
-   }
-print(i)
-}
-
-# Pertanyaan 2
-cat("\n################ Pertanyaan 2 ################# \n")
-v <- c(rnorm(20))
-cat("Isi 20 nilai normal acak pada vektor v: \n")
-print(v)
-cat("Apakah v merupakan vektor? \n")
-print(is.vector(v))
-cat("Hasil perkalian v(i) × v(i) dengan i=1,2,3,4,5: \n")
-for (i in 1:5) {
-   hasil <- v[i]*v[i]
-   cat("Untuk i =", i, "dan v =", v[i], "hasilnya =", hasil, "\n")
-}
-
-# Pertanyaan 3
-cat("\n################ Pertanyaan 3 ################# \n")
-# Contoh 1
-cat("---- Contoh 1 ---- \n")
-data_binom <- c(rbinom(15, size=10, prob=0.5))
-cat("Isi 15 nilai distribusi binomial acak pada vektor data_binom: \n")
-print(data_binom)
-cat("Apakah data_binom merupakan vektor? \n")
-print(is.vector(data_binom))
-cat("Nilai distribusi binomial yang lebih besar atau sama dengan 7: \n")
-for (i in 1:15) {
-   if (!data_binom[i] >= 7) {
+# Soal 3
+cat("################ Soal 3 ################# \n")
+hitung <- 0
+for (i in 1:100) {
+   if (i%%2) {
       next
    }
-   print(data_binom[i])
+   hitung <- hitung + i
 }
+cat("Jumlah bilangan genap dari 1 sampai 100:", hitung, "\n")
 
-# Contoh 2
-cat("---- Contoh 2 ---- \n")
-cat("Bilangan yang merupakan kelipatan 3 antara 1 sampai 12: \n")
-for (i in 1:12) {
-   cek <- ifelse (i %% 3 == 0, "adalah kelipatan 3", "bukan kelipatan 3")
-   cat(i, cek, "\n")
-}
+# # Soal 1
+# x <- seq(-3, 3, length=300)
+# plot(x, dnorm(x), xlab="x", ylab="density", type="l", main="Kurva Normal")
+# abline(h=0, col="red")
+
+# # Soal 2
+# cat("################ Soal 2 ################# \n")
+# data_normal <- as.data.frame(matrix(rnorm(150, mean=0, sd=1), ncol=5))
+# cat("Objek data_normal merupakan frame data:", is.data.frame(data_normal), "\n")
+# cat("Isi frame data data_normal:\n")
+# print(data_normal)
+
+
+# # Pertanyaan 1
+# cat("################ Pertanyaan 1 ################# \n")
+# cat("NIlai ganjil di antara 1 sampai dengan 25: \n")
+# for (i in 1:25) {
+#    if (!i%% 2) {
+#     next
+#    }
+# print(i)
+# }
+
+# # Pertanyaan 2
+# cat("\n################ Pertanyaan 2 ################# \n")
+# v <- c(rnorm(20))
+# cat("Isi 20 nilai normal acak pada vektor v: \n")
+# print(v)
+# cat("Apakah v merupakan vektor? \n")
+# print(is.vector(v))
+# cat("Hasil perkalian v(i) × v(i) dengan i=1,2,3,4,5: \n")
+# for (i in 1:5) {
+#    hasil <- v[i]*v[i]
+#    cat("Untuk i =", i, "dan v =", v[i], "hasilnya =", hasil, "\n")
+# }
+
+# # Pertanyaan 3
+# cat("\n################ Pertanyaan 3 ################# \n")
+# # Contoh 1
+# cat("---- Contoh 1 ---- \n")
+# data_binom <- c(rbinom(15, size=10, prob=0.5))
+# cat("Isi 15 nilai distribusi binomial acak pada vektor data_binom: \n")
+# print(data_binom)
+# cat("Apakah data_binom merupakan vektor? \n")
+# print(is.vector(data_binom))
+# cat("Nilai distribusi binomial yang lebih besar atau sama dengan 7: \n")
+# for (i in 1:15) {
+#    if (!data_binom[i] >= 7) {
+#       next
+#    }
+#    print(data_binom[i])
+# }
+
+# # Contoh 2
+# cat("---- Contoh 2 ---- \n")
+# cat("Bilangan yang merupakan kelipatan 3 antara 1 sampai 12: \n")
+# for (i in 1:12) {
+#    cek <- ifelse (i %% 3 == 0, "adalah kelipatan 3", "bukan kelipatan 3")
+#    cat(i, cek, "\n")
+# }
 
 
 
