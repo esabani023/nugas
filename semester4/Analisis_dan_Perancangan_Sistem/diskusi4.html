@@ -1,0 +1,99 @@
+<p>Assalamu'alaikum wr. wb., selamat malam saya Esa Sya'bani asal UPBJJ Purwokerto prodi S1 sistem informasi izin menjawab pertanyaan yang bapak berikan.</p>
+<p>Berdasarkan hasil RDD untuk Sistem Informasi Perpustakaan Universitas XYZ Berbasis Web yang sudah saya susun sebelumnya pada tugas 1, berikut ini adalah identifikasi mengenai proses utama, entitas luar, <i>data store</i>, dan arus data yang diperlukan untuk memodelkan Data Flow Diagram (DFD) Sistem Informasi Perpustakaan Universitas XYZ.</p>
+<h2>Proses Utama yang Perlu Dimodelkan</h2>
+<p>Merujuk pada ruang lingkup tahap awal dan kebutuhan fungsional dalam dokumen RDD, proses-proses yang perlu digambarkan di dalam DFD meliputi:</p>
+<ol>
+    <li>
+        <b>Pengelolaan data buku</b><br>
+        Proses yang memungkinkan penambahan, pengubahan, dan penghapusan data koleksi buku serta eksemplarnya.
+    </li>
+    <li>
+        <b>Pengelolaan data anggota</b><br>
+        Proses untuk melakukan pencatatan dan pembaruan data anggota perpustakaan.
+    </li>
+    <li>
+        <b>Transaksi peminjaman</b><br>
+        Proses pencatatan sirkulasi peminjaman buku yang secara otomatis dan <i>real time</i> memperbarui status ketersediaan eksemplar.
+    </li>
+    <li>
+        <b>Transaksi pengembalian</b><br>
+        Proses penerimaan kembali buku dari peminjam.
+    </li>
+    <li>
+        <b>Perhitungan denda</b><br>
+        Proses pengotomatisasian penghitungan nominal denda berdasarkan tanggal batas pengembalian dan tanggal pengembalian aktual.
+    </li>
+    <li>
+        <b>Katalog online</b><br>
+        Proses penyediaan antarmuka pencarian agar pengguna dapat melihat informasi dan menelusuri ketersediaan buku.
+    </li>
+    <li>
+        <b>Pelaporan</b><br>
+        Proses pembuatan atau <i>generate</i> rekap laporan bulanan untuk kebutuhan manajemen.
+    </li>
+</ol>
+<h2>Entitas Luar (<i>External Entity</i>)</h2>
+<p>Entitas luar adalah pihak-pihak di luar sistem yang berinteraksi langsung dengan memberikan <i>input</i> atau menerima <i>output</i>. Berdasarkan identifikasi <i>stakeholder</i> pengguna, entitas luar yang berinteraksi dengan sistem ini adalah:</p>
+<ol>
+    <li>
+        <b>Pustakawan (operator)</b><br>
+        Berperan sebagai pelaksana operasional harian. Pustakawan berinteraksi dengan sistem untuk mengelola data buku, mengeksekusi transaksi (peminjaman dan pengembalian), serta melihat hitungan denda.
+    </li>
+    <li>
+        <b>Anggota</b><br>
+        Merupakan entitas tunggal yang merepresentasikan pengguna akhir (<i>end user</i>) layanan perpustakaan, yaitu mahasiswa dan dosen/tenaga kependidikan yang memiliki status keanggotaan aktif. Entitas ini disatukan untuk menyederhanakan aliran data, karena mereka memiliki peran yang sama yakni berinteraksi dengan sistem secara mandiri untuk mengakses katalog online tanpa harus mengecek fisik ke rak buku.
+    </li>
+    <li>
+        <b>Kepala perpustakaan</b><br>
+        Bertindak sebagai pemilik proses dan pemantau layanan. Entitas ini menerima <i>output</i> dari sistem berupa laporan analitik dan laporan operasional secara <i>real time</i>.
+    </li>
+</ol>
+<h2><i>Data Store</i> (Penyimpanan Data)</h2>
+<p>Untuk mendukung proses peminjaman, pengembalian, denda, katalog, dan pelaporan, sistem membutuhkan tempat penyimpanan data (<i>data store</i>) utama sebagai berikut:</p>
+<ol>
+    <li>
+        <b><i>Data store</i> buku/eksemplar</b><br>
+        Dibutuhkan untuk menyimpan data inventaris koleksi buku perpustakaan. <i>Data store</i> ini menggantikan pencatatan fisik dan pengkategorian buku yang sebelumnya menggunakan Microsoft Excel.
+    </li>
+    <li>
+        <b><i>Data store</i> anggota</b><br>
+        Dibutuhkan untuk menyimpan data pengguna yang terdaftar. <i>Data store</i> ini berfungsi untuk mengidentifikasi target peminjam yang sah dan berhak melakukan transaksi.
+    </li>
+    <li>
+        <b><i>Data store</i> transaksi dan denda</b><br>
+        Dibutuhkan untuk merekam seluruh jejak transaksi (peminjaman dan pengembalian) beserta rincian denda. <i>Data store</i> ini menggantikan fungsi buku catatan besar fisik (manual) yang selama ini digunakan perpustakaan. Karena DFD logika hanya berfokus pada proses-proses yang terdapat di dalam sistem, normalisasi tabel <i>database</i> secara fisik dapat dikesampingkan terlebih dahulu. Oleh karena itu, atribut data yang saling berkaitan erat dapat digabungkan ke dalam satu <i>data store</i> (transaksi dan denda).
+    </li>
+</ol>
+<h2>Arus Data yang Mengalir (<i>Data Flow</i>)</h2>
+<p>Data yang mengalir di antara entitas luar, proses sistem, dan <i>data store</i> dijabarkan sebagai berikut:</p>
+<ol>
+    <li>
+        <b>Arus data buku</b><br>
+        Mengalir dari pustakawan menuju sistem untuk direkam di <i>data store</i> buku/eksemplar. Atribut data ini meliputi kode eksemplar, judul, kategori, status ketersediaan, dan nama penulis.
+    </li>
+    <li>
+        <b>Arus data anggota</b><br>
+        Mengalir dari pustakawan menuju sistem untuk pembaruan profil pengguna, lalu direkam di <i>data store</i> anggota. Atribut data yang mengalir mencakup nomor anggota, nama, nomor identitas/nomor induk (seperti NIM untuk mahasiswa atau NIDN/NIP untuk dosen), serta status keanggotaan.
+    </li>
+    <li>
+        <b>Arus data transaksi (peminjaman dan pengembalian)</b><br>
+        Dikelola oleh Pustakawan menuju sistem saat ada transaksi, dan direkam pada <i>data store</i> transaksi dan denda. Atribut data yang mengalir terdiri dari nomor transaksi, tanggal pinjam, batas pengembalian, dan tanggal pengembalian aktual.
+    </li>
+    <li>
+        <b>Arus data denda</b><br>
+        Berupa nominal perhitungan matematis otomatis yang dihasilkan sistem berdasarkan tanggal batas pengembalian, yang informasinya mengalir untuk ditampilkan kembali kepada pustakawan.
+    </li>
+    <li>
+        <b>Arus data katalog online</b><br>
+        Merupakan aliran <i>output</i> berupa informasi ketersediaan buku yang ditarik sistem dari <i>data store</i> buku/eksemplar, kemudian disajikan kepada entitas anggota.
+    </li>
+    <li>
+        <b>Arus data laporan</b><br>
+        Merupakan <i>output</i> analitik yang dihasilkan dari pengolahan berbagai <i>data store</i> (transaksi, denda, buku, dan anggota), yang kemudian mengalir ke kepala perpustakaan. Laporan ini memuat informasi seperti jumlah transaksi, buku terpopuler, jumlah anggota aktif, tingkat keterlambatan pengembalian, dan rekap denda bulanan.
+    </li>
+</ol>
+<h2>Sumber Referensi</h2>
+<ul>
+    <li>BMP MSIM4302 - Analisis dan Perancangan Sistem</li>
+    <li>Dokumen hasil RDD Sistem Informasi Perpustakaan Universitas XYZ Berbasis Web dari tugas 1</li>
+</ul>
