@@ -431,9 +431,10 @@ body {
 }
 /* --- Dropdown Menu Mengambang (Flyout) --- */
 .dropdown {
-    position: relative; /* Penting agar posisi submenu berpatokan pada li ini */
+    position: relative; 
 }
 
+/* 1. Base / Light Mode */
 .dropdown-container {
     position: absolute;
     top: 0;
@@ -444,13 +445,20 @@ body {
     padding: 10px;
     border-radius: 12px;
     gap: 5px;
-    z-index: 1000;
-    
-    /* ... (kode lainnya tetap sama) ... */
+    z-index: 1000;    
+    background: rgba(255, 255, 255, 0.945); 
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     opacity: 0;
     visibility: hidden;
     transform: translateX(-10px);
     transition: all 0.3s ease;
+}
+
+.dropdown-container.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
 }
 
 .dropdown-container a {
@@ -459,7 +467,7 @@ body {
     color: var(--text-color);
     border-radius: 8px;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: background 0.2s, color 0.2s;
 }
 
 .dropdown-container a:hover {
@@ -467,17 +475,25 @@ body {
     color: var(--ut-white);
 }
 
-/* State Aktif (ditrigger oleh JS: Hover atau Klik) */
-.dropdown-container.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
-}
-
-/* Transisi putaran panah (Chevron) */
 .chevron-icon {
     transition: transform 0.3s ease;
 }
 .dropdown-btn.active .chevron-icon {
-    transform: rotate(90deg); /* Panah menunjuk ke bawah saat terkunci */
+    transform: rotate(90deg);
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"] .dropdown-container {
+    background: rgba(30, 30, 30, 0.945) !important;    
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+[data-theme="dark"] .dropdown-container a {
+    color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .dropdown-container a:hover {
+    background: var(--ut-blue) !important;
+    color: var(--ut-white) !important;
 }
