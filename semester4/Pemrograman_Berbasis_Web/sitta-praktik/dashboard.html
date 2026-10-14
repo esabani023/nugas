@@ -11,7 +11,6 @@
     </script>
 </head>
 <body>
-
     <div class="app-container">
         <!-- Desktop Sidebar -->
         <nav class="sidebar glass">
@@ -48,11 +47,31 @@
 
         <!-- Main Content Area -->
         <main class="main-content">
-            <div class="glass" style="padding: 30px; border-radius: 20px;">
-                <h1 class="text-brand" sylle="margin-bottom: 10px;">Dashboard Aplikasi SITTA</h1>
-                <h2 style="font-weight: 400;"><span id="greeting-time">Selamat pagi</span>, <span id="user-name" style="font-weight: 600;">Pengguna</span></h2>
-                <p class="text-muted" style="margin-top: 20px;">Selamat bekerja. Gunakan menu navigasi untuk mengakses fitur sistem pemesanan bahan ajar.</p>
+            <header class="dashboard-header">
+                <h1>Dashboard Aplikasi SITTA</h1>
+            </header>
+        
+            <!-- ontainer Tengah (Greeting, Jam, Sambutan) -->
+            <div class="dashboard-center-content">
+                <!-- Teks Sapaan -->
+                <h3 class="greeting-text">
+                    <span id="greeting-time">Selamat pagi</span>, <span id="user-name">Pengguna</span>!
+                </h3>
+                
+                <!-- Widget Jam Digital -->
+                <div class="clock-widget">
+                    <span id="clock-hours">00</span>:<span id="clock-minutes">00</span>:<span id="clock-seconds">00</span>
+                </div>
+
+                <!-- Teks Tanggal -->
+                <p class="date-widget" id="current-date">Senin, 1 Januari 2024</p>
+            
+                <!-- Teks Sambutan -->
+                <p class="welcome-text text-muted">
+                    Selamat bekerja. Gunakan menu di samping untuk mengelola logistik bahan ajar UT.
+                </p>
             </div>
+            <img src="assets/bg-watermark-ut.png" alt="" class="bg-watermark">
         </main>
     </div>
 

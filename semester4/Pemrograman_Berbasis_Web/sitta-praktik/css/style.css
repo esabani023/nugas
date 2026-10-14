@@ -184,6 +184,8 @@ body {
 }
 
 .main-content {
+    position: relative;
+    overflow: hidden;
     flex: 1;
     padding: 20px;
     margin-bottom: 70px; /* Space for bottom nav on mobile */
@@ -573,4 +575,85 @@ body {
 [data-theme="dark"] .dropdown-container a:hover {
     background: var(--ut-blue) !important;
     color: var(--ut-white) !important;
+}
+
+/* Header rata kiri */
+.dashboard-header {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.dashboard-header h2 {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin: 0;
+    font-weight: 700;
+}
+
+/* Kontainer rata tengah untuk jam dan greeting */
+.dashboard-center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    gap: 15px;
+}
+
+/* Teks Sapaan */
+.greeting-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+}
+
+/* Desain Widget Jam Digital */
+.clock-widget {
+    font-size: 4.5rem; 
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--ut-blue);
+    margin: 15px 0 0 0;
+    font-family: 'Courier New', Courier, monospace; 
+}
+
+.date-widget {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-color); 
+    margin: 0 0 20px 0;
+}
+
+/* Penyesuaian jam saat Dark Mode */
+[data-theme="dark"] .clock-widget {
+    color: var(--ut-yellow); 
+    text-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+}
+
+/* Teks Sambutan Bawah */
+.welcome-text {
+    font-size: 1.1rem;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/* Watermark Dashboard */
+.bg-watermark {
+    position: absolute;    
+    top: 50%;
+    right: -15%; 
+    transform: translateY(-50%);
+    height: 90vh;
+    width: auto;
+    opacity: 0.05; 
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 0.3s;
+}
+
+[data-theme="dark"] .bg-watermark {
+    opacity: 0.20;
 }

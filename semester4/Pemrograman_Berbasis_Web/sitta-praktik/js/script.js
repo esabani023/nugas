@@ -251,16 +251,57 @@ document.addEventListener('DOMContentLoaded', () => {
         const greetingEl = document.getElementById('greeting-time');
         const userNameEl = document.getElementById('user-name');
         
+        // Ambil nama pengguna dari memori
         const user = JSON.parse(localStorage.getItem('sitta_user'));
-        if (user) userNameEl.textContent = user.nama;
+        if (user && userNameEl) userNameEl.textContent = user.nama;
 
-        const hour = new Date().getHours();
-        let greeting = 'Selamat pagi';
-        if (hour >= 11 && hour < 15) greeting = 'Selamat siang';
-        else if (hour >= 15 && hour < 18) greeting = 'Selamat sore';
-        else if (hour >= 18) greeting = 'Selamat malam';
+        // Fungsi untuk mengupdate jam dan ucapan
+        function updateClock() {
+            const now = new Date();
+            const hour = now.getHours();
+            const minute = now.getMinutes();
+            const second = now.getSeconds();
 
-        greetingEl.textContent = greeting;
+            // Update Sapaan Waktu
+            let greeting = 'Selamat pagi';
+            if (hour >= 11 && hour < 15) greeting = 'Selamat siang';
+            else if (hour >= 15 && hour < 18) greeting = 'Selamat sore';
+            else if (hour >= 18) greeting = 'Selamat malam';
+            
+            if (greetingEl) greetingEl.textContent = greeting;
+
+            // Update Angka Jam Digital (dengan tambahan angka '0' jika di bawah 10)
+            const clockH = document.getElementById('clock-hours');
+            const clockM = document.getElementById('clock-minutes');
+            const clockS = document.getElementById('clock-seconds');
+            
+            if (clockH && clockM && clockS) {
+                clockH.textContent = hour.toString().padStart(2, '0');
+                clockM.textContent = minute.toString().padStart(2, '0');
+                clockS.textContent = second.toString().padStart(2, '0');
+            }
+
+            // Update Tanggal Format Indonesia
+            const dateEl = document.getElementById('current-date');
+            if (dateEl) {
+                const namaHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                const namaBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                
+                const hari = namaHari[now.getDay()];
+                const tanggal = now.getDate();
+                const bulan = namaBulan[now.getMonth()];
+                const tahun = now.getFullYear();
+                
+                // Menggabungkan variabel di atas menjadi format: "Kamis, 15 Oktober 2026"
+                dateEl.textContent = `${hari}, ${tanggal} ${bulan} ${tahun}`;
+            }
+        }
+
+        // Jalankan sekali saat layar dimuat
+        updateClock();
+        
+        // Perintahkan browser untuk memperbarui fungsi ini setiap 1000 milidetik (1 detik)
+        setInterval(updateClock, 1000);
     }
 
     // --- 3. Tracking Page Logic ---
