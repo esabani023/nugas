@@ -87,10 +87,11 @@ body {
 .sidebar .brand {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 30px;
+    gap: 15px;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--ut-blue);
+    padding: 10px 15px 30px 15px;
 }
 
 [data-theme="dark"] .sidebar .brand {
