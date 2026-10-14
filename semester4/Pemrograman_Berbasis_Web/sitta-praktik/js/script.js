@@ -425,7 +425,7 @@ function renderStok(searchQuery = "") {
                     <img src="${coverSrc}" alt="Cover ${item.namaBarang}" class="cover-img-table" onerror="this.src='https://via.placeholder.com/60x80.png?text=No+Cover'">
                 </td>
                 <td style="padding: 15px;">
-                    <strong style="color: var(--ut-blue);">${item.kodeBarang}</strong><br>
+                    <strong class="text-brand">${item.kodeBarang}</strong><br>
                     <small class="text-muted">${item.kodeLokasi}</small>
                 </td>
                 <td style="padding: 15px; font-weight: 500;">

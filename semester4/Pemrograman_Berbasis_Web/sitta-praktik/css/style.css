@@ -429,6 +429,12 @@ body {
     border-radius: 5px;
     background: #ddd;
 }
+.text-brand {
+    color: var(--ut-blue);
+}
+[data-theme="dark"] .text-brand {
+    color: var(--ut-yellow);
+}
 /* --- Dropdown Menu Mengambang (Flyout) --- */
 .dropdown {
     position: relative; 
