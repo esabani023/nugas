@@ -18,9 +18,9 @@ function toggleTheme() {
 }
 
 function updateThemeIcon(theme) {
-    const icon = document.getElementById('theme-icon');
-    if (icon) {
-        icon.className = theme === 'light' ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill';
+    const sidebarIcon = document.getElementById('theme-icon-sidebar');
+    if (sidebarIcon) {
+        sidebarIcon.className = theme === 'light' ? 'bi bi-moon-stars' : 'bi bi-sun';
     }
 }
 
@@ -117,13 +117,17 @@ document.addEventListener('DOMContentLoaded', () => {
     
     checkAuth(isLogin);
 
-    // Event listener for theme toggle
-    const themeBtn = document.getElementById('btn-theme-toggle');
-    if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+    // Event listener untuk tombol Tema di Sidebar
+    const themeBtnSidebar = document.getElementById('btn-theme-sidebar');
+    if (themeBtnSidebar) {
+        themeBtnSidebar.addEventListener('click', toggleTheme);
+    }
 
-    // Event listener for logout
-    const logoutBtn = document.getElementById('btn-logout');
-    if (logoutBtn) logoutBtn.addEventListener('click', logout);
+    // Event listener untuk tombol Logout di Sidebar
+    const logoutBtnSidebar = document.getElementById('btn-logout-sidebar');
+    if (logoutBtnSidebar) {
+        logoutBtnSidebar.addEventListener('click', logout);
+    }
 
     // --- Logika Klik Menu Dropdown Laporan ---
     const dropdownBtn = document.querySelector('.dropdown-btn');
