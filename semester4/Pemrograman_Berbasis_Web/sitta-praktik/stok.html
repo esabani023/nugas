@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stok Bahan Ajar - SITTA</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Desktop Sidebar -->
+        <nav class="sidebar glass">
+            <div class="brand">
+                <img src="assets/logo-ut.png" alt="UT" onerror="this.src='https://via.placeholder.com/40?text=UT'">
+                <span>SITTA UT</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="bi bi-house"></i> Dashboard</a></li>
+                <li><a href="stok.html" class="active"><i class="bi bi-book"></i> Info Bahan Ajar</a></li>
+                <li><a href="tracking.html"><i class="bi bi-truck"></i> Tracking</a></li>
+                <li class="dropdown" onmouseenter="hoverDropdown(true)" onmouseleave="hoverDropdown(false)">
+                    <a href="#" class="dropdown-btn"><i class="bi bi-file-earmark-text"></i> Laporan <i class="bi bi-chevron-right chevron-icon" style="margin-left: auto;"></i></a>
+                    <div class="dropdown-container glass">
+                        <a href="#" onclick="fiturBelumTersedia(event)">Monitoring Progress DO</a>
+                        <a href="#" onclick="fiturBelumTersedia(event)">Rekap Bahan Ajar</a>
+                    </div>
+                </li>                
+                <li><a href="#" onclick="fiturBelumTersedia(event)"><i class="bi bi-clock-history"></i> Histori Transaksi</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <button id="btn-theme-toggle" class="btn-icon"><i id="theme-icon" class="bi bi-moon-stars-fill"></i></button>
+                <button id="btn-logout" class="btn-icon"><i class="bi bi-box-arrow-right"></i></button>
+            </header>
+        
+            <!-- Header Halaman -->
+            <h2 style="margin-bottom: 20px;">Informasi Stok Bahan Ajar</h2>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+                
+                <!-- Search Bar (Kiri, tidak full width) -->
+                <div class="glass" style="display: flex; align-items: center; gap: 10px; padding: 10px 15px; border-radius: 10px; flex: 1; max-width: 400px; min-width: 250px;">
+                    <i class="bi bi-search" style="color: var(--text-muted); font-size: 1.1rem;"></i>
+                    <!-- Input untuk search -->
+                    <input type="text" id="searchInput" class="form-control" placeholder="Cari Nama atau Kode..." style="border: none; background: transparent; padding: 5px; outline: none; width: 100%; border-radius: 0;">
+                </div>
+
+                <!-- Tombol Tambah Stok (Kanan) -->
+                <button class="btn-primary" onclick="openModal('modalTambah')" style="white-space: nowrap;">
+                    <i class="bi bi-plus-lg"></i> Tambah Stok
+                </button>
+                
+            </div>
+
+            <!-- Tabel Stok -->
+            <div class="glass" style="border-radius: 15px; overflow-x: auto; margin-top: 20px;">
+                <table class="table" style="width: 100%; border-collapse: collapse; min-width: 600px;">
+                    <thead style="background-color: var(--ut-blue); color: var(--ut-white);">
+                        <tr>
+                            <th style="padding: 15px; text-align: left;">Cover</th>
+                            <th style="padding: 15px; text-align: left;">Kode & Lokasi</th>
+                            <th style="padding: 15px; text-align: left;">Nama Barang</th>
+                            <th style="padding: 15px; text-align: left;">Jenis & Edisi</th>
+                            <th style="padding: 15px; text-align: center;">Stok</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stok-table-body">
+                        <!-- Baris data tabel akan di-render di sini oleh JS -->
+                    </tbody>
+                </table>
+            </div>
+
+    <!-- Modal Tambah Stok -->
+    <div class="modal-overlay" id="modalTambah">
+        <div class="modal-content glass" style="max-width: 500px;">
+            <i class="bi bi-x-lg close-modal" onclick="closeModal('modalTambah')"></i>
+            <h3 style="margin-bottom: 20px;">Tambah Bahan Ajar Baru</h3>
+            
+            <form id="formTambahStok">
+                <div class="form-group">
+                    <label>Kode Lokasi</label>
+                    <input type="text" id="kodeLokasi" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Kode Barang</label>
+                    <input type="text" id="kodeBarang" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Nama Barang / Judul Buku</label>
+                    <input type="text" id="namaBarang" class="form-control" required>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label>Jenis</label>
+                        <select id="jenisBarang" class="form-control">
+                            <option value="BMP">BMP</option>
+                            <option value="Non-BMP">Non-BMP</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Edisi</label>
+                        <input type="number" id="edisi" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Stok Awal</label>
+                    <input type="number" id="stokAwal" class="form-control" required>
+                </div>
+                <div class="form-group" style="text-align: left;">
+                    <label>Cover Buku (Upload Gambar)</label>
+                    <input type="file" id="coverBuku" class="form-control" accept="image/png, image/jpeg, image/webp">
+                    <small class="text-muted" style="display: block; margin-top: 5px;">Opsional. Ukuran maksimal yang disarankan: 500KB (karena disimpan di LocalStorage).</small>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Simpan Data</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navbar -->
+    <nav class="mobile-navbar">
+        <a href="dashboard.html"><i class="bi bi-house"></i> Dashboard</a>
+        <a href="stok.html" class="active"><i class="bi bi-book"></i> Bahan Ajar</a>
+        <a href="tracking.html"><i class="bi bi-truck"></i> Tracking</a>
+        <a href="#" onclick="logout()"><i class="bi bi-box-arrow-right"></i> Logout</a>
+    </nav>
+
+    <!-- Data JS -->
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

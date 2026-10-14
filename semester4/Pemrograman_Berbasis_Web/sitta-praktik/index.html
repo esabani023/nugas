@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SITTA - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+
+    <div class="login-container glass">
+        <!-- Logo UT -->
+        <img src="assets/logo-ut.png" alt="Logo UT" onerror="this.src='https://via.placeholder.com/80?text=UT'">
+        <h2 style="margin-bottom: 5px; color: var(--ut-blue);">SITTA UT</h2>
+        <p class="text-muted" style="margin-bottom: 30px;">Sistem Pemesanan Bahan Ajar</p>
+
+        <form id="loginForm">
+            <div class="form-group" style="text-align: left;">
+                <label for="email">Email</label>
+                <div style="position: relative;">
+                    <i class="bi bi-person" style="position: absolute; left: 15px; top: 12px; color: var(--text-muted);"></i>
+                    <input type="email" id="email" class="form-control" style="padding-left: 40px;" placeholder="admin@ut.ac.id" required>
+                </div>
+            </div>
+            
+            <div class="form-group" style="text-align: left;">
+                <label for="password">Password</label>
+                <div style="position: relative;">
+                    <i class="bi bi-lock" style="position: absolute; left: 15px; top: 12px; color: var(--text-muted);"></i>                    
+                    <input type="password" id="password" class="form-control" style="padding-left: 40px; padding-right: 40px;" placeholder="Masukkan password" required>
+                    <i class="bi bi-eye-slash toggle-password" style="position: absolute; right: 15px; top: 12px; cursor: pointer; color: var(--text-muted);" onclick="togglePasswordVisibility('password', this)"></i>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Login</button>
+        </form>
+
+        <div style="margin-top: 20px; display: flex; justify-content: space-between; font-size: 0.9rem;">
+            <a href="#" onclick="openModal('modalLupa')" style="color: var(--ut-blue); text-decoration: none;">Lupa Password?</a>
+            <a href="#" onclick="openModal('modalDaftar')" style="color: var(--text-color); text-decoration: none;">Daftar Akun</a>
+        </div>
+    </div>
+
+    <!-- Modal Lupa Password -->
+    <div class="modal-overlay" id="modalLupa">
+        <div class="modal-content glass">
+            <i class="bi bi-x-lg close-modal" onclick="closeModal('modalLupa')"></i>
+            <h3>Reset Password</h3>
+            <p class="text-muted" style="margin-bottom: 20px;">Masukkan email Anda untuk menerima tautan reset.</p>
+            <input type="email" class="form-control" placeholder="Email Anda" style="margin-bottom: 15px;">
+            <button class="btn-primary" style="width: 100%;" onclick="closeModal('modalLupa'); showToast('Tautan reset telah dikirim.', 'success')">Kirim</button>
+        </div>
+    </div>
+
+    <!-- Modal Daftar -->
+    <div class="modal-overlay" id="modalDaftar">
+        <div class="modal-content glass">
+            <i class="bi bi-x-lg close-modal" onclick="closeModal('modalDaftar')"></i>
+            <h3 style="margin-bottom: 20px;">Daftar Akun Baru</h3>
+            
+            <form id="formDaftar">
+                <div class="form-group" style="text-align: left;">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="regNama" class="form-control" placeholder="Nama Anda" required>
+                </div>
+                <div class="form-group" style="text-align: left;">
+                    <label>Email</label>
+                    <input type="email" id="regEmail" class="form-control" placeholder="email@ut.ac.id" required>
+                </div>
+                
+                <div class="form-group" style="text-align: left;">
+                    <label>Password</label>
+                    <div style="position: relative;">
+                        <input type="password" id="regPassword" class="form-control" placeholder="Buat password" required style="padding-right: 40px;">
+                        <i class="bi bi-eye-slash toggle-password" style="position: absolute; right: 15px; top: 12px; cursor: pointer; color: var(--text-muted);" onclick="togglePasswordVisibility('regPassword', this)"></i>
+                    </div>
+                </div>
+
+                <!-- Bagian Konfirmasi Password yang Diperbarui -->
+                <div class="form-group" style="text-align: left;">
+                    <label>Ketik Ulang Password</label>
+                    <div style="position: relative;">
+                        <!-- Hapus border-color merah bawaan -->
+                        <input type="password" id="regPasswordConfirm" class="form-control" placeholder="Konfirmasi password" required style="padding-right: 40px;">
+                        <i class="bi bi-eye-slash toggle-password" style="position: absolute; right: 15px; top: 12px; cursor: pointer; color: var(--text-muted);" onclick="togglePasswordVisibility('regPasswordConfirm', this)"></i>
+                    </div>
+                    <!-- Sembunyikan pesan di awal (display: none) -->
+                    <small id="passwordMatchMsg" style="color: #dc3545; display: none; margin-top: 5px;"></small>
+                </div>
+
+                <div class="form-group" style="text-align: left;">
+                    <label>UT Daerah / UPBJJ</label>
+                    <input type="text" id="regLokasi" class="form-control" placeholder="Contoh: UPBJJ Jakarta" required>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Daftar Akun</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Data JS -->
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

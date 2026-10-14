@@ -1,0 +1,483 @@
+/* css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
+
+:root {
+    /* UT Brand Colors */
+    --ut-blue: #003366;
+    --ut-yellow: #F2A900;
+    --ut-white: #FFFFFF;
+
+    /* Light Mode Variables */
+    --bg-color: #f4f7f6;
+    --text-color: #333333;
+    --text-muted: #666666;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    --card-bg: #ffffff;
+    --input-bg: rgba(255, 255, 255, 0.9);
+    --input-border: #cccccc;
+}
+
+[data-theme="dark"] {
+    /* Dark Mode Variables */
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --text-muted: #aaaaaa;
+    --glass-bg: rgba(30, 30, 30, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    --card-bg: #1e1e1e;
+    --input-bg: rgba(40, 40, 40, 0.8);
+    --input-border: #444444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Glassmorphism Utility */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+/* --- Layout: Main Container & Navigation --- */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar (Desktop) */
+.sidebar {
+    width: 250px;
+    margin: 20px;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 20px;
+    height: calc(100vh - 40px);
+    z-index: 100;
+}
+
+.sidebar .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: var(--ut-blue);
+}
+
+[data-theme="dark"] .sidebar .brand {
+    color: var(--ut-yellow);
+}
+
+.brand img {
+    width: 40px;
+    height: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover, .nav-links li a.active {
+    background: var(--ut-blue);
+    color: var(--ut-white);
+}
+
+.nav-links li a.active i {
+    color: var(--ut-yellow);
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    margin-bottom: 70px; /* Space for bottom nav on mobile */
+}
+
+/* Top Bar (Theme Toggle & Logout) */
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding-bottom: 20px;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.btn-icon:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .btn-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Components --- */
+.btn-primary {
+    background-color: var(--ut-blue);
+    color: var(--ut-white);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #002244;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--ut-blue);
+    border: 2px solid var(--ut-blue);
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+[data-theme="dark"] .btn-secondary {
+    color: var(--ut-yellow);
+    border-color: var(--ut-yellow);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: var(--ut-blue);
+}
+
+/* --- Login Page Specific --- */
+.login-page {
+    background-image: url('../assets/bg-kampus.jpg'); /* Ganti dengan gambar aslinya */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.login-container img {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+/* --- Toast Notification (Glassmorphism) --- */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    padding: 15px 25px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideInRight 0.3s ease forwards;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.toast.error {
+    border-left: 5px solid #dc3545;
+}
+.toast.success {
+    border-left: 5px solid #28a745;
+}
+.toast.warning {
+    border-left: 5px solid var(--ut-yellow);
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* --- Modals --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    width: 90%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* --- Tracking Page --- */
+.tracking-card {
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+.tracking-result {
+    display: none;
+    margin-top: 30px;
+}
+.progress-bar-container {
+    width: 100%;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+.progress-bar {
+    height: 100%;
+    background: var(--ut-blue);
+    width: 0%; /* Set via JS */
+    transition: width 1s ease-in-out;
+}
+.timeline {
+    border-left: 3px solid var(--ut-blue);
+    margin-left: 10px;
+    padding-left: 20px;
+}
+.timeline-item {
+    margin-bottom: 20px;
+    position: relative;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 0;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--ut-yellow);
+    border: 2px solid var(--bg-color);
+}
+.ekspedisi-logo {
+    width: 80px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        display: none; /* Hide sidebar on mobile */
+    }
+
+    /* Bottom Navbar for Mobile */
+    .mobile-navbar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        justify-content: space-around;
+        padding: 15px 10px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        z-index: 100;
+        /* Glassmorphism for mobile nav */
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-top: 1px solid var(--glass-border);
+    }
+
+    .mobile-navbar a {
+        color: var(--text-muted);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 0.8rem;
+        gap: 5px;
+    }
+
+    .mobile-navbar a.active {
+        color: var(--ut-blue);
+    }
+    [data-theme="dark"] .mobile-navbar a.active {
+        color: var(--ut-yellow);
+    }
+
+    .mobile-navbar a i {
+        font-size: 1.3rem;
+    }
+
+    .main-content {
+        margin-bottom: 80px; /* Space for mobile nav */
+    }
+}
+
+/* Hide mobile nav di desktop */
+@media (min-width: 769px) {
+    .mobile-navbar {
+        display: none;
+    }
+}
+
+/* --- Tabel Stok Spesifik --- */
+.table th, .table td {
+    border-bottom: 1px solid var(--glass-border);
+    vertical-align: middle;
+}
+.table tbody tr {
+    transition: background-color 0.2s;
+}
+.table tbody tr:hover {
+    background-color: rgba(0, 51, 102, 0.05); /* Sedikit warna biru UT saat di-hover */
+}
+[data-theme="dark"] .table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.cover-img-table {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    background: #ddd;
+}
+/* --- Dropdown Menu Mengambang (Flyout) --- */
+.dropdown {
+    position: relative; /* Penting agar posisi submenu berpatokan pada li ini */
+}
+
+.dropdown-container {
+    position: absolute;
+    top: 0;
+    left: 235px; 
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 12px;
+    gap: 5px;
+    z-index: 1000;
+    
+    /* ... (kode lainnya tetap sama) ... */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.dropdown-container a {
+    font-size: 0.85rem;
+    padding: 10px 15px;
+    color: var(--text-color);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.dropdown-container a:hover {
+    background: var(--ut-blue);
+    color: var(--ut-white);
+}
+
+/* State Aktif (ditrigger oleh JS: Hover atau Klik) */
+.dropdown-container.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* Transisi putaran panah (Chevron) */
+.chevron-icon {
+    transition: transform 0.3s ease;
+}
+.dropdown-btn.active .chevron-icon {
+    transform: rotate(90deg); /* Panah menunjuk ke bawah saat terkunci */
+}
