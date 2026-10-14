@@ -92,8 +92,11 @@ body {
 }
 
 .brand img {
-    width: 40px;
-    height: auto;
+    background-color: var(--ut-white); 
+    width: 55px;
+    height: 55px; 
+    object-fit: contain;
+    border-radius: 50%; 
 }
 
 .nav-links {
@@ -228,11 +231,20 @@ body {
 }
 
 .login-container img {
-    width: 80px;
+    width: 110px;
+    height: 110px; 
+    object-fit: contain;
     margin-bottom: 20px;
+    border-radius: 50%;
 }
 
-/* --- Toast Notification (Glassmorphism) --- */
+[data-theme="dark"] .brand img,
+[data-theme="dark"] .login-container img {
+    background-color: var(--ut-white);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+}
+
+/* --- Toast Notification --- */
 .toast-container {
     position: fixed;
     top: 20px;
@@ -342,8 +354,11 @@ body {
 }
 .ekspedisi-logo {
     width: 80px;
-    height: auto;
-    border-radius: 8px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 50%;
+    background-color: var(--ut-white);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
 }
 
 /* --- Mobile Responsiveness --- */
