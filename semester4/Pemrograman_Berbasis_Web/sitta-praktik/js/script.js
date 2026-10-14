@@ -300,9 +300,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Progress Bar Logic
                 const bar = document.getElementById('progress-bar');
-                if(resultData.status === 'Dalam Perjalanan') bar.style.width = '50%';
-                else if(resultData.status === 'Dikirim') bar.style.width = '100%';
-                else bar.style.width = '10%';
+                
+                resultContainer.style.display = 'block';
+                bar.style.transition = 'none'; 
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.transition = 'width 1s ease-in-out';
+                    
+                    if(resultData.status === 'Dalam Perjalanan') {
+                        bar.style.width = '50%';
+                    } else if(resultData.status === 'Dikirim') {
+                        bar.style.width = '100%';
+                    } else {
+                        bar.style.width = '10%';
+                    }
+                }, 50);
 
                 // Timeline Logic
                 const timelineContainer = document.getElementById('timeline-container');
