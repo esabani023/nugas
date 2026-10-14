@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stok Bahan Ajar - SITTA</title>
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
 </head>
 <body>
     <div class="app-container">
@@ -28,7 +32,9 @@
                 <li><a href="#" onclick="fiturBelumTersedia(event)"><i class="bi bi-clock-history"></i> Histori Transaksi</a></li>
                 <li>
                     <a id="btn-theme-sidebar" style="cursor: pointer;">
-                        <i id="theme-icon-sidebar" class="bi bi-moon-stars"></i> Tema
+                        <i class="bi bi-moon-stars icon-light-mode"></i>
+                        <i class="bi bi-sun icon-dark-mode"></i>
+                        Tema
                     </a>
                 </li>
             </ul>

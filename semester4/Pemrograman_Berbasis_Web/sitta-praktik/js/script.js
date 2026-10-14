@@ -3,25 +3,13 @@
 // --- Global Utilities ---
 
 // Theme Manager
-function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
-}
+function initTheme() {}
 
 function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
-}
-
-function updateThemeIcon(theme) {
-    const sidebarIcon = document.getElementById('theme-icon-sidebar');
-    if (sidebarIcon) {
-        sidebarIcon.className = theme === 'light' ? 'bi bi-moon-stars' : 'bi bi-sun';
-    }
 }
 
 // --- Fungsi Notifikasi Fitur Belum Tersedia ---

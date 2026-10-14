@@ -33,6 +33,12 @@
     --input-border: #444444;
 }
 
+.icon-dark-mode { display: none; }
+.icon-light-mode { display: inline-block; }
+
+[data-theme="dark"] .icon-light-mode { display: none; }
+[data-theme="dark"] .icon-dark-mode { display: inline-block; }
+
 * {
     margin: 0;
     padding: 0;
@@ -161,7 +167,7 @@ body {
 
 .sidebar-footer .btn-logout-sidebar:hover {
     background: #dc3545;
-    color: white !important; 
+    color: white !important;
 }
 
 [data-theme="dark"] .sidebar-footer {
