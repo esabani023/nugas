@@ -2,7 +2,6 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stok Bahan Ajar - SITTA</title>
     <link rel="stylesheet" href="css/style.css">
     <script>
@@ -12,7 +11,7 @@
 </head>
 <body>
     <div class="app-container">
-        <!-- Desktop Sidebar -->
+        <!-- Sidebar -->
         <nav class="sidebar glass">
             <div class="brand">
                 <img src="assets/logo-ut.png" alt="UT" onerror="this.src='https://via.placeholder.com/40?text=UT'">
@@ -49,11 +48,11 @@
         <main class="main-content">
 
             <!-- Header Halaman -->
-            <header>
-                <h1 style="margin-bottom: 20px;">Informasi Stok Bahan Ajar</h1>
+            <header class="page-header">
+                <h1>Informasi Stok Bahan Ajar</h1>
             </header>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; gap: 15px;">
                 
                 <!-- Search Bar (Kiri, tidak full width) -->
                 <div class="glass" style="display: flex; align-items: center; gap: 10px; padding: 10px 15px; border-radius: 10px; flex: 1; max-width: 400px; min-width: 250px;">
@@ -131,16 +130,6 @@
             </form>
         </div>
     </div>
-
-    <!-- Mobile Bottom Navbar -->
-    <nav class="mobile-navbar">
-        <a href="dashboard.html"><i class="bi bi-house"></i> Dashboard</a>
-        <a href="stok.html" class="active"><i class="bi bi-book"></i> Bahan Ajar</a>
-        <a href="tracking.html"><i class="bi bi-truck"></i> Tracking</a>
-        <a href="#" onclick="logout()"><i class="bi bi-box-arrow-right"></i> Logout</a>
-    </nav>
-
-    <!-- Data JS -->
     <script src="js/data.js"></script>
     <script src="js/script.js"></script>
 </body>

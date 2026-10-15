@@ -2,7 +2,6 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - SITTA</title>
     <link rel="stylesheet" href="css/style.css">
     <script>
@@ -12,7 +11,7 @@
 </head>
 <body>
     <div class="app-container">
-        <!-- Desktop Sidebar -->
+        <!-- Sidebar -->
         <nav class="sidebar glass">
             <div class="brand">
                 <img src="assets/logo-ut.png" alt="UT" onerror="this.src='https://via.placeholder.com/40?text=UT'">
@@ -47,11 +46,11 @@
 
         <!-- Main Content Area -->
         <main class="main-content">
-            <header class="dashboard-header">
+            <header class="page-header">
                 <h1>Dashboard Aplikasi SITTA</h1>
             </header>
         
-            <!-- ontainer Tengah (Greeting, Jam, Sambutan) -->
+            <!-- Container Tengah (Greeting, Jam, Sambutan) -->
             <div class="dashboard-center-content">
                 <!-- Teks Sapaan -->
                 <h3 class="greeting-text">
@@ -74,15 +73,6 @@
             <img src="assets/bg-watermark-ut.png" alt="" class="bg-watermark">
         </main>
     </div>
-
-    <!-- Mobile Bottom Navbar -->
-    <nav class="mobile-navbar">
-        <a href="dashboard.html" class="active"><i class="bi bi-house"></i> Dashboard</a>
-        <a href="stok.html"><i class="bi bi-book"></i> Bahan Ajar</a>
-        <a href="tracking.html"><i class="bi bi-truck"></i> Tracking</a>
-        <a href="#" id="btn-logout-mobile" onclick="logout()"><i class="bi bi-box-arrow-right"></i> Logout</a>
-    </nav>
-
     <script src="js/script.js"></script>
 </body>
 </html>
