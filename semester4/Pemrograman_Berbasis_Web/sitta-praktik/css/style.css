@@ -513,6 +513,61 @@ body {
 [data-theme="dark"] .text-brand {
     color: var(--ut-yellow);
 }
+.zoomable-trigger {
+    cursor: zoom-in;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efek sedikit membesar saat gambar kecil di-hover */
+.zoomable-trigger:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.image-zoom-overlay {
+    display: none; 
+    position: fixed;
+    z-index: 9999; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+}
+
+/* Gambar besar di tengah layar */
+.zoomed-image {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    animation: zoomInAnim 0.3s ease; 
+}
+
+.close-zoom-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #f1f1f1;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-zoom-btn:hover {
+    color: var(--ut-yellow);
+}
+
+/* Keyframes untuk animasi gambar membesar dari tengah */
+@keyframes zoomInAnim {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
 /* --- Dropdown Menu Mengambang (Flyout) --- */
 .dropdown {
     position: relative; 

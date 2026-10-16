@@ -80,6 +80,21 @@ window.closeModal = function(modalId) {
     document.getElementById(modalId).style.display = 'none';
 }
 
+// Image Zoom Logic
+window.openImageZoom = function(imgElement) {
+    const modal = document.getElementById('modalImageZoom');
+    const modalImg = document.getElementById('zoomedImageContent');
+    
+    // Tampilkan modal overlay
+    modal.style.display = 'flex';
+    // Salin sumber gambar dari gambar yang diklik ke gambar besar di modal
+    modalImg.src = imgElement.src;
+}
+
+window.closeImageZoom = function() {
+    document.getElementById('modalImageZoom').style.display = 'none';
+}
+
 // Authentication Check
 function checkAuth(isLoginPage = false) {
     const user = localStorage.getItem('sitta_user');
@@ -469,7 +484,7 @@ function renderStok(searchQuery = "") {
         tbody.innerHTML += `
             <tr>
                 <td style="padding: 15px;">
-                    <img src="${coverSrc}" alt="Cover ${item.namaBarang}" class="cover-img-table" onerror="this.src='https://via.placeholder.com/60x80.png?text=No+Cover'">
+                    <img src="${coverSrc}" alt="Cover ${item.namaBarang}" class="cover-img-table zoomable-trigger" onerror="this.src='https://via.placeholder.com/60x80.png?text=No+Cover'" onclick="openImageZoom(this)" title="Klik untuk memperbesar">
                 </td>
                 <td style="padding: 15px;">
                     <strong class="text-brand">${item.kodeBarang}</strong><br>
