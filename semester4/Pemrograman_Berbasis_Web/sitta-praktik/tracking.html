@@ -55,31 +55,67 @@
                     <div style="flex: 1; min-width: 200px;">
                         <input type="text" id="noDo" class="form-control" placeholder="Masukkan No. Delivery Order (Contoh: 2023001234)" required>
                     </div>
-                    <button type="submit" class="btn-primary"><i class="bi bi-search"></i> Lacak</button>
+                    <button type="submit" class="btn-primary"><i class="bi bi-search"></i> Cari</button>
                 </form>
             </div>
 
             <!-- Hasil Tracking -->
             <div id="tracking-result" class="tracking-result">
-                <div class="glass tracking-card" style="margin-bottom: 20px; background-color: var(--ut-blue); color: var(--ut-white);">
-                    <h2 id="res-nama" style="margin-bottom: 15px; color: var(--ut-white);">Nama</h2>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem;">
-                        <div>
-                            <p>Status: <strong id="res-status" style="color: var(--ut-yellow);"></strong></p>
-                            <p>Tanggal Kirim: <span id="res-tanggal"></span></p>
-                        </div>
-                        <div style="text-align: right;">
-                            <img id="img-ekspedisi" src="" alt="Ekspedisi" class="ekspedisi-logo">
-                            <p>Via: <span id="res-ekspedisi"></span></p>
-                            <p>Total: <strong id="res-total"></strong></p>
+                
+                <!-- Card Utama -->
+                <div class="glass tracking-card" style="margin-bottom: 20px; padding: 0; overflow: hidden; border: none;">
+                    
+                    <!-- Blok atas: Biru -->
+                    <div class="track-header-block">
+                        <div class="track-header-flex">
+                            <div>
+                                <p class="track-nama-label">Nama Mahasiswa</p>
+                                <h2 id="res-nama" class="track-nama-value">Nama</h2>
+                                <p class="track-info-text">Status: <strong id="res-status" style="color: var(--ut-yellow);"></strong></p>
+                            </div>
+                            <div class="track-ekspedisi-info">
+                                <img id="img-ekspedisi" src="" alt="Ekspedisi" class="ekspedisi-logo">
+                                <p class="track-info-text">Ekspedisi: <strong id="res-ekspedisi"></strong></p>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="progress-bar-container">
-                        <div id="progress-bar" class="progress-bar" style="background-color: var(--ut-yellow);"></div>
+
+                    <!-- Blok bawah: Kuning -->
+                    <div style="padding: 25px 30px;">
+                        
+                        <!-- Tabel -->
+                        <table class="track-detail-table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="track-table-label">No. Delivery Order</span>
+                                        <strong id="res-nodo" class="track-table-value"></strong>
+                                    </td>
+                                    <td>
+                                        <span class="track-table-label">Jenis Paket</span>
+                                        <strong id="res-jenis" class="track-table-value"></strong>
+                                    </td>
+                                    <td>
+                                        <span class="track-table-label">Tanggal Kirim</span>
+                                        <strong id="res-tanggal" class="track-table-value"></strong>
+                                    </td>
+                                    <td>
+                                        <span class="track-table-label">Total Pembayaran</span>
+                                        <strong id="res-total" class="track-table-value"></strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <!-- Progress Bar -->
+                        <div class="progress-bar-container">
+                            <div id="progress-bar" class="progress-bar"></div>
+                        </div>
+
                     </div>
                 </div>
 
+                <!-- Timeline Perjalanan -->
                 <div class="glass tracking-card">
                     <h3>Perjalanan Paket</h3><br>
                     <div id="timeline-container" class="timeline">

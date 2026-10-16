@@ -348,21 +348,86 @@ body {
     border-radius: 15px;
     margin-top: 20px;
 }
+.track-header-block {
+    background-color: var(--ut-blue);
+    color: var(--ut-white);
+    padding: 25px 30px;
+}
+.track-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.track-nama-label {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+.track-nama-value {
+    margin: 5px 0 15px 0;
+    color: var(--ut-white);
+    font-size: 1.5rem;
+}
+.track-info-text {
+    margin: 0;
+    font-size: 0.95rem;
+}
+.track-ekspedisi-info {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
 .tracking-result {
     display: none;
     margin-top: 30px;
 }
+.track-detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+.track-detail-table td {
+    padding: 8px 0;
+    width: 25%;
+}
+.track-table-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: block;
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+[data-theme="dark"] .track-table-label {
+    color: rgba(255, 255, 255, 0.7);
+}
+.track-table-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ut-blue);
+    transition: color 0.3s;
+}
+[data-theme="dark"] .track-table-value {
+    color: var(--ut-yellow);
+}
 .progress-bar-container {
     width: 100%;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.3);
+    height: 12px;
+    background: #f2a9002a;
     border-radius: 5px;
     margin: 20px 0;
     overflow: hidden;
+    transition: all 0.3s;
+}
+[data-theme="dark"] .progress-bar-container {
+    background: #f2a90018;
 }
 .progress-bar {
     height: 100%;
-    background: var(--ut-blue);
+    background: var(--ut-yellow);
     width: 0%; 
     transition: width 1s ease-in-out;
 }
@@ -412,8 +477,9 @@ body {
     border-color: var(--card-bg); 
 }
 .ekspedisi-logo {
-    width: 80px;
-    height: 80px;
+    width: 65px;
+    height: 65px;
+    margin-bottom: 10px;
     object-fit: contain;
     border-radius: 50%;
     background-color: var(--ut-white);

@@ -320,6 +320,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('res-ekspedisi').textContent = resultData.ekspedisi;
                 document.getElementById('res-tanggal').textContent = resultData.tanggalKirim;
                 document.getElementById('res-total').textContent = resultData.total;
+                document.getElementById('res-nodo').textContent = resultData.nomorDO;
+                document.getElementById('res-jenis').textContent = resultData.paket;
                 
                 // Ekspedisi Logo Logic (Dummy)
                 const imgEks = document.getElementById('img-ekspedisi');
