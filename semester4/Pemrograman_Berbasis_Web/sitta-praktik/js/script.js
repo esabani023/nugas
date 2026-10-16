@@ -12,16 +12,16 @@ function toggleTheme() {
     localStorage.setItem('theme', newTheme);
 }
 
-// --- Fungsi Notifikasi Fitur Belum Tersedia ---
+// Fungsi Notifikasi Fitur Belum Tersedia
 window.fiturBelumTersedia = function(event) {
-    event.preventDefault(); // Mencegah browser berpindah halaman/kembali ke atas
+    event.preventDefault(); // Mencegah browser berpindah halaman
     showToast('Fitur ini masih dalam tahap pengembangan.', 'warning');
 }
 
-// --- Logika Menu Dropdown Laporan (Hover & Klik) ---
+// Logika Menu Dropdown Laporan (Hover & Klik)
 let isDropdownLocked = false; // Menyimpan status apakah menu dikunci (diklik)
 
-// Fungsi saat di-hover (diatur dari atribut HTML onmouseenter/leave)
+// Fungsi saat di-hover
 window.hoverDropdown = function(isHovering) {
     const dropdownContainer = document.querySelector('.dropdown-container');
     
@@ -110,7 +110,7 @@ function logout() {
     window.location.href = 'index.html';
 }
 
-// --- Page Specific Logic ---
+// Page Specific Logic
 
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         logoutBtnSidebar.addEventListener('click', logout);
     }
 
-    // --- Logika Klik Menu Dropdown Laporan ---
+    // Logika Klik Menu Dropdown Laporan
     const dropdownBtn = document.querySelector('.dropdown-btn');
     const dropdownContainer = document.querySelector('.dropdown-container');
     
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- 1. Login Page Logic ---
+    // 1. Login Page Logic
     if (isLogin) {
         const loginForm = document.getElementById('loginForm');
         
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            // Validate against data.js
+            // Validasi Berdasarkan data.js
             const user = dataPengguna.find(u => u.email === email && u.password === password);
 
             if (user) {
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // --- Fitur Toggle Hide/Unhide Password (Tetap Sama) ---
+        // Toggle Hide/Unhide Password
         window.togglePasswordVisibility = function(inputId, iconElement) {
             const inputField = document.getElementById(inputId);
             if (inputField.type === "password") {
@@ -187,30 +187,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // --- Fitur Validasi Password Real-time (Diperbarui) ---
+        // Fitur Validasi Password Real-time
         const regPassword = document.getElementById('regPassword');
         const regPasswordConfirm = document.getElementById('regPasswordConfirm');
         const passwordMatchMsg = document.getElementById('passwordMatchMsg');
 
         function checkPasswordMatch() {
-            // Jika kolom konfirmasi masih KOSONG (belum diketik apa-apa atau dihapus semua)
+            // Jika kolom konfirmasi masih kosong (belum diketik apa-apa atau dihapus semua)
             if (regPasswordConfirm.value.length === 0) {
-                // Kembalikan ke tampilan NORMAL (hapus warna border khusus dan sembunyikan pesan)
+                // Kembalikan ke tampilan normal (hapus warna border khusus dan sembunyikan pesan)
                 regPasswordConfirm.style.borderColor = ""; // Mengikuti CSS bawaan (.form-control)
                 passwordMatchMsg.style.display = "none";
-                return; // Hentikan fungsi sampai sini
+                return;
             }
 
-            // Jika pengguna SUDAH mulai mengetik
+            // Jika pengguna sudah mulai mengetik
             if (regPassword.value === regPasswordConfirm.value) {
-                // Jika COCOK: Beri warna hijau dan sembunyikan pesan
+                // Jika cocok: Beri warna hijau dan sembunyikan pesan
                 regPasswordConfirm.style.borderColor = "#28a745"; // Hijau
                 passwordMatchMsg.style.display = "none";
             } else {
-                // Jika BELUM COCOK: Beri warna merah dan tampilkan pesan
+                // Jika belum cocok: Beri warna merah dan tampilkan pesan
                 regPasswordConfirm.style.borderColor = "#dc3545"; // Merah
                 passwordMatchMsg.style.display = "block";
-                passwordMatchMsg.textContent = "Password belum cocok."; // Pesan yang Anda minta
+                passwordMatchMsg.textContent = "Password belum cocok.";
             }
         }
 
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (regPassword) regPassword.addEventListener('input', checkPasswordMatch);
         if (regPasswordConfirm) regPasswordConfirm.addEventListener('input', checkPasswordMatch);
         
-        // Logika Pendaftaran Akun Baru Sementara
+        // Logika Pendaftaran Akun Baru
         const formDaftar = document.getElementById('formDaftar');
         if (formDaftar) {
             formDaftar.addEventListener('submit', (e) => {
@@ -230,13 +230,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const passwordConfirm = document.getElementById('regPasswordConfirm').value; // Ambil nilai konfirmasi
                 const lokasi = document.getElementById('regLokasi').value;
                 
-                // --- Validasi 1: Cek kecocokan password ---
+                // Validasi 1: Cek kecocokan password
                 if (password !== passwordConfirm) {
                     showToast('Password tidak cocok! Silakan ketik ulang.', 'error');
                     return; // Hentikan proses jika tidak sama
                 }
 
-                // --- Validasi 2: Cek email ganda ---
+                // Validasi 2: Cek email ganda
                 const emailTelahAda = dataPengguna.find(u => u.email === email);
                 if (emailTelahAda) {
                     showToast('Email ini sudah terdaftar!', 'error');
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (greetingEl) greetingEl.textContent = greeting;
 
-            // Update Angka Jam Digital (dengan tambahan angka '0' jika di bawah 10)
+            // Update Angka Jam Digital
             const clockH = document.getElementById('clock-hours');
             const clockM = document.getElementById('clock-minutes');
             const clockS = document.getElementById('clock-seconds');
@@ -307,7 +307,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const bulan = namaBulan[now.getMonth()];
                 const tahun = now.getFullYear();
                 
-                // Menggabungkan variabel di atas menjadi format: "Kamis, 15 Oktober 2026"
                 dateEl.textContent = `${hari}, ${tanggal} ${bulan} ${tahun}`;
             }
         }
@@ -338,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('res-nodo').textContent = resultData.nomorDO;
                 document.getElementById('res-jenis').textContent = resultData.paket;
                 
-                // Ekspedisi Logo Logic (Dummy)
+                // Ekspedisi Logo Logic
                 const imgEks = document.getElementById('img-ekspedisi');
                 if(resultData.ekspedisi.toLowerCase().includes('jne')) {
                     imgEks.src = 'assets/logo-jne.png';
@@ -423,7 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     showToast('Bahan Ajar berhasil ditambahkan', 'success');
                     closeModal('modalTambah');
                     formTambah.reset();
-                    renderStok(); // Update tampilan layar
+                    renderStok(); // Update tampilan
                 }
 
                 // Cek apakah user mengupload gambar
@@ -432,14 +431,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     // Setelah gambar selesai dibaca oleh browser
                     reader.onload = function(event) {
-                        coverData = event.target.result; // Ini adalah string base64 panjang dari gambar
+                        coverData = event.target.result; // String base64 panjang dari gambar
                         simpanData(coverData);
                     };
                     
                     // Mulai baca file sebagai URL (Base64)
                     reader.readAsDataURL(fileInput.files[0]);
                 } else {
-                    // Jika tidak upload gambar, langsung simpan pakai gambar default
+                    // Jika tidak upload gambar, langsung simpan menggunakan gambar default
                     simpanData(coverData);
                 }
             });
@@ -474,7 +473,7 @@ function renderStok(searchQuery = "") {
                 </td>
             </tr>
         `;
-        return; // Hentikan fungsi di sini
+        return;
     }
 
     // Mencetak baris tabel dari data yang sudah difilter

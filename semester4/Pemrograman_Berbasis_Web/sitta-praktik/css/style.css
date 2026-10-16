@@ -72,7 +72,7 @@ body {
     min-height: 100vh;
 }
 
-/* Sidebar (Desktop) */
+/* Sidebar */
 .sidebar {
     width: 250px;
     margin: 20px;
@@ -248,7 +248,7 @@ body {
 
 /* --- Login Page Specific --- */
 .login-page {
-    background-image: url('../assets/bg-kampus.jpg'); /* Ganti dengan gambar aslinya */
+    background-image: url('../assets/bg-kampus.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -495,7 +495,7 @@ body {
     transition: background-color 0.2s;
 }
 .table tbody tr:hover {
-    background-color: rgba(0, 51, 102, 0.05); /* Sedikit warna biru UT saat di-hover */
+    background-color: rgba(0, 51, 102, 0.05);
 }
 [data-theme="dark"] .table tbody tr:hover {
     background-color: rgba(255, 255, 255, 0.05);
@@ -568,12 +568,12 @@ body {
     to { transform: scale(1); opacity: 1; }
 }
 
-/* --- Dropdown Menu Mengambang (Flyout) --- */
+/* --- Dropdown Menu Flyout --- */
 .dropdown {
     position: relative; 
 }
 
-/* 1. Base / Light Mode */
+/* Base (Light Mode) */
 .dropdown-container {
     position: absolute;
     top: 0;
@@ -637,7 +637,6 @@ body {
     color: var(--ut-white) !important;
 }
 
-/* Header rata kiri */
 .page-header {
     text-align: left;
     margin-bottom: 40px;
