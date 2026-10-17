@@ -497,7 +497,7 @@ function renderStok(searchQuery = "") {
                     <small class="text-muted">Edisi ${item.edisi}</small>
                 </td>
                 <td style="padding: 15px; text-align: center;">
-                    <strong style="font-size: 1.2rem; color: var(--ut-yellow);">${item.stok}</strong>
+                    <strong class="text-brand" style="font-size: 1.2rem;">${item.stok}</strong>
                 </td>
             </tr>
         `;

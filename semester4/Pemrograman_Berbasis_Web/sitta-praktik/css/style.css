@@ -4,8 +4,8 @@
 
 :root {
     /* UT Brand Colors */
-    --ut-blue: #003366;
-    --ut-yellow: #F2A900;
+    --ut-blue: rgb(3, 70, 148);
+    --ut-yellow: rgb(255, 222, 0);
     --ut-white: #FFFFFF;
 
     /* Light Mode Variables */
@@ -509,6 +509,7 @@ body {
 }
 .text-brand {
     color: var(--ut-blue);
+    transition: color 0.3s;
 }
 [data-theme="dark"] .text-brand {
     color: var(--ut-yellow);
