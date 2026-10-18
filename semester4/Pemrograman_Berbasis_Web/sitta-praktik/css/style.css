@@ -105,7 +105,7 @@ body {
     width: 55px;
     height: 55px; 
     object-fit: contain;
-    border-radius: 50%; 
+    border-radius: 15%; 
 }
 
 .nav-links {
@@ -269,7 +269,7 @@ body {
     height: 110px; 
     object-fit: contain;
     margin-bottom: 20px;
-    border-radius: 50%;
+    border-radius: 15%;
 }
 
 [data-theme="dark"] .brand img,
@@ -715,5 +715,5 @@ body {
 }
 
 [data-theme="dark"] .bg-watermark {
-    opacity: 0.20;
+    opacity: 0.15;
 }
