@@ -1,0 +1,463 @@
+<p>Assalamu'alaikum wr. wb., selamat sore saya Esa Sya'bani asal UPBJJ Purwokerto prodi S1 sistem informasi izin menjawab pertanyaan yang bapak berikan.</p>
+<p>Berdasarkan RDD, DFD, <i>flowchart</i>, <i>use case diagram</i>, dan <i>use case description</i> yang telah dibuat pada tugas sebelumnya, pemodelan Sistem Informasi Perpustakaan Universitas XYZ Berbasis Web menggunakan <i>activity diagram</i> dan <i>class diagram</i> perlu mengintegrasikan seluruh aktor dan pemisahan proses operasional secara terstruktur.</p>
+<h2>Activity Diagram</h2>
+<p><i>Activity diagram</i> paling berguna untuk proses lintas aktor yang punya keputusan, alur alternatif, atau aktivitas paralel. Sehingga proses yang paling tepat dibuat <i>activity diagram</i> yaitu:</p>
+<table style="border-collapse: collapse; width: 100%;"><thead>
+  <tr>
+    <th style="border: 1px solid black; padding: 8px;">Proses (DFD/<i>Use Case</i>)</th>
+    <th style="border: 1px solid black; padding: 8px;">Alasan</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">3.0 Memproses Peminjaman (UC-04)</td>
+    <td style="border: 1px solid black; padding: 8px;">Ada banyak keputusan (anggota aktif, buku tersedia, tambah buku lain), melibatkan 3 aktor, dan ada kegiatan paralel (simpan transaksi dan ubah status eksemplar). Prosesnya sama dengan <i>flowchart</i> yang saya buat di tugas 2.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">4.0 Memproses Pengembalian (UC-05)</td>
+    <td style="border: 1px solid black; padding: 8px;">Ada keputusan terlambat atau tepat waktu, dan memicu proses denda.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">5.0 Memproses Denda (UC-08)</td>
+    <td style="border: 1px solid black; padding: 8px;">Sumber utama kesalahan hitung manual, ada keputusan lunas atau belum, dan ada pembagian peran antara Pustakawan dan Anggota.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">7.0 Menghasilkan Laporan (UC-07)</td>
+    <td style="border: 1px solid black; padding: 8px;">Pengambilan data dari 4 <i>data store</i> bisa digambarkan paralel (<i>fork</i>/<i>join</i>), dan melibatkan Kepala Perpustakaan serta Pimpinan Universitas.</td>
+  </tr>
+</tbody>
+</table>
+<ol>
+    <li>
+        <b><i>Swimlane</i></b><br>
+        Berikut ini <i>swimlane</i> yang terlibat: <br>
+        <table style="border-collapse: collapse; width: 100%;"><thead>
+          <tr>
+            <th style="border: 1px solid black; padding: 8px;"><i>Swimlane</i></th>
+            <th style="border: 1px solid black; padding: 8px;">Peran</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border: 1px solid black; padding: 8px;">Anggota</td>
+            <td style="border: 1px solid black; padding: 8px;">Menyerahkan kartu anggota dan buku, membayar denda, mencari katalog</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid black; padding: 8px;">Pustakawan</td>
+            <td style="border: 1px solid black; padding: 8px;">Menjalankan transaksi dan mengonfirmasi pembayaran denda</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid black; padding: 8px;">Kepala Perpustakaan</td>
+            <td style="border: 1px solid black; padding: 8px;">Meminta dan mengunduh laporan</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid black; padding: 8px;">Pimpinan Universitas</td>
+            <td style="border: 1px solid black; padding: 8px;">Menerima dan melihat laporan</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid black; padding: 8px;">Admin Sistem</td>
+            <td style="border: 1px solid black; padding: 8px;">Mengelola akun dan hak akses</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid black; padding: 8px;">Sistem</td>
+            <td style="border: 1px solid black; padding: 8px;">Validasi, perhitungan, penyimpanan, pencetakan</td>
+          </tr>
+        </tbody>
+        </table>
+    </li>
+    <li>
+        <b>Alur aktivitas proses 3.0 Memproses Peminjaman</b><br>
+        Alur dimulai ketika Anggota menyerahkan kartu anggota kepada Pustakawan. Pustakawan memasukkan nomor anggota, lalu sistem memeriksa apakah keanggotaannya aktif. Jika tidak aktif atau terblokir, sistem menolak transaksi dan proses berakhir. Jika aktif, pustakawan memasukkan kode eksemplar dan sistem memeriksa ketersediaannya. Eksemplar yang tidak tersedia ditolak, sedangkan yang tersedia dimasukkan ke data Transaksi. Pustakawan bisa menambah buku lain atau melanjutkan. Setelah itu sistem menentukan tanggal jatuh tempo, lalu menyimpan data peminjaman dan mengubah status eksemplar menjadi “Dipinjam” secara paralel. Proses ditutup dengan pencetakan bukti peminjaman dan penyerahan buku kepada Anggota.
+    </li>
+    <li>
+        <b>Alur aktivitas proses 4.0 Memproses Pengembalian</b><br>
+        Alur dimulai ketika Anggota menyerahkan buku kepada Pustakawan. Pustakawan memasukkan kode eksemplar dan sistem mencari transaksi peminjaman yang masih aktif. Jika tidak ditemukan, sistem menampilkan pemberitahuan dan proses berhenti. Jika ditemukan, sistem mencatat tanggal pengembalian aktual dan membandingkannya dengan tanggal jatuh tempo. Bila terlambat, alur masuk ke proses Memproses Denda. Bila tepat waktu, alur langsung berlanjut. Setelah itu sistem menutup transaksi dan mengubah status eksemplar menjadi “Tersedia” secara paralel, lalu mencetak bukti pengembalian untuk Anggota.
+    </li>
+    <li>
+        <b>Alur aktivitas proses 5.0 Memproses Denda</b><br>
+        Sistem menghitung jumlah hari keterlambatan, mengambil tarif per hari, lalu menghitung nominal denda dan menyimpannya dengan status “Belum Lunas”. Nominal ditampilkan kepada Pustakawan, yang menginformasikannya kepada Anggota. Anggota membayar secara tunai, dan Pustakawan mengonfirmasi pembayaran. Jika lunas, sistem memperbarui status denda dan transaksi pengembalian boleh ditutup. Jika belum dibayar, jalur ini berhenti dengan <i>flow final</i> dan transaksi tidak ditutup.
+    </li>
+    <li>
+        <b>Alur aktivitas proses 7.0 Menghasilkan Laporan</b><br>
+        Kepala Perpustakaan memilih menu laporan dan periode bulan, lalu sistem memvalidasi periode tersebut. Sistem mengambil data peminjaman, anggota aktif, keterlambatan dan denda, serta buku terpopuler secara paralel dari <i>data store</i> masing-masing, kemudian menggabungkannya menjadi rekap. Jika tidak ada transaksi pada periode itu, laporan tetap ditampilkan dengan nilai 0 atau N/A. Kepala Perpustakaan dapat mengunduh laporan dalam format PDF atau Excel, dan Pimpinan Universitas menerima atau melihat laporan tersebut.
+    </li>
+</ol>
+<h2>Class Diagram</h2>
+<p>Sistem membutuhkan kandidat kelas dengan struktur atribut dan operasi yang mencerminkan pemisahan entitas operasional. Kandidat diambil dengan analisis tekstual dari RDD, DFD, dan <i>use case</i>.</p>
+<table style="border-collapse: collapse; width: 100%;"><thead>
+  <tr>
+    <th style="border: 1px solid black; padding: 8px;">Kelas</th>
+    <th style="border: 1px solid black; padding: 8px;">Keterangan</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">User</td>
+    <td style="border: 1px solid black; padding: 8px;"><i>Superclass</i> akun login semua pengguna</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Anggota</td>
+    <td style="border: 1px solid black; padding: 8px;"><i>Subclass</i> User</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Pustakawan</td>
+    <td style="border: 1px solid black; padding: 8px;"><i>Subclass</i> User</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">KepalaPerpustakaan</td>
+    <td style="border: 1px solid black; padding: 8px;"><i>Subclass</i> User</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">AdminSistem</td>
+    <td style="border: 1px solid black; padding: 8px;"><i>Subclass</i> User</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">PimpinanUniversitas</td>
+    <td style="border: 1px solid black; padding: 8px;"><i>Subclass</i> User</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Buku</td>
+    <td style="border: 1px solid black; padding: 8px;">Data judul/koleksi</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">EksemplarBuku</td>
+    <td style="border: 1px solid black; padding: 8px;">Fisik buku yang dipinjam</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Peminjaman</td>
+    <td style="border: 1px solid black; padding: 8px;">Transaksi</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">DetailPeminjaman</td>
+    <td style="border: 1px solid black; padding: 8px;">Item buku per transaksi</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Pengembalian</td>
+    <td style="border: 1px solid black; padding: 8px;">Peristiwa pengembalian</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Denda</td>
+    <td style="border: 1px solid black; padding: 8px;">Denda keterlambatan</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Laporan</td>
+    <td style="border: 1px solid black; padding: 8px;">Rekap bulanan</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">KebijakanPerpustakaan</td>
+    <td style="border: 1px solid black; padding: 8px;">Tarif denda, lama pinjam, batas pinjam</td>
+  </tr>
+</tbody></table>
+<p>Berikut ini untuk atribut dan operasi yang relevan dari masing-masing kelas dengan visibilitas privat (-), publik (+), turunan (/)</p>
+<table style="border-collapse: collapse; width: 100%;"><thead>
+  <tr>
+    <th style="border: 1px solid black; padding: 8px;">Kelas</th>
+    <th style="border: 1px solid black; padding: 8px;">Atribut</th>
+    <th style="border: 1px solid black; padding: 8px;">Operasi</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">User</td>
+    <td style="border: 1px solid black; padding: 8px;">-idUser<br>-username<br>-passwordHash<br>-nama<br>-role<br>-statusAkun</td>
+    <td style="border: 1px solid black; padding: 8px;">+login()<br>+logout()<br>+ubahPassword()</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Anggota</td>
+    <td style="border: 1px solid black; padding: 8px;">-nomorAnggota<br>-nomorIdentitas (NIM/NIP)<br>-jenisAnggota<br>-email<br>-noTelepon<br>-statusKeanggotaan (Aktif/Nonaktif/Terblokir)<br>-tanggalDaftar<br>-/jumlahPinjamanAktif<br>-/totalDendaBelumLunas</td>
+    <td style="border: 1px solid black; padding: 8px;">+cekStatusAktif()<br>+cariBuku()<br>+lihatRiwayatPinjam()</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Pustakawan</td>
+    <td style="border: 1px solid black; padding: 8px;">-idPegawai</td>
+    <td style="border: 1px solid black; padding: 8px;">+kelolaBuku()<br>+kelolaAnggota()<br>+prosesPeminjaman()<br>+prosesPengembalian()<br>+konfirmasiPembayaranDenda()</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">KepalaPerpustakaan</td>
+    <td style="border: 1px solid black; padding: 8px;">-idPegawai</td>
+    <td style="border: 1px solid black; padding: 8px;">+generateLaporan()<br>+unduhLaporan()</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">AdminSistem</td>
+    <td style="border: 1px solid black; padding: 8px;">-idAdmin</td>
+    <td style="border: 1px solid black; padding: 8px;">+kelolaAkun()<br>+aturHakAkses()<br>+resetPassword()<br>+nonaktifkanAkun()</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">PimpinanUniversitas</td>
+    <td style="border: 1px solid black; padding: 8px;">-jabatan</td>
+    <td style="border: 1px solid black; padding: 8px;">+lihatLaporan()<br>+unduhLaporan()</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Buku</td>
+    <td style="border: 1px solid black; padding: 8px;">-idBuku<br>-isbn<br>-judul<br>-penulis<br>-penerbit<br>-tahunTerbit<br>-kategori<br>-jenisKoleksi<br>-/jumlahEksemplarTersedia</td>
+    <td style="border: 1px solid black; padding: 8px;">+tambahBuku()<br>+ubahBuku()<br>+hapusBuku()<br>+cariBuku(kataKunci)<br>+hitungKetersediaan()</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">EksemplarBuku</td>
+    <td style="border: 1px solid black; padding: 8px;">-kodeEksemplar<br>-statusKetersediaan (Tersedia/Dipinjam/Rusak/Hilang)<br>-kondisi<br>-lokasiRak<br>-tanggalMasuk</td>
+    <td style="border: 1px solid black; padding: 8px;">+tambahEksemplar()<br>+ubahStatus()<br>+hapusEksemplar()<br>+cekTersedia()</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Peminjaman</td>
+    <td style="border: 1px solid black; padding: 8px;">-nomorTransaksi<br>-tanggalPinjam<br>-tanggalJatuhTempo<br>-statusPeminjaman (Dipinjam/Selesai/Terlambat)</td>
+    <td style="border: 1px solid black; padding: 8px;">+validasiAnggota()<br>+hitungJatuhTempo()<br>+simpanPeminjaman()<br>+tutupPeminjaman()<br>+cetakBukti()</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">DetailPeminjaman</td>
+    <td style="border: 1px solid black; padding: 8px;">-statusItem (Dipinjam/Dikembalikan)</td>
+    <td style="border: 1px solid black; padding: 8px;">+tambahItem()<br>+ubahStatusItem()</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Pengembalian</td>
+    <td style="border: 1px solid black; padding: 8px;">-idPengembalian<br>-tanggalKembaliAktual<br>-kondisiBuku<br>-/hariTerlambat</td>
+    <td style="border: 1px solid black; padding: 8px;">+catatPengembalian()<br>+hitungKeterlambatan()<br>+cetakBukti()</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Denda</td>
+    <td style="border: 1px solid black; padding: 8px;">-idDenda<br>-jumlahHariTerlambat<br>-tarifPerHari<br>-nominalDenda<br>-statusPembayaran (Belum Lunas/Lunas)<br>-tanggalBayar</td>
+    <td style="border: 1px solid black; padding: 8px;">+hitungDenda()<br>+catatPembayaran()<br>+cekStatus()</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Laporan</td>
+    <td style="border: 1px solid black; padding: 8px;">-idLaporan<br>-periodeBulan<br>-periodeTahun<br>-tanggalGenerate<br>-totalPeminjaman<br>-totalAnggotaAktif<br>-totalKeterlambatan<br>-totalDenda<br>-/daftarBukuPopuler<br>-formatFile</td>
+    <td style="border: 1px solid black; padding: 8px;">+generate(periode)<br>+tampilkan()<br>+unduh(format)</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">KebijakanPerpustakaan</td>
+    <td style="border: 1px solid black; padding: 8px;">-tarifDendaPerHari<br>-lamaPinjamHari<br>-maksBukuPerAnggota</td>
+    <td style="border: 1px solid black; padding: 8px;">+ubahKebijakan()<br>+ambilTarif()</td>
+  </tr>
+</tbody></table>
+<p>Berikut ini hubungan antar kelas yang mungkin muncul dalam sistem perpustakaan tersebut.</p>
+<table style="border-collapse: collapse; width: 100%;"><thead>
+  <tr>
+    <th style="border: 1px solid black; padding: 8px;">Kelas A</th>
+    <th style="border: 1px solid black; padding: 8px;">Jenis relasi / nama</th>
+    <th style="border: 1px solid black; padding: 8px;">Kelas B</th>
+    <th style="border: 1px solid black; padding: 8px;">Multiplisitas (A - B)</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Anggota, Pustakawan, KepalaPerpustakaan, AdminSistem, PimpinanUniversitas</td>
+    <td style="border: 1px solid black; padding: 8px;">Generalisasi</td>
+    <td style="border: 1px solid black; padding: 8px;">User</td>
+    <td style="border: 1px solid black; padding: 8px;">5 <i>subclass</i> → 1 <i>superclass</i></td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Buku</td>
+    <td style="border: 1px solid black; padding: 8px;">Agregasi “terdiri dari”</td>
+    <td style="border: 1px solid black; padding: 8px;">EksemplarBuku</td>
+    <td style="border: 1px solid black; padding: 8px;">1 - 1..*</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Anggota</td>
+    <td style="border: 1px solid black; padding: 8px;">Asosiasi “melakukan”</td>
+    <td style="border: 1px solid black; padding: 8px;">Peminjaman</td>
+    <td style="border: 1px solid black; padding: 8px;">1 - 0..*</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Pustakawan</td>
+    <td style="border: 1px solid black; padding: 8px;">Asosiasi “memproses”</td>
+    <td style="border: 1px solid black; padding: 8px;">Peminjaman</td>
+    <td style="border: 1px solid black; padding: 8px;">1 - 0..*</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Peminjaman</td>
+    <td style="border: 1px solid black; padding: 8px;">Agregasi “terdiri dari”</td>
+    <td style="border: 1px solid black; padding: 8px;">DetailPeminjaman</td>
+    <td style="border: 1px solid black; padding: 8px;">1 - 1..*</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">EksemplarBuku</td>
+    <td style="border: 1px solid black; padding: 8px;">Asosiasi “dipinjam dalam”</td>
+    <td style="border: 1px solid black; padding: 8px;">DetailPeminjaman</td>
+    <td style="border: 1px solid black; padding: 8px;">1 - 0..*</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">DetailPeminjaman</td>
+    <td style="border: 1px solid black; padding: 8px;">Asosiasi “diselesaikan oleh”</td>
+    <td style="border: 1px solid black; padding: 8px;">Pengembalian</td>
+    <td style="border: 1px solid black; padding: 8px;">1 - 0..1</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Pustakawan</td>
+    <td style="border: 1px solid black; padding: 8px;">Asosiasi “mencatat”</td>
+    <td style="border: 1px solid black; padding: 8px;">Pengembalian</td>
+    <td style="border: 1px solid black; padding: 8px;">1 - 0..*</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Pengembalian</td>
+    <td style="border: 1px solid black; padding: 8px;">Asosiasi “menimbulkan”</td>
+    <td style="border: 1px solid black; padding: 8px;">Denda</td>
+    <td style="border: 1px solid black; padding: 8px;">1 - 0..1</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Anggota</td>
+    <td style="border: 1px solid black; padding: 8px;">Asosiasi “dikenai”</td>
+    <td style="border: 1px solid black; padding: 8px;">Denda</td>
+    <td style="border: 1px solid black; padding: 8px;">1 - 0..*</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">AdminSistem</td>
+    <td style="border: 1px solid black; padding: 8px;">Asosiasi “mengelola”</td>
+    <td style="border: 1px solid black; padding: 8px;">User</td>
+    <td style="border: 1px solid black; padding: 8px;">1 - 0..*</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">KepalaPerpustakaan</td>
+    <td style="border: 1px solid black; padding: 8px;">Asosiasi “menghasilkan”</td>
+    <td style="border: 1px solid black; padding: 8px;">Laporan</td>
+    <td style="border: 1px solid black; padding: 8px;">1 - 0..*</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">PimpinanUniversitas</td>
+    <td style="border: 1px solid black; padding: 8px;">Asosiasi “melihat”</td>
+    <td style="border: 1px solid black; padding: 8px;">Laporan</td>
+    <td style="border: 1px solid black; padding: 8px;">0..* - 0..*</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">Laporan</td>
+    <td style="border: 1px solid black; padding: 8px;">Dependensi/asosiasi “merekap”</td>
+    <td style="border: 1px solid black; padding: 8px;">Peminjaman, Denda, Anggota, Buku</td>
+    <td style="border: 1px solid black; padding: 8px;">sumber data laporan</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px;">KebijakanPerpustakaan</td>
+    <td style="border: 1px solid black; padding: 8px;">Dependensi “menjadi acuan”</td>
+    <td style="border: 1px solid black; padding: 8px;">Peminjaman, Denda</td>
+    <td style="border: 1px solid black; padding: 8px;">tarif dan batas pinjam</td>
+  </tr>
+</tbody></table>
+<h2>Update Data</h2>
+<p>Agar hasil analisis ini lebih sesuai dengan data terbaru yang saya gunakan, berikut saya lampirkan pembaruan data tugas sebelumnya berdasarkan catatan revisi yang Bapak berikan.</p>
+<ol>
+  <li>
+    <b>Aktor/Entitas Luar</b><br>
+    <table style="border-collapse: collapse; width: 100%;"><thead>
+      <tr>
+        <th style="border: 1px solid black; padding: 8px;">Aktor</th>
+        <th style="border: 1px solid black; padding: 8px;">Peran</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">Pustakawan</td>
+        <td style="border: 1px solid black; padding: 8px;">Pelaksana operasional harian</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">Anggota</td>
+        <td style="border: 1px solid black; padding: 8px;">Pengguna akhir layanan</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">Kepala Perpustakaan</td>
+        <td style="border: 1px solid black; padding: 8px;">Pemilik proses, pemantau layanan perpustakaan</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">Admin Sistem</td>
+        <td style="border: 1px solid black; padding: 8px;">Mengelola akun dan hak akses</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">Pimpinan Universitas</td>
+        <td style="border: 1px solid black; padding: 8px;">Penerima laporan untuk keputusan</td>
+      </tr>
+    </tbody>
+    </table>
+  </li>
+  <li>
+    <b>Proses Utama</b><br>
+    <table style="border-collapse: collapse; width: 100%;"><thead>
+      <tr>
+        <th style="border: 1px solid black; padding: 8px;">No</th>
+        <th style="border: 1px solid black; padding: 8px;">Proses</th>
+        <th style="border: 1px solid black; padding: 8px;">Deskripsi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">1.0</td>
+        <td style="border: 1px solid black; padding: 8px;">Mengelola Data Buku</td>
+        <td style="border: 1px solid black; padding: 8px;">Melakukan penambahan, pengubahan, dan penghapusan data koleksi serta eksemplar.</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">2.0</td>
+        <td style="border: 1px solid black; padding: 8px;">Mengelola Data Anggota</td>
+        <td style="border: 1px solid black; padding: 8px;">Melakukan pencatatan dan pembaruan profil pengguna terdaftar.</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">3.0</td>
+        <td style="border: 1px solid black; padding: 8px;">Memproses Peminjaman</td>
+        <td style="border: 1px solid black; padding: 8px;">Validasi anggota dan stok, catat peminjaman, ubah status eksemplar</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">4.0</td>
+        <td style="border: 1px solid black; padding: 8px;">Memproses Pengembalian</td>
+        <td style="border: 1px solid black; padding: 8px;">Cari peminjaman aktif, catat pengembalian, ubah status eksemplar, deteksi keterlambatan</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">5.0</td>
+        <td style="border: 1px solid black; padding: 8px;">Memproses Denda</td>
+        <td style="border: 1px solid black; padding: 8px;">Hitung nominal denda dan catat pembayaran</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">6.0</td>
+        <td style="border: 1px solid black; padding: 8px;">Menyediakan Katalog Online</td>
+        <td style="border: 1px solid black; padding: 8px;">Mengelola kueri pencarian dari anggota untuk menampilkan status ketersediaan.</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">7.0</td>
+        <td style="border: 1px solid black; padding: 8px;">Menghasilkan Laporan</td>
+        <td style="border: 1px solid black; padding: 8px;">Membuat rekap laporan bulanan untuk kebutuhan evaluasi manajemen.</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">8.0</td>
+        <td style="border: 1px solid black; padding: 8px;">Mengelola Akun dan Autentikasi</td>
+        <td style="border: 1px solid black; padding: 8px;">Login, kelola akun, hak akses</td>
+      </tr>
+    </tbody></table>
+  </li>
+  <li>
+    <b><i>Data Store</i></b><br>
+    <table style="border-collapse: collapse; width: 100%;"><thead>
+      <tr>
+        <th style="border: 1px solid black; padding: 8px;">Kode</th>
+        <th style="border: 1px solid black; padding: 8px;">Nama</th>
+        <th style="border: 1px solid black; padding: 8px;">Isi data utama</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">D1</td>
+        <td style="border: 1px solid black; padding: 8px;">Data Buku/Eksemplar</td>
+        <td style="border: 1px solid black; padding: 8px;">Kode eksemplar, judul, kategori, status ketersediaan, penulis.</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">D2</td>
+        <td style="border: 1px solid black; padding: 8px;">Data Anggota</td>
+        <td style="border: 1px solid black; padding: 8px;">Nomor anggota, nama, nomor identitas (NIM/NIP), status keanggotaan.</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">D3</td>
+        <td style="border: 1px solid black; padding: 8px;">Data Transaksi</td>
+        <td style="border: 1px solid black; padding: 8px;">Nomor transaksi, tanggal pinjam, jatuh tempo, tanggal kembali aktual, status transaksi</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">D4</td>
+        <td style="border: 1px solid black; padding: 8px;">Data Denda</td>
+        <td style="border: 1px solid black; padding: 8px;">Nomor denda, hari terlambat, tarif per hari, nominal, status pembayaran, tanggal bayar</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 8px;">D5</td>
+        <td style="border: 1px solid black; padding: 8px;">Data Akun</td>
+        <td style="border: 1px solid black; padding: 8px;">ID akun, username, kata sandi (hash), peran, status akun</td>
+      </tr>
+    </tbody>
+    </table>
+  </li>
+</ol>
+<h2>Sumber Referensi</h2>
+<ul>
+    <li>BMP MSIM4302 - Analisis dan Perancangan Sistem</li>
+    <li>Dokumen RDD Sistem Informasi Perpustakaan Universitas XYZ Berbasis Web dari tugas 1</li>
+    <li>Dokumen Process Model and Use Case Model Document Sistem Informasi Perpustakaan Universitas XYZ Berbasis Web dari tugas 2</li>
+</ul>
