@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tracking Pengiriman - SITTA</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</head>
+<body>
+    <div class="app-container" id="app">
+        <!-- Sidebar -->
+        <nav class="sidebar glass">
+            <div class="brand">
+                <img src="assets/logo-ut.png" alt="UT" onerror="this.src='https://via.placeholder.com/40?text=UT'">
+                <span>SITTA</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="bi bi-house"></i> Dashboard</a></li>
+                <li><a href="stok.html"><i class="bi bi-book"></i> Info Bahan Ajar</a></li>
+                <li><a href="tracking.html" class="active"><i class="bi bi-truck"></i> Tracking</a></li>
+                <li class="dropdown" onmouseenter="hoverDropdown(true)" onmouseleave="hoverDropdown(false)">
+                    <a href="#" class="dropdown-btn"><i class="bi bi-file-earmark-text"></i> Laporan <i class="bi bi-chevron-right chevron-icon" style="margin-left: auto;"></i></a>
+                    <div class="dropdown-container">
+                        <a href="#" onclick="fiturBelumTersedia(event)">Monitoring Progress DO</a>
+                        <a href="#" onclick="fiturBelumTersedia(event)">Rekap Bahan Ajar</a>
+                    </div>
+                </li>                
+                <li><a href="#" onclick="fiturBelumTersedia(event)"><i class="bi bi-clock-history"></i> Histori Transaksi</a></li>
+                <li>
+                    <a id="btn-theme-sidebar" style="cursor: pointer;">
+                        <i class="bi bi-moon-stars icon-light-mode"></i>
+                        <i class="bi bi-sun icon-dark-mode"></i>
+                        Tema
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <a id="btn-logout-sidebar" class="menu-action btn-logout-sidebar" style="cursor: pointer;">
+                    <i class="bi bi-box-arrow-right"></i> Keluar
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <h1 style="margin-bottom: 0;">Tracking DO Bahan Ajar</h1>
+                <button class="btn-primary" @click="isFormBuka = !isFormBuka"><i class="bi bi-plus-lg"></i> Buat DO Baru</button>
+            </header>
+            
+            <!-- V-Show Form DO Baru -->
+            <div class="glass tracking-card" v-show="isFormBuka" style="margin-bottom: 20px; border-left: 4px solid var(--ut-blue);">
+                <h3 style="margin-bottom: 15px;">Form Tambah Delivery Order</h3>
+                <form @submit.prevent="simpanDO">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group"><label>Nomor DO (Otomatis)</label><input type="text" class="form-control" v-model="generatedDo" disabled></div>
+                        <div class="form-group"><label>Tanggal Kirim</label><input type="date" class="form-control" v-model="formDO.tanggalKirim" required></div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group"><label>NIM</label><input type="number" class="form-control" v-model="formDO.nim" required></div>
+                        <div class="form-group"><label>Nama Mahasiswa</label><input type="text" class="form-control" v-model="formDO.nama" required></div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label>Ekspedisi</label>
+                            <select class="form-control" v-model="formDO.ekspedisi" required>
+                                <option v-for="eks in listPengiriman" :value="eks.nama">{{ eks.nama }}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Paket Bahan Ajar</label>
+                            <select class="form-control" v-model="formDO.paket" required>
+                                <option v-for="pkt in listPaket" :value="pkt.kode">{{ pkt.kode }} - {{ pkt.nama }}</option>
+                            </select>
+                            <!-- V-If Detail Paket Tampil -->
+                            <small class="text-muted" v-if="selectedPaketDetail" style="display: block; margin-top: 5px;">
+                                <strong>Isi:</strong> {{ selectedPaketDetail.isi.join(', ') }} | <strong>Total Harga:</strong> Rp {{ selectedPaketDetail.harga }}
+                            </small>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">Kirim DO Baru</button>
+                </form>
+            </div>
+
+            <!-- Area Pencarian Tracking -->
+            <div class="glass tracking-card">
+                <form @submit.prevent="cariDO" style="display: flex; gap: 15px;">
+                    <div style="flex: 1; min-width: 200px;">
+                        <input type="text" v-model="searchString" class="form-control" placeholder="Masukkan No. Delivery (Ketik DO2025-001 untuk coba otomatis)" required>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="bi bi-search"></i> Cari</button>
+                </form>
+            </div>
+
+            <!-- V-If Hasil Tracking -->
+            <div class="tracking-result" v-if="resultInfo" style="display: block;">
+                <!-- Card Utama -->
+                <div class="glass tracking-card" style="margin-bottom: 20px; padding: 0; overflow: hidden; border: none;">
+                    <div class="track-header-block">
+                        <div class="track-header-flex">
+                            <div>
+                                <p class="track-nama-label">Nama Mahasiswa</p>
+                                <h2 class="track-nama-value" v-text="resultInfo.nama"></h2>
+                                <p class="track-info-text">Status: <strong style="color: var(--ut-yellow);" v-text="resultInfo.status"></strong></p>
+                            </div>
+                            <div class="track-ekspedisi-info">
+                                <h3 class="track-nama-value" v-text="resultInfo.ekspedisi"></h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blok Info Tabel -->
+                    <div style="padding: 25px 30px;">
+                        <table class="track-detail-table">
+                            <tbody>
+                                <tr>
+                                    <td><span class="track-table-label">No. Delivery Order</span><strong class="track-table-value">{{ activeDO }}</strong></td>
+                                    <td><span class="track-table-label">Jenis Paket</span><strong class="track-table-value">{{ resultInfo.paket }}</strong></td>
+                                    <td><span class="track-table-label">Tanggal Kirim</span><strong class="track-table-value">{{ resultInfo.tanggalKirim }}</strong></td>
+                                    <td><span class="track-table-label">Total Pembayaran</span><strong class="track-table-value">Rp {{ resultInfo.total }}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <!-- Progress Bar Dinamis V-Bind Style -->
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" :style="{ width: progressBarWidth }"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Perjalanan (V-For) -->
+                <div class="glass tracking-card">
+                    <h3>Perjalanan Paket</h3><br>
+                    <div class="timeline">
+                        <div class="timeline-item" v-for="jalur in resultInfo.perjalanan">
+                            <small class="text-muted" v-text="jalur.waktu"></small>
+                            <p><strong v-text="jalur.keterangan"></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="toast-container" class="toast-container"></div>
+        </main>
+    </div>
+    <script src="js/script.js"></script>
+    <script src="js/dataBahanAjar.js"></script>
+    <script src="js/tracking-app.js"></script>
+</body>
+</html>
