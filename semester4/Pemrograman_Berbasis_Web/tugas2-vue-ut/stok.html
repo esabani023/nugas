@@ -73,16 +73,9 @@
                         <option v-for="kat in listKategori" :value="kat" v-text="kat"></option>
                     </select>
 
-                    <!-- Sort -->
-                    <select v-model="sortBy" class="form-control" style="width: auto;">
-                        <option value="judul">Urutkan: Judul (A-Z)</option>
-                        <option value="qty">Urutkan: Stok Terendah</option>
-                        <option value="harga">Urutkan: Harga Termurah</option>
-                    </select>
-
                     <!-- Filter Warning Checkbox -->
                     <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
-                        <input type="checkbox" v-model="filterWarning"> Tampilkan Stok Menipis/Kosong
+                        <input type="checkbox" v-model="filterSafety"> Tampilkan Stok Menipis/Kosong
                     </label>
 
                     <button class="btn-secondary" @click="resetFilter"><i class="bi bi-arrow-counterclockwise"></i> Reset</button>
@@ -95,12 +88,48 @@
                 <table class="table" style="width: 100%; border-collapse: collapse; min-width: 800px;">
                     <thead style="background-color: var(--ut-blue); color: var(--ut-white);">
                         <tr>
-                            <th style="padding: 15px; text-align: left;">Kode & Judul</th>
+                            <th style="padding: 15px; text-align: left;">
+                                Kode & Judul 
+                                <span style="margin-left: 8px; font-size: 0.8rem;">
+                                    <i class="bi bi-caret-up-fill" 
+                                       style="cursor: pointer;" 
+                                       :style="{ opacity: sortColumn === 'judul' && sortOrder === 'asc' ? '1' : '0.4' }"
+                                       @click="setSort('judul', 'asc')" title="Urutkan A-Z"></i>
+                                    <i class="bi bi-caret-down-fill" 
+                                       style="cursor: pointer;" 
+                                       :style="{ opacity: sortColumn === 'judul' && sortOrder === 'desc' ? '1' : '0.4' }"
+                                       @click="setSort('judul', 'desc')" title="Urutkan Z-A"></i>
+                                </span>
+                            </th>
                             <th style="padding: 15px; text-align: left;">Detail Lokasi</th>
                             <th style="padding: 15px; text-align: left;">Kategori</th>
-                            <th style="padding: 15px; text-align: center;">Stok (Safety)</th>
+                            <th style="padding: 15px; text-align: center;">
+                                Stok (Safety)
+                                <span style="margin-left: 8px; font-size: 0.8rem;">
+                                    <i class="bi bi-caret-up-fill" 
+                                       style="cursor: pointer;" 
+                                       :style="{ opacity: sortColumn === 'qty' && sortOrder === 'asc' ? '1' : '0.4' }"
+                                       @click="setSort('qty', 'asc')" title="Urutkan Sedikit"></i>
+                                    <i class="bi bi-caret-down-fill" 
+                                       style="cursor: pointer;" 
+                                       :style="{ opacity: sortColumn === 'qty' && sortOrder === 'desc' ? '1' : '0.4' }"
+                                       @click="setSort('qty', 'desc')" title="Urutkan Banyak"></i>
+                                </span>
+                            </th>
                             <th style="padding: 15px; text-align: left;">Status</th>
-                            <th style="padding: 15px; text-align: center;">Harga</th>
+                            <th style="padding: 15px; text-align: left;">
+                                Harga
+                                <span style="margin-left: 8px; font-size: 0.8rem;">
+                                    <i class="bi bi-caret-up-fill" 
+                                       style="cursor: pointer;" 
+                                       :style="{ opacity: sortColumn === 'harga' && sortOrder === 'asc' ? '1' : '0.4' }"
+                                       @click="setSort('harga', 'asc')" title="Urutkan Termurah"></i>
+                                    <i class="bi bi-caret-down-fill" 
+                                       style="cursor: pointer;" 
+                                       :style="{ opacity: sortColumn === 'harga' && sortOrder === 'desc' ? '1' : '0.4' }"
+                                       @click="setSort('harga', 'desc')" title="Urutkan Termahal"></i>
+                                </span>
+                            </th>
                             <th style="padding: 15px; text-align: left;">Catatan</th>
                             <th style="padding: 15px; text-align: center;">Aksi</th>
                         </tr>

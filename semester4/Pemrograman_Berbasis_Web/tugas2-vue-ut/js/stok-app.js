@@ -12,8 +12,9 @@ var app = new Vue({
         typingTimer: null,
         filterUpbjj: '',
         filterKategori: '',
-        filterWarning: false,
-        sortBy: 'judul',
+        filterSafety: false,
+        sortColumn: 'judul',
+        sortOrder: 'asc',
 
         // Data Modal Form
         isModalBuka: false,
@@ -47,18 +48,24 @@ var app = new Vue({
             }
 
             // Filter Re-Order (Stok < Safety)
-            if (this.filterWarning) {
+            if (this.filterSafety) {
                 result = result.filter(item => item.qty < item.safety);
             }
 
             // Sorting Logics
-            if (this.sortBy === 'judul') {
-                result = result.sort((a, b) => a.judul.localeCompare(b.judul));
-            } else if (this.sortBy === 'qty') {
-                result = result.sort((a, b) => a.qty - b.qty);
-            } else if (this.sortBy === 'harga') {
-                result = result.sort((a, b) => a.harga - b.harga);
-            }
+            result = result.sort((a, b) => {
+                // Untuk Ascending (A-Z), -1 untuk Descending (Z-A)
+                let modifier = this.sortOrder === 'asc' ? 1 : -1;
+                
+                if (this.sortColumn === 'judul') {
+                    return a.judul.localeCompare(b.judul) * modifier;
+                } else if (this.sortColumn === 'qty') {
+                    return (a.qty - b.qty) * modifier;
+                } else if (this.sortColumn === 'harga') {
+                    return (a.harga - b.harga) * modifier;
+                }
+                return 0;
+            });
 
             return result;
         }
@@ -75,7 +82,7 @@ var app = new Vue({
             if (!newVal) this.filterKategori = ''; // Auto-reset kategori jika UPBJJ dikosongkan
             this.showToast('Filter UT Daerah diterapkan', 'success');
         },
-        filterWarning(newVal) {
+        filterSafety(newVal) {
             if (newVal) this.showToast('Menampilkan data Re-Order', 'warning');
         }
     },
@@ -89,9 +96,13 @@ var app = new Vue({
             this.activeSearchKeyword = '';
             this.filterUpbjj = '';
             this.filterKategori = '';
-            this.filterWarning = false;
+            this.filterSafety = false;
             this.sortBy = 'judul';
             this.showToast('Filter dikembalikan ke pengaturan awal', 'success');
+        },
+        setSort(column, order) {
+            this.sortColumn = column;
+            this.sortOrder = order; // order akan berisi 'asc' (panah atas) atau 'desc' (panah bawah)
         },
         bukaModal(mode, data = null, index = -1) {
             this.isEditMode = (mode === 'edit');
