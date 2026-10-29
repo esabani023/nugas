@@ -43,6 +43,21 @@ var app = new Vue({
         }
     },
     methods: {
+        formatRupiah(angka) {
+            if (!angka) return '0';
+            return new Intl.NumberFormat('id-ID').format(angka);
+        },
+        
+        formatTanggal(tanggal) {
+            if (!tanggal) return '-';
+            const dateObj = new Date(tanggal);
+            return dateObj.toLocaleDateString('id-ID', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        },
+
         cariDO() {
             const key = this.searchString.trim();
             if (this.databaseDO[key]) {
@@ -62,14 +77,23 @@ var app = new Vue({
                 }, 50);
             } else {
                 this.resultInfo = null;
-                // Opsional: Hilangkan komentar di bawah jika ingin toast error tiap auto-cari gagal
-                // this.showToast('Nomor DO tidak ditemukan', 'error');
+                this.showToast('Nomor DO tidak ditemukan', 'error');
             }
         },
         simpanDO() {
             // Menyiapkan Objek Baru
             const newDoNumber = this.generatedDo;
             const det = this.selectedPaketDetail;
+
+            const now = new Date();
+            const tahun = now.getFullYear();
+            const bulan = String(now.getMonth() + 1).padStart(2, '0');
+            const hari = String(now.getDate()).padStart(2, '0');
+            const jam = String(now.getHours()).padStart(2, '0');
+            const menit = String(now.getMinutes()).padStart(2, '0');
+            const detik = String(now.getSeconds()).padStart(2, '0');
+            
+            const timelinePengiriman = `${tahun}-${bulan}-${hari} ${jam}:${menit}:${detik}`;
             
             const newEntry = {
                 nim: this.formDO.nim,
@@ -80,7 +104,7 @@ var app = new Vue({
                 paket: this.formDO.paket,
                 total: det ? det.harga : 0,
                 perjalanan: [
-                    { waktu: new Date().toLocaleString(), keterangan: "Pesanan masuk dan DO diproses." }
+                    { waktu: timelinePengiriman, keterangan: "Pesanan masuk dan DO diproses." }
                 ]
             };
 

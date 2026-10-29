@@ -78,7 +78,7 @@
                             </select>
                             <!-- V-If Detail Paket Tampil -->
                             <small class="text-muted" v-if="selectedPaketDetail" style="display: block; margin-top: 5px;">
-                                <strong>Isi:</strong> {{ selectedPaketDetail.isi.join(', ') }} | <strong>Total Harga:</strong> Rp {{ selectedPaketDetail.harga }}
+                                <strong>Isi:</strong> {{ selectedPaketDetail.isi.join(', ') }} | <strong>Total Harga:</strong> Rp {{ formatRupiah(selectedPaketDetail.harga) }} ,-
                             </small>
                         </div>
                     </div>
@@ -120,8 +120,8 @@
                                 <tr>
                                     <td><span class="track-table-label">No. Delivery Order</span><strong class="track-table-value">{{ activeDO }}</strong></td>
                                     <td><span class="track-table-label">Jenis Paket</span><strong class="track-table-value">{{ resultInfo.paket }}</strong></td>
-                                    <td><span class="track-table-label">Tanggal Kirim</span><strong class="track-table-value">{{ resultInfo.tanggalKirim }}</strong></td>
-                                    <td><span class="track-table-label">Total Pembayaran</span><strong class="track-table-value">Rp {{ resultInfo.total }}</strong></td>
+                                    <td><span class="track-table-label">Tanggal Kirim</span><strong class="track-table-value">{{ formatTanggal(resultInfo.tanggalKirim) }}</strong></td>
+                                    <td><span class="track-table-label">Total Pembayaran</span><strong class="track-table-value">Rp {{ formatRupiah(resultInfo.total) }} ,-</strong></td>
                                 </tr>
                             </tbody>
                         </table>
