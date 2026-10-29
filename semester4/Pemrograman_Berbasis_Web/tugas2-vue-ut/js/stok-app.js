@@ -19,7 +19,9 @@ var app = new Vue({
         isModalBuka: false,
         isEditMode: false,
         editIndex: -1,
-        formStok: { kode: '', judul: '', upbjj: '', harga: 0, qty: 0, safety: 0, catatanHTML: '', harga: 0, kategori: 'MK Wajib', lokasiRak: 'R0-00' }
+        formStok: { kode: '', judul: '', upbjj: '', harga: 0, qty: 0, safety: 0, catatanHTML: '', harga: 0, kategori: 'MK Wajib', lokasiRak: 'R0-00' },
+        isModalHapusBuka: false,
+        itemYangAkanDihapus: null
     },
     computed: {
         filteredStok() {
@@ -113,6 +115,24 @@ var app = new Vue({
                 this.showToast('Data baru berhasil ditambahkan', 'success');
             }
             this.isModalBuka = false;
+        },
+        konfirmasiHapus(kodeBuku) {
+            this.itemYangAkanDihapus = kodeBuku;
+            this.isModalHapusBuka = true;
+        },
+        eksekusiHapus() {
+            if (this.itemYangAkanDihapus) {
+                const indexAsli = this.stok.findIndex(item => item.kode === this.itemYangAkanDihapus);
+                if (indexAsli !== -1) {
+                    this.stok.splice(indexAsli, 1);
+                    this.showToast('Data berhasil dihapus', 'success');
+                }
+            }
+            this.tutupModalHapus();
+        },
+        tutupModalHapus() {
+            this.isModalHapusBuka = false;
+            this.itemYangAkanDihapus = null;
         },
         toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');

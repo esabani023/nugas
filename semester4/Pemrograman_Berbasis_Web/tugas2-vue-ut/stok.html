@@ -131,7 +131,12 @@
                             <td style="padding: 15px;" v-html="item.catatanHTML"></td>
                             </td>
                             <td style="padding: 15px; text-align: center;">
-                                <button class="btn-secondary" style="padding: 5px 10px; font-size: 0.9rem;" @click="bukaModal('edit', item, index)"><i class="bi bi-pencil-square"></i> Edit</button>
+                                <button class="btn-secondary" style="padding: 5px 10px; font-size: 0.9rem;" @click="bukaModal('edit', item, index)">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </button>
+                                <button style="padding: 5px 10px; font-size: 0.9rem; background-color: #dc3545; color: white; border: none; border-radius: 10px; cursor: pointer;" @click="konfirmasiHapus(item.kode)">
+                                    <i class="bi bi-trash"></i> Hapus
+                                </button>
                             </td>
                         </tr>
                         <!-- Empty State -->
@@ -190,6 +195,26 @@
                     
                         <button type="submit" class="btn-primary" style="width: 100%;">Simpan Data</button>
                     </form>
+                </div>
+            </div>
+
+            <!-- Modal Konfirmasi Hapus -->
+            <div class="modal-overlay" v-if="isModalHapusBuka" style="display: flex;">
+                <div class="modal-content glass" style="max-width: 400px; text-align: center;">
+                    <i class="bi bi-x-lg close-modal" @click="tutupModalHapus"></i>
+
+                    <i class="bi bi-exclamation-triangle" style="font-size: 3.5rem; color: #dc3545; display: block; margin-bottom: 15px;"></i>
+
+                    <h3 style="margin-bottom: 10px;">Konfirmasi Hapus</h3>
+                    <p style="margin-bottom: 25px; color: var(--text-color);">
+                        Apakah Anda yakin ingin menghapus data dengan kode <br>
+                        <strong style="font-size: 1.2rem; color: #dc3545;">{{ itemYangAkanDihapus }}</strong>?
+                    </p>
+
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+                        <button class="btn-secondary" style="flex: 1;" @click="tutupModalHapus">Batal</button>
+                        <button class="btn-primary" style="flex: 1; background-color: #dc3545; border-color: #dc3545; color: white;" @click="eksekusiHapus">Ya, Hapus</button>
+                    </div>
                 </div>
             </div>
             
