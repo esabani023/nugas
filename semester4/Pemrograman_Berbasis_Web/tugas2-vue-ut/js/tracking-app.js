@@ -12,7 +12,9 @@ var app = new Vue({
         progressBarWidth: '0%',
 
         isFormBuka: false,
-        formDO: { nim: '', nama: '', ekspedisi: '', paket: '', tanggalKirim: new Date().toISOString().split('T')[0] }
+        formDO: { nim: '', nama: '', ekspedisi: '', paket: '', tanggalKirim: new Date().toISOString().split('T')[0] },
+        
+        typingTimer: null
     },
     computed: {
         // Logika Auto-Generate Nomor DO
@@ -33,12 +35,18 @@ var app = new Vue({
     },
     watch: {
         searchString(newVal) {
-            // Jika user mengetik minimal 10 karakter (contoh: DO2025-001), auto-pencarian tanpa menekan Enter!
-            if (newVal && newVal.length >= 10) {
-                this.cariDO();
-            } else {
-                this.resultInfo = null; // Sembunyikan hasil jika kurang
-            }
+            clearTimeout(this.typingTimer);
+
+            this.typingTimer = setTimeout(() => {
+                
+                // Jika input tidak kosong, lakukan pencarian otomatis
+                if (newVal && newVal.length > 0) {
+                    this.cariDO();
+                } else {
+                    this.resultInfo = null; // Sembunyikan hasil jika input dihapus sampai kosong
+                }
+                
+            }, 1000);
         }
     },
     methods: {
