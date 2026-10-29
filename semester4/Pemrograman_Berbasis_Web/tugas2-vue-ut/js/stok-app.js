@@ -106,6 +106,8 @@ var app = new Vue({
         },
         simpanData() {
             this.formStok.harga = parseInt(this.formStok.harga) || 0;
+            this.formStok.qty = parseInt(this.formStok.qty) || 0;
+            this.formStok.safety = parseInt(this.formStok.safety) || 0;
             
             if (this.isEditMode) {
                 this.stok.splice(this.editIndex, 1, { ...this.formStok });
