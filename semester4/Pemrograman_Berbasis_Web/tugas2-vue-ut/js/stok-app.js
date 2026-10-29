@@ -8,6 +8,8 @@ var app = new Vue({
         
         // Data Model Filter
         filterSearch: '',
+        activeSearchKeyword: '',
+        typingTimer: null,
         filterUpbjj: '',
         filterKategori: '',
         filterWarning: false,
@@ -24,8 +26,8 @@ var app = new Vue({
             let result = this.stok;
 
             // Filter Pencarian Teks
-            if (this.filterSearch) {
-                const keyword = this.filterSearch.toLowerCase();
+            if (this.activeSearchKeyword) {
+                const keyword = this.activeSearchKeyword.toLowerCase();
                 result = result.filter(item => 
                     item.judul.toLowerCase().includes(keyword) || 
                     item.kode.toLowerCase().includes(keyword)
@@ -60,7 +62,13 @@ var app = new Vue({
         }
     },
     watch: {
-        // Watcher memantau jika ada filter dropdown yang berubah
+        // Watcher memantau jika ada pencarian dan filter dropdown yang berubah
+        filterSearch(newVal) {
+            clearTimeout(this.typingTimer);
+            this.typingTimer = setTimeout(() => {
+                this.activeSearchKeyword = newVal; 
+            }, 1000);
+        },
         filterUpbjj(newVal) {
             if (!newVal) this.filterKategori = ''; // Auto-reset kategori jika UPBJJ dikosongkan
             this.showToast('Filter UT Daerah diterapkan', 'success');
@@ -76,6 +84,7 @@ var app = new Vue({
         },
         resetFilter() {
             this.filterSearch = '';
+            this.activeSearchKeyword = '';
             this.filterUpbjj = '';
             this.filterKategori = '';
             this.filterWarning = false;
