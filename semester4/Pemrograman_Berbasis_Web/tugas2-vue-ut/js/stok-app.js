@@ -17,7 +17,7 @@ var app = new Vue({
         isModalBuka: false,
         isEditMode: false,
         editIndex: -1,
-        formStok: { kode: '', judul: '', upbjj: '', harga: 0, qty: 0, safety: 0, catatanHTML: '', kategori: 'MK Wajib', lokasiRak: 'R0-00' }
+        formStok: { kode: '', judul: '', upbjj: '', harga: 0, qty: 0, safety: 0, catatanHTML: '', harga: 0, kategori: 'MK Wajib', lokasiRak: 'R0-00' }
     },
     computed: {
         filteredStok() {
@@ -60,7 +60,7 @@ var app = new Vue({
         }
     },
     watch: {
-        // Watcher 1: Memantau jika ada filter dropdown yang berubah
+        // Watcher memantau jika ada filter dropdown yang berubah
         filterUpbjj(newVal) {
             if (!newVal) this.filterKategori = ''; // Auto-reset kategori jika UPBJJ dikosongkan
             this.showToast('Filter UT Daerah diterapkan', 'success');
@@ -70,6 +70,10 @@ var app = new Vue({
         }
     },
     methods: {
+        formatRupiah(angka) {
+            if (!angka) return '0';
+            return new Intl.NumberFormat('id-ID').format(angka);
+        },
         resetFilter() {
             this.filterSearch = '';
             this.filterUpbjj = '';
@@ -86,7 +90,7 @@ var app = new Vue({
                 // Copy data (Cloning object) agar tidak terubah langsung di tabel sebelum disubmit
                 this.formStok = { ...data };
             } else {
-                this.formStok = { kode: '', judul: '', upbjj: '', harga: 0, qty: 0, safety: 0, catatanHTML: '-', kategori: 'MK Wajib', lokasiRak: 'R0-00' };
+                this.formStok = { kode: '', judul: '', upbjj: '', harga: 0, qty: 0, safety: 0, catatanHTML: '-', harga: 0, kategori: 'MK Wajib', lokasiRak: 'R0-00' };
             }
         },
         simpanData() {

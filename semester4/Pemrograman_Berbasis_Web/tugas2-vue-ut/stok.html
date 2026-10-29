@@ -58,7 +58,7 @@
                     
                     <!-- Search -->
                     <div style="flex: 1; min-width: 200px;">
-                        <input type="text" v-model="filterSearch" class="form-control" placeholder="🔍 Cari Nama/Kode...">
+                        <input type="text" v-model="filterSearch" class="form-control" placeholder="Cari Judul/Kode Bahan Ajar">
                     </div>
 
                     <!-- Filter UPBJJ -->
@@ -97,8 +97,10 @@
                         <tr>
                             <th style="padding: 15px; text-align: left;">Kode & Judul</th>
                             <th style="padding: 15px; text-align: left;">Detail Lokasi</th>
+                            <th style="padding: 15px; text-align: left;">Kategori</th>
                             <th style="padding: 15px; text-align: center;">Stok (Safety)</th>
                             <th style="padding: 15px; text-align: left;">Status</th>
+                            <th style="padding: 15px; text-align: center;">Harga</th>
                             <th style="padding: 15px; text-align: left;">Catatan</th>
                             <th style="padding: 15px; text-align: center;">Aksi</th>
                         </tr>
@@ -111,9 +113,10 @@
                                 <span v-text="item.judul"></span>
                             </td>
                             <td style="padding: 15px;">
-                                <span v-text="item.upbjj"></span><br>
-                                <small class="text-muted">Rak: {{ item.lokasiRak }} | Kat: {{ item.kategori }}</small>
+                                <span v-text="'UPBJJ ' + item.upbjj"></span><br>
+                                <small class="text-muted">Rak: {{ item.lokasiRak }}</small>
                             </td>
+                            <td style="padding: 15px;" v-text="item.kategori"></td>
                             <td style="padding: 15px; text-align: center;">
                                 <strong>{{ item.qty }}</strong> <small class="text-muted">({{ item.safety }})</small>
                             </td>
@@ -124,7 +127,9 @@
                                 <span v-else class="status-aman"><i class="bi bi-check-circle-fill"></i> Aman</span>
                             </td>
                             <!-- V-HTML Directive -->
+                            <td style="padding: 15px; text-align: center;">Rp {{ formatRupiah(item.harga) }} ,-
                             <td style="padding: 15px;" v-html="item.catatanHTML"></td>
+                            </td>
                             <td style="padding: 15px; text-align: center;">
                                 <button class="btn-secondary" style="padding: 5px 10px; font-size: 0.9rem;" @click="bukaModal('edit', item, index)"><i class="bi bi-pencil-square"></i> Edit</button>
                             </td>
