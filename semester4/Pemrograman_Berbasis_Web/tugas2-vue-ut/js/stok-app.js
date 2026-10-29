@@ -83,7 +83,7 @@ var app = new Vue({
             this.showToast('Filter UT Daerah diterapkan', 'success');
         },
         filterSafety(newVal) {
-            if (newVal) this.showToast('Menampilkan data Re-Order', 'warning');
+            if (newVal) this.showToast('Menampilkan data menipis/kosong', 'success');
         }
     },
     methods: {
