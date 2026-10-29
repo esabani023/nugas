@@ -149,6 +149,7 @@
                     <h3 style="margin-bottom: 20px;" v-text="isEditMode ? 'Edit Stok Bahan Ajar' : 'Tambah Bahan Ajar Baru'"></h3>
                     
                     <form @submit.prevent="simpanData">
+                        <!-- Kode dan UT Daerah -->
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                             <div class="form-group"><label>Kode</label><input type="text" v-model="formStok.kode" class="form-control" :disabled="isEditMode" required></div>
                             <div class="form-group"><label>UT Daerah</label>
@@ -157,12 +158,36 @@
                                 </select>
                             </div>
                         </div>
+                    
+                        <!-- Judul Buku -->
                         <div class="form-group"><label>Judul Buku</label><input type="text" v-model="formStok.judul" class="form-control" required></div>
+
+                        <!-- Kategori dan Lokasi Rak -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="form-group"><label>Kategori</label>
+                                <select v-model="formStok.kategori" class="form-control" required>
+                                    <option v-for="kat in listKategori" :value="kat" v-text="kat"></option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label>Lokasi Rak</label><input type="text" v-model="formStok.lokasiRak" class="form-control" placeholder="Contoh: R1-01" required></div>
+                        </div>
+                    
+                        <!-- Harga, Qty, Safety -->
                         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
-                            <div class="form-group"><label>Harga</label><input type="number" v-model="formStok.harga" class="form-control" required></div>
+                            <div class="form-group">
+                                <label>Harga</label>
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" v-model="formStok.harga" @input="formStok.harga = String(formStok.harga).replace(/[^0-9]/g, '')" required>
+                            </div>
                             <div class="form-group"><label>Qty</label><input type="number" v-model="formStok.qty" class="form-control" required></div>
                             <div class="form-group"><label>Safety</label><input type="number" v-model="formStok.safety" class="form-control" required></div>
                         </div>
+                    
+                        <!-- Catatan HTML -->
+                        <div class="form-group">
+                            <label>Catatan (Format HTML)</label>
+                            <textarea v-model="formStok.catatanHTML" class="form-control" rows="2" placeholder="Gunakan tag HTML, misal: <b>Revisi Baru</b>"></textarea>
+                        </div>
+                    
                         <button type="submit" class="btn-primary" style="width: 100%;">Simpan Data</button>
                     </form>
                 </div>

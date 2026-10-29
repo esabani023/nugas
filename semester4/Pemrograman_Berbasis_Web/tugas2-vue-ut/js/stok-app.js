@@ -94,8 +94,9 @@ var app = new Vue({
             }
         },
         simpanData() {
+            this.formStok.harga = parseInt(this.formStok.harga) || 0;
+            
             if (this.isEditMode) {
-                // Update reaktif di array Vue (Vue.set) atau via splice
                 this.stok.splice(this.editIndex, 1, { ...this.formStok });
                 this.showToast('Data berhasil diperbarui', 'success');
             } else {
