@@ -1,8 +1,8 @@
 const upbjjList = ["Jakarta", "Surabaya", "Makassar", "Padang", "Denpasar"];
 const kategoriList = ["MK Wajib", "MK Pilihan", "Praktikum", "Problem-Based"];
 const pengirimanList = [
-  { kode: "REG", nama: "Reguler (3-5 hari)" },
-  { kode: "EXP", nama: "Ekspres (1-2 hari)" }
+  { kode: "REG", nama: "JNE Reguler (3-5 hari)" },
+  { kode: "EXP", nama: "JNE Ekspres (1-2 hari)" }
 ];
 const paket = [
   { kode: "PAKET-UT-001", nama: "PAKET IPS Dasar", isi: ["EKMA4116","EKMA4115"], harga: 120000 },
@@ -60,7 +60,7 @@ const tracking = {
     nim: "123456789",
     nama: "Rina Wulandari",
     status: "Dalam Perjalanan",
-    ekspedisi: "JNE",
+    ekspedisi: "JNE Reguler (3-5 hari)",
     tanggalKirim: "2025-08-25",
     paket: "PAKET-UT-001",
     total: 120000,

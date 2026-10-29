@@ -12,7 +12,7 @@
     </script>
 </head>
 <body>
-    <div class="app-container" id="app">
+    <div class="app-container" id="app" v-cloak>
         <!-- Sidebar -->
         <nav class="sidebar glass">
             <div class="brand">
@@ -138,7 +138,7 @@
             </div>
 
             <!-- Modal Form (Tambah & Edit) - Two-Way Data Binding v-model -->
-            <div class="modal-overlay" v-show="isModalBuka" style="display: flex;">
+            <div class="modal-overlay" v-show="isModalBuka">
                 <div class="modal-content glass" style="max-width: 500px;">
                     <i class="bi bi-x-lg close-modal" @click="isModalBuka = false"></i>
                     <h3 style="margin-bottom: 20px;" v-text="isEditMode ? 'Edit Stok Bahan Ajar' : 'Tambah Bahan Ajar Baru'"></h3>

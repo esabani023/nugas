@@ -11,7 +11,7 @@
     </script>
 </head>
 <body>
-    <div class="app-container" id="app">
+    <div class="app-container" id="app" v-cloak>
         <!-- Sidebar -->
         <nav class="sidebar glass">
             <div class="brand">
@@ -53,7 +53,7 @@
             </header>
             
             <!-- V-Show Form DO Baru -->
-            <div class="glass tracking-card" v-show="isFormBuka" style="margin-bottom: 20px; border-left: 4px solid var(--ut-blue);">
+            <div class="glass tracking-card" v-show="isFormBuka">
                 <h3 style="margin-bottom: 15px;">Form Tambah Delivery Order</h3>
                 <form @submit.prevent="simpanDO">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
@@ -107,8 +107,9 @@
                                 <h2 class="track-nama-value" v-text="resultInfo.nama"></h2>
                                 <p class="track-info-text">Status: <strong style="color: var(--ut-yellow);" v-text="resultInfo.status"></strong></p>
                             </div>
-                            <div class="track-ekspedisi-info">
-                                <h3 class="track-nama-value" v-text="resultInfo.ekspedisi"></h3>
+                                <div class="track-ekspedisi-info">
+                                <img src="assets/logo-jne.png" alt="Ekspedisi" class="ekspedisi-logo">
+                                <p class="track-info-text"> Ekspedisi: <strong v-text="resultInfo.ekspedisi"></strong></p>
                             </div>
                         </div>
                     </div>

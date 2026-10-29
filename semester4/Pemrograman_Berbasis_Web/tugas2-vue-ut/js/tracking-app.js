@@ -32,7 +32,6 @@ var app = new Vue({
         }
     },
     watch: {
-        // Watcher 2: Pemantauan Karakter Cerdas
         searchString(newVal) {
             // Jika user mengetik minimal 10 karakter (contoh: DO2025-001), auto-pencarian tanpa menekan Enter!
             if (newVal && newVal.length >= 10) {
