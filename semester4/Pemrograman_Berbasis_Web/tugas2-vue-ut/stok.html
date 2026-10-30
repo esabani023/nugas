@@ -88,7 +88,7 @@
                 <table class="table" style="width: 100%; border-collapse: collapse; min-width: 800px;">
                     <thead style="background-color: var(--ut-blue); color: var(--ut-white);">
                         <tr>
-                            <th style="padding: 15px; text-align: left;">
+                            <th style="text-align: left;">
                                 Kode & Judul 
                                 <span style="margin-left: 8px; font-size: 0.8rem;">
                                     <i class="bi bi-caret-up-fill" 
@@ -101,9 +101,9 @@
                                        @click="setSort('judul', 'desc')" title="Urutkan Z-A"></i>
                                 </span>
                             </th>
-                            <th style="padding: 15px; text-align: left;">Detail Lokasi</th>
-                            <th style="padding: 15px; text-align: left;">Kategori</th>
-                            <th style="padding: 15px; text-align: center;">
+                            <th style="text-align: left;">Detail Lokasi</th>
+                            <th style="text-align: left;">Kategori</th>
+                            <th style="text-align: center;">
                                 Stok (Safety)
                                 <span style="margin-left: 8px; font-size: 0.8rem;">
                                     <i class="bi bi-caret-up-fill" 
@@ -116,8 +116,8 @@
                                        @click="setSort('qty', 'desc')" title="Urutkan Banyak"></i>
                                 </span>
                             </th>
-                            <th style="padding: 15px; text-align: left;">Status</th>
-                            <th style="padding: 15px; text-align: left;">
+                            <th style="text-align: left;">Status</th>
+                            <th style="text-align: left;">
                                 Harga
                                 <span style="margin-left: 8px; font-size: 0.8rem;">
                                     <i class="bi bi-caret-up-fill" 
@@ -130,8 +130,8 @@
                                        @click="setSort('harga', 'desc')" title="Urutkan Termahal"></i>
                                 </span>
                             </th>
-                            <th style="padding: 15px; text-align: left;">Catatan</th>
-                            <th style="padding: 15px; text-align: center;">Aksi</th>
+                            <th style="text-align: left;">Catatan</th>
+                            <th style="text-align: center;">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -146,7 +146,7 @@
                                 <small class="text-muted">Rak: {{ item.lokasiRak }}</small>
                             </td>
                             <td style="padding: 15px;" v-text="item.kategori"></td>
-                            <td style="padding: 15px; text-align: center;">
+                            <td style="text-align: center;">
                                 <strong>{{ item.qty }}</strong> <small class="text-muted">({{ item.safety }})</small>
                             </td>
                             <!-- V-If Conditional Status -->
@@ -156,10 +156,10 @@
                                 <span v-else class="status-aman"><i class="bi bi-check-circle-fill"></i> Aman</span>
                             </td>
                             <!-- V-HTML Directive -->
-                            <td style="padding: 15px; text-align: center;">Rp {{ formatRupiah(item.harga) }} ,-
+                            <td style="text-align: center;">Rp {{ formatRupiah(item.harga) }} ,-
                             <td style="padding: 15px;" v-html="item.catatanHTML"></td>
                             </td>
-                            <td style="padding: 15px; text-align: center;">
+                            <td style="text-align: center;">
                                 <button class="btn-secondary" style="padding: 5px 10px; font-size: 0.9rem;" @click="bukaModal('edit', item, index)">
                                     <i class="bi bi-pencil-square"></i> Edit
                                 </button>
