@@ -121,6 +121,8 @@ var app = new Vue({
             // Auto Reset Form
             this.formDO.nim = '';
             this.formDO.nama = '';
+            this.formDO.ekspedisi = '';
+            this.formDO.paket = '';
             this.isFormBuka = false;
         },
         toggleTheme() {
