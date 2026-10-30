@@ -20,10 +20,8 @@ var app = new Vue({
         // Logika Auto-Generate Nomor DO
         generatedDo() {
             const year = new Date().getFullYear();
-            // Ekstrak semua keys, cari angka tertinggi, lalu + 1
-            const keys = Object.keys(this.databaseDO);
-            const total = keys.length + 1;
-            // Format 3 digit berurut (001, 002)
+            const keysTahunIni = Object.keys(this.databaseDO).filter(kode => kode.startsWith(`DO${year}`));
+            const total = keysTahunIni.length + 1;         
             const sequence = total.toString().padStart(3, '0');
             return `DO${year}-${sequence}`;
         },
