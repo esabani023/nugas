@@ -352,6 +352,14 @@ body {
     border-radius: 15px;
     margin-top: 20px;
 }
+.tracking-main-card {
+    border: none;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0;
+    overflow: hidden;
+}
 .track-header-block {
     background-color: var(--ut-blue);
     color: var(--ut-white);
