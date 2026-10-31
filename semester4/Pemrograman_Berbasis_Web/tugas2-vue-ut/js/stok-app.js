@@ -1,4 +1,3 @@
-/* js/stok-app.js */
 var app = new Vue({
     el: '#app',
     data: {
@@ -47,7 +46,7 @@ var app = new Vue({
                 result = result.filter(item => item.kategori === this.filterKategori);
             }
 
-            // Filter Re-Order (Stok < Safety)
+            // Filter Stok Menipis/Kosong (Stok < Safety)
             if (this.filterSafety) {
                 result = result.filter(item => item.qty < item.safety);
             }

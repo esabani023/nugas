@@ -1,4 +1,3 @@
-/* js/tracking-app.js */
 var app = new Vue({
     el: '#app',
     data: {
@@ -113,7 +112,7 @@ var app = new Vue({
                 ]
             };
 
-            // Masukkan ke Objek Tracking (Karena Object, bukan Array Push)
+            // Masukkan ke Objek Tracking
             this.$set(this.databaseDO, newDoNumber, newEntry);
             
             this.showToast('DO Baru berhasil dibuat dengan nomor ' + newDoNumber, 'success');

@@ -1,6 +1,4 @@
-/* js/script.js (Versi Bersih - Khusus Login & Dashboard) */
-
-// --- 1. Global Utilities ---
+// --- Global Utilities ---
 function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
@@ -57,7 +55,7 @@ window.hoverDropdown = function(isHovering) {
     }
 }
 
-// --- 2. Page Specific Logic ---
+// --- Page Specific Logic ---
 document.addEventListener('DOMContentLoaded', () => {
     const path = window.location.pathname;
     const isLogin = path.endsWith('login.html') || path.endsWith('/');
@@ -70,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutBtnSidebar = document.getElementById('btn-logout-sidebar');
     if (logoutBtnSidebar) logoutBtnSidebar.addEventListener('click', logout);
 
-    // LOGIKA HALAMAN LOGIN (login.html)
+    // Logika Halaman Login
     if (isLogin) {
         const loginForm = document.getElementById('loginForm');
         if (loginForm) {
@@ -121,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // LOGIKA HALAMAN DASHBOARD (index.html)
+    // Logika Halaman Dashboard
     if (path.includes('index.html')) {
         const greetingEl = document.getElementById('greeting-time');
         const userNameEl = document.getElementById('user-name');
