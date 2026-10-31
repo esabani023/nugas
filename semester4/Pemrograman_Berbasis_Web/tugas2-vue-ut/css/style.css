@@ -504,6 +504,10 @@ body {
     vertical-align: middle;
     padding: 15px;
 }
+.table thead {
+    background-color: var(--ut-blue);
+    color: var(--ut-white);
+}
 .table tbody tr {
     transition: background-color 0.2s;
 }
@@ -519,6 +523,19 @@ body {
 }
 [data-theme="dark"] .text-brand {
     color: var(--ut-yellow);
+}
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Ukuran standar */
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.btn-sm {
+    padding: 5px 10px !important;
+    font-size: 0.9rem !important;
 }
 
 /* Dropdown Menu Flyout */
@@ -669,7 +686,7 @@ body {
     opacity: 0.15;
 }
 
-/* Form input */
+/* Form Input */
 .form-control:disabled {
     background-color: rgba(0, 0, 0, 0.05);
     color: var(--text-muted);
@@ -678,6 +695,16 @@ body {
 }
 [data-theme="dark"] .form-control:disabled {
     background-color: rgba(255, 255, 255, 0.05);
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
 }
 
 /* Status saverity stok */
