@@ -684,7 +684,7 @@ body {
 }
 
 [data-theme="dark"] .bg-watermark {
-    opacity: 0.15;
+    opacity: 0.02;
 }
 
 /* Form Input */

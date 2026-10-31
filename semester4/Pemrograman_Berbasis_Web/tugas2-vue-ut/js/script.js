@@ -4,6 +4,14 @@ function toggleTheme() {
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+
+    // Ubah Gambar Watermark
+    const watermark = document.querySelector('.bg-watermark');
+    if (watermark) {
+        watermark.src = newTheme === 'dark' 
+            ? 'assets/bg-watermark-ut-dark.png' 
+            : 'assets/bg-watermark-ut-light.png';
+    }
 }
 
 function showToast(message, type = 'error') {
@@ -61,6 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const isLogin = path.endsWith('login.html') || path.endsWith('/');
     
     checkAuth(isLogin);
+
+    // Ubah Gambar Watermark
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const watermark = document.querySelector('.bg-watermark');
+    if (watermark) {
+        watermark.src = currentTheme === 'dark' 
+            ? 'assets/bg-watermark-ut-dark.png' 
+            : 'assets/bg-watermark-ut-light.png';
+    }
 
     // Sidebar Utilities
     const themeBtnSidebar = document.getElementById('btn-theme-sidebar');
