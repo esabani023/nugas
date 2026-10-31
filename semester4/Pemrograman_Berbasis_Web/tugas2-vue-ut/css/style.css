@@ -586,6 +586,7 @@ body {
 
 .chevron-icon {
     transition: transform 0.3s ease;
+    margin-left: auto;
 }
 .dropdown-btn.active .chevron-icon {
     transform: rotate(90deg);
