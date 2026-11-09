@@ -1,0 +1,54 @@
+<p>Assalamu'alaikum wr. wb., selamat malam saya Esa Sya'bani asal UPBJJ Purwokerto prodi S1 sistem informasi izin menjawab pertanyaan yang bapak berikan.</p>
+<p>Tahapan desain sistem merupakan jembatan untuk menjawab "bagaimana" sistem akan dibangun berdasarkan rumusan "apa" yang telah dikumpulkan pada fase analisis (RDD, DFD, dan Diagram UML pada tugas-tugas sebelumnya). Berikut adalah analisis komprehensif mengenai kelanjutan Sistem Informasi Perpustakaan Universitas XYZ ke tahap desain:</p>
+
+<ol>
+    <li>
+        <strong>Pemodelan Data Utama (ERD dan Diagram Relasi Fisik)</strong><br>
+        Berdasarkan <i>class diagram</i> pada tugas 3, entitas logis ditransformasikan menjadi rancangan fisik berupa 15 relasi/tabel basis data. Keputusan desain utamanya meliputi:
+        <ul>
+            <li><b>Rantai Transaksional Inti:</b> Dipetakan secara ketat melalui relasi <code>Buku &rarr; EksemplarBuku &rarr; DetailPeminjaman &rarr; Peminjaman &rarr; Pengembalian &rarr; Denda</code>.</li>
+            <li><b>Hierarki Pengguna (Supertype/Subtype):</b> Entitas <code>User</code> dirancang sebagai <i>supertype</i> yang memegang data autentikasi sentral (id, username, password_hash, role), yang kemudian diturunkan ke 5 <i>subtype</i>: Anggota, Pustakawan, Kepala Perpustakaan, Pimpinan Universitas, dan Admin Sistem.</li>
+            <li><b>Penanganan Atribut Turunan:</b> Untuk menjaga akurasi <i>real-time</i> (seperti jumlah eksemplar tersedia atau hari keterlambatan), atribut turunan tidak disimpan secara fisik di tabel, melainkan dihitung langsung melalui <i>query</i> (komputasi dinamis). Hal ini menjawab akar masalah dari pencatatan Excel sebelumnya yang sering tidak sinkron.</li>
+            <li><b>Log Audit:</b> Penambahan tabel <code>LogAktivitas</code> untuk mencatat jejak rekam sistem (akuntabilitas keamanan).</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Strategi Akuisisi Sistem (Make vs. Buy)</strong><br>
+        Berdasarkan batasan RDD (waktu hanya 4-6 bulan dan Tim IT kampus lebih berpengalaman di web profil daripada sistem transaksional), maka strategi akuisisi disusun berdasarkan prioritas berikut:
+        <ul>
+            <li><b>Prioritas 1: Aplikasi Paket Siap Pakai (COTS - Commercial Off-The-Shelf).</b> Karena domain perpustakaan memiliki standar proses yang baku (sirkulasi, denda, katalog), menggunakan perangkat lunak paket adalah yang tercepat. Sistem ini harus melalui <i>fit-gap analysis</i> selama 3 minggu terhadap skenario RDD kita.</li>
+            <li><b>Prioritas 2: Outsourcing (Vendor).</b> Jika aplikasi paket tidak memenuhi kebutuhan esensial tanpa modifikasi <i>source code</i>, langkah selanjutnya adalah menyewa vendor. Kontrak wajib memuat klausul kepemilikan <i>source code</i>, kerahasiaan data anggota, dan transfer wawasan (<i>knowledge transfer</i>) ke Tim IT kampus.</li>
+            <li><b>Tidak Direkomendasikan: Kustomisasi In-House.</b> Membangun sendiri dari nol oleh Tim IT internal berisiko tinggi memundurkan jadwal proyek dan menurunkan kualitas kelayakan sistem.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Rancangan Arsitektur Sistem Berbasis Web</strong><br>
+        Arsitektur yang direkomendasikan adalah <b>Client-Server 3-Tier</b> dengan antarmuka <i>Thin Client</i> (dijalankan murni via web browser). Pembagiannya adalah:
+        <ul>
+            <li><b>Tier Presentasi (Client):</b> Berada di <i>browser</i> pengguna. Dirancang responsif agar anggota dapat mengakses katalog <i>online</i> dari <i>smartphone</i>/gawai dengan mulus (memenuhi UR-02).</li>
+            <li><b>Tier Aplikasi (Web Server):</b> Mengelola logika bisnis utama (validasi ketersediaan buku, algoritma perhitungan denda otomatis, dan pembuatan laporan).</li>
+            <li><b>Tier Data (Database Server):</b> Menyimpan 15 tabel relasi. Pemisahan logis ini memudahkan sistem untuk di-<i>scale up</i> jika beban harian meningkat.</li>
+        </ul>
+        Sebagai catatan, arsitektur harus mengakomodasi <b>Role-Based Access Control (RBAC)</b>, <i>hashing password</i>, serta dioptimalkan agar <i>response time</i> saat transaksi peminjaman kurang dari 3 detik untuk menghindari antrean di jam sibuk.
+    </li>
+    <li>
+        <strong>Rancangan Antarmuka (UI/UX)</strong><br>
+        Antarmuka tidak hanya sekadar visual, namun merupakan implementasi <i>Boundary Class</i>. Prinsip utama perancangannya adalah:
+        <ul>
+            <li><b>Berbasis Peran (Role-Based UI):</b> Navigasi menu disesuaikan dengan hak akses. Anggota melihat dashboard riwayat pinjam, Pustakawan melihat form sirkulasi, dan Kepala Perpustakaan melihat dashboard pelaporan grafis.</li>
+            <li><b>Manajemen Kecemasan Pengguna (NFR-01):</b> Karena Pustakawan Senior terbiasa dengan metode manual, alur <i>Form Peminjaman</i> dan <i>Pengembalian</i> dirancang agar mirip secara psikologis dengan urutan kerja buku catatan mereka (<i>content awareness</i> dan tata letak konsisten).</li>
+            <li><b>Minim Upaya & Pencegahan Kesalahan:</b> Diterapkan aturan <i>maksimal 3 klik</i> dari menu utama. Input kode anggota dan kode eksemplar diintegrasikan dengan alat <i>barcode scanner</i> untuk meminimalisir pengetikan. Setiap tindakan destruktif (seperti menghapus data/akun) wajib memicu kotak dialog konfirmasi.</li>
+        </ul>
+    </li>
+</ol>
+
+<h2>Kesimpulan</h2>
+<p>Transisi dari tahap analisis ke desain untuk Universitas XYZ membuktikan bahwa setiap model yang sudah dibuat sebelumnya memiliki fungsi teknis. DFD dan Use Case menjadi acuan pembuatan Antarmuka, Class Diagram bertransformasi menjadi rancangan fisik ERD, dan Sequence Diagram mendikte di mana logika aplikasi ditempatkan pada Arsitektur 3-Tier. Rancangan desain ini kemudian akan berfungsi ganda, yaitu sebagai parameter uji (jika membeli aplikasi paket) atau sebagai <i>blueprint</i> teknis (jika menggunakan jasa vendor).</p>
+
+<h2>Sumber Referensi</h2>
+<ul>
+    <li>BMP MSIM4302 - Analisis dan Perancangan Sistem</li>
+    <li>Dokumen RDD Sistem Informasi Perpustakaan Universitas XYZ Berbasis Web dari tugas 1</li>
+    <li>Dokumen Process Model and Use Case Model Document Sistem Informasi Perpustakaan Universitas XYZ Berbasis Web dari tugas 2</li>
+    <li>Dokumen Object-Oriented Analysis Model Sistem Informasi Perpustakaan Universitas XYZ Berbasis Web dari tugas 3</li>
+</ul>
