@@ -81,10 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
             : 'assets/img/bg-watermark-ut-light.png';
     }
 
-    // Sidebar Utilities
-    const themeBtnSidebar = document.getElementById('btn-theme-sidebar');
-    if (themeBtnSidebar) themeBtnSidebar.addEventListener('click', toggleTheme);
-    
     // Login Page Specific
     if (isLogin) {
         const loginForm = document.getElementById('loginForm');

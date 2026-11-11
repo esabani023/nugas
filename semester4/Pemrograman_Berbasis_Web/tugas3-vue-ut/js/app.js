@@ -39,6 +39,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             setInterval(this.updateClock, 1000);
         },
         methods: {
+            toggleTheme() {
+                if (typeof window.toggleTheme === 'function') {
+                    window.toggleTheme();
+                }
+            },
             logout() {
                 localStorage.removeItem('sitta_user');
                 window.location.href = 'login.html';

@@ -31,8 +31,8 @@
                 </li>
                 <li><a href="#" onclick="fiturBelumTersedia(event)"><i class="bi bi-clock-history"></i> Histori Transaksi</a></li>
                 <li>
-                    <a id="btn-theme-sidebar" style="cursor: pointer;">
-                        <i class="bi bi-moon-stars icon-light-mode"></i>
+                    <a @click.prevent="toggleTheme" style="cursor: pointer;">
+                        <i class="bi bi-moon icon-light-mode"></i>
                         <i class="bi bi-sun icon-dark-mode"></i>
                         Tema
                     </a>
