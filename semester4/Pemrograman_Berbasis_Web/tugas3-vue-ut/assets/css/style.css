@@ -252,7 +252,7 @@ body {
 
 /* Login Page Specific */
 .login-page {
-    background-image: url('../assets/bg-kampus.jpg');
+    background-image: url('../img/bg-kampus.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
