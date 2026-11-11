@@ -1,0 +1,87 @@
+<div>
+    <header class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <h1>Informasi Stok Bahan Ajar</h1>
+        <button class="btn-primary" @click="bukaModal('tambah')"><i class="bi bi-plus-lg"></i> Tambah Data</button>
+    </header>
+
+    <div class="glass" style="padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
+            <div style="flex: 1; min-width: 200px;">
+                <input type="text" v-model="filterSearch" class="form-control" placeholder="Cari Judul / Kode Bahan Ajar">
+            </div>
+            <select v-model="filterUpbjj" class="form-control" style="width: auto;">
+                <option value="">Semua UT Daerah</option>
+                <option v-for="lokasi in listUpbjj" :value="lokasi" v-text="lokasi"></option>
+            </select>
+            <select v-model="filterKategori" class="form-control" style="width: auto;" :disabled="!filterUpbjj">
+                <option value="">Semua Kategori</option>
+                <option v-for="kat in listKategori" :value="kat" v-text="kat"></option>
+            </select>
+            <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                <input type="checkbox" v-model="filterSafety"> Stok Menipis/Kosong
+            </label>
+            <button class="btn-secondary" @click="resetFilter"><i class="bi bi-arrow-counterclockwise"></i> Reset</button>
+        </div>
+    </div>
+
+    <div class="glass" style="border-radius: 15px; overflow-x: auto;">
+        <table class="table" style="width: 100%; border-collapse: collapse; min-width: 800px;">
+            <thead>
+                <tr>
+                    <th style="text-align: left;">
+                        Kode & Judul 
+                        <span style="margin-left: 8px; font-size: 0.8rem;">
+                            <i class="bi bi-caret-up-fill" style="cursor: pointer;" :style="{ opacity: sortColumn === 'judul' && sortOrder === 'asc' ? '1' : '0.4' }" @click="setSort('judul', 'asc')"></i>
+                            <i class="bi bi-caret-down-fill" style="cursor: pointer;" :style="{ opacity: sortColumn === 'judul' && sortOrder === 'desc' ? '1' : '0.4' }" @click="setSort('judul', 'desc')"></i>
+                        </span>
+                    </th>
+                    <th style="text-align: left;">Detail Lokasi</th>
+                    <th style="text-align: left;">Kategori</th>
+                    <th style="text-align: center;">
+                        Stok (Safety)
+                        <span style="margin-left: 8px; font-size: 0.8rem;">
+                            <i class="bi bi-caret-up-fill" style="cursor: pointer;" :style="{ opacity: sortColumn === 'qty' && sortOrder === 'asc' ? '1' : '0.4' }" @click="setSort('qty', 'asc')"></i>
+                            <i class="bi bi-caret-down-fill" style="cursor: pointer;" :style="{ opacity: sortColumn === 'qty' && sortOrder === 'desc' ? '1' : '0.4' }" @click="setSort('qty', 'desc')"></i>
+                        </span>
+                    </th>
+                    <th style="text-align: left;">Status (Hover Catatan)</th>
+                    <th style="text-align: left;">
+                        Harga
+                        <span style="margin-left: 8px; font-size: 0.8rem;">
+                            <i class="bi bi-caret-up-fill" style="cursor: pointer;" :style="{ opacity: sortColumn === 'harga' && sortOrder === 'asc' ? '1' : '0.4' }" @click="setSort('harga', 'asc')"></i>
+                            <i class="bi bi-caret-down-fill" style="cursor: pointer;" :style="{ opacity: sortColumn === 'harga' && sortOrder === 'desc' ? '1' : '0.4' }" @click="setSort('harga', 'desc')"></i>
+                        </span>
+                    </th>
+                    <th style="text-align: center;">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, index) in filteredStok" :key="item.kode">
+                    <td style="padding: 15px;">
+                        <strong class="text-brand" v-text="item.kode"></strong><br>
+                        <span v-text="item.judul"></span>
+                    </td>
+                    <td style="padding: 15px;">
+                        <span>UPBJJ {{ item.upbjj }}</span><br>
+                        <small class="text-muted">Rak: {{ item.lokasiRak }}</small>
+                    </td>
+                    <td style="padding: 15px;" v-text="item.kategori"></td>
+                    <td style="text-align: center;">
+                        <strong>{{ item.qty | satuanBuah }}</strong> <small class="text-muted">({{ item.safety | satuanBuah }})</small>
+                    </td>
+                    <td style="padding: 15px;">
+                        <status-badge :qty="item.qty" :safety="item.safety" :catatan="item.catatanHTML"></status-badge>
+                    </td>
+                    <td style="padding: 15px;">{{ item.harga | currency }}</td>
+                    <td style="text-align: center;">
+                        <button class="btn-secondary btn-sm" @click="bukaModal('edit', item, index)"><i class="bi bi-pencil-square"></i> Edit</button>
+                        <button class="btn-danger btn-sm" @click="konfirmasiHapus(item.kode)"><i class="bi bi-trash"></i> Hapus</button>
+                    </td>
+                </tr>
+                <tr v-show="filteredStok.length === 0">
+                    <td colspan="7" style="padding: 30px; text-align: center; color: var(--text-muted);">Tidak ada data yang sesuai filter.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div>
+    <header class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <h1>Tracking DO Bahan Ajar</h1>
+    </header>
+
+    <div class="glass tracking-card">
+        <div style="display: flex; gap: 15px;">
+            <div style="flex: 1; min-width: 200px;">
+                <input type="text" v-model="searchString" @keyup.enter="cariDO" @keyup.esc="clearSearch" class="form-control" placeholder="Masukkan No. DO atau NIM (Tekan Enter untuk Cari, Esc untuk Reset)">
+            </div>
+            <button class="btn-primary" @click="cariDO"><i class="bi bi-search"></i> Cari</button>
+        </div>
+    </div>
+
+    <div class="tracking-result" v-if="resultInfo" style="display: block;">
+        <div class="glass tracking-main-card">
+            <div class="track-header-block">
+                <div class="track-header-flex">
+                    <div>
+                        <p class="track-nama-label">Nama Mahasiswa</p>
+                        <h2 class="track-nama-value" v-text="resultInfo.nama"></h2>
+                        <p class="track-info-text">NIM: <strong v-text="resultInfo.nim"></strong></p>
+                        <p class="track-info-text">Status: <strong style="color: var(--ut-yellow);" v-text="resultInfo.status"></strong></p>
+                    </div>
+                    <div class="track-ekspedisi-info">
+                        <img src="assets/img/logo-jne.png" alt="Ekspedisi" class="ekspedisi-logo">
+                        <p class="track-info-text">Ekspedisi: <strong v-text="resultInfo.ekspedisi"></strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding: 25px 30px;">
+                <table class="track-detail-table">
+                    <tbody>
+                        <tr>
+                            <td><span class="track-table-label">No. Delivery Order</span><strong class="track-table-value">{{ activeDO }}</strong></td>
+                            <td><span class="track-table-label">Jenis Paket</span><strong class="track-table-value">{{ resultInfo.paket }}</strong></td>
+                            <td><span class="track-table-label">Tanggal Kirim</span><strong class="track-table-value">{{ formatTanggal(resultInfo.tanggalKirim) }}</strong></td>
+                            <td><span class="track-table-label">Total Pembayaran</span><strong class="track-table-value">{{ resultInfo.total | currency }}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" :style="{ width: progressBarWidth }"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass tracking-card">
+            <h3>Perjalanan Paket</h3><br>
+            <div class="timeline">
+                <div class="timeline-item" v-for="jalur in resultInfo.perjalanan">
+                    <small class="text-muted" v-text="jalur.waktu"></small>
+                    <p><strong v-text="jalur.keterangan"></strong></p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px; display: flex; gap: 10px;">
+                <input type="text" v-model="newProgressNote" @keyup.enter="tambahProgress" class="form-control" placeholder="Tambah keterangan progres baru...">
+                <button class="btn-primary" @click="tambahProgress">Tambah Progres</button>
+            </div>
+        </div>
+    </div>
+</div>
