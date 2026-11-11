@@ -84,9 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sidebar Utilities
     const themeBtnSidebar = document.getElementById('btn-theme-sidebar');
     if (themeBtnSidebar) themeBtnSidebar.addEventListener('click', toggleTheme);
-    const logoutBtnSidebar = document.getElementById('btn-logout-sidebar');
-    if (logoutBtnSidebar) logoutBtnSidebar.addEventListener('click', logout);
-
+    
     // Login Page Specific
     if (isLogin) {
         const loginForm = document.getElementById('loginForm');

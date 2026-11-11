@@ -39,6 +39,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             setInterval(this.updateClock, 1000);
         },
         methods: {
+            logout() {
+                localStorage.removeItem('sitta_user');
+                window.location.href = 'login.html';
+            },
             updateClock() {
                 const now = new Date();
                 const hour = now.getHours();
