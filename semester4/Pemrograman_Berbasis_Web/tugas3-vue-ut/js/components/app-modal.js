@@ -7,7 +7,7 @@ Vue.component('app-modal', function(resolve, reject) {
                 data() {
                     return {
                         isOpen: false, isEdit: false, editIndex: -1,
-                        form: { kode: '', judul: '', upbjj: 'Jakarta', kategori: 'MK Wajib', lokasiRak: '', harga: 0, qty: 0, safety: 0, catatanHTML: '' },
+                        form: { kode: '', judul: '', upbjj: 'Jakarta', kategori: 'MK Wajib', lokasiRak: '', harga: '', qty: '', safety: '', catatanHTML: '' },
                         listUpbjj: [], listKategori: [], isDeleteMode: false, kodeHapus: ''
                     };
                 },
@@ -18,7 +18,7 @@ Vue.component('app-modal', function(resolve, reject) {
                         if (this.isEdit && data) {
                             this.editIndex = index; this.form = { ...data };
                         } else {
-                            this.form = { kode: '', judul: '', upbjj: upbjjList[0] || 'Jakarta', kategori: katList[0] || 'MK Wajib', lokasiRak: '', harga: 0, qty: 0, safety: 0, catatanHTML: '' };
+                            this.form = { kode: '', judul: '', upbjj: upbjjList[0] || 'Jakarta', kategori: katList[0] || 'MK Wajib', lokasiRak: '', harga: '', qty: '', safety: '', catatanHTML: '' };
                         }
                     },
                     openDelete(kode) {

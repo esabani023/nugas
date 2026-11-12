@@ -18,26 +18,26 @@
             <h3 style="margin-bottom: 20px;" v-text="isEdit ? 'Edit Stok Bahan Ajar' : 'Tambah Bahan Ajar Baru'"></h3>
             <form @submit.prevent="submitForm">
                 <div class="form-grid">
-                    <div class="form-group"><label>Kode</label><input type="text" v-model="form.kode" class="form-control" :disabled="isEdit" required @keyup.enter="submitForm"></div>
+                    <div class="form-group"><label>Kode</label><input type="text" v-model="form.kode" class="form-control" :disabled="isEdit" required @submit.prevent="submitForm"></div>
                     <div class="form-group"><label>UT Daerah</label>
                         <select v-model="form.upbjj" class="form-control" required>
                             <option v-for="lok in listUpbjj" :value="lok" v-text="lok"></option>
                         </select>
                     </div>
                 </div>
-                <div class="form-group"><label>Judul Buku</label><input type="text" v-model="form.judul" class="form-control" required @keyup.enter="submitForm"></div>
+                <div class="form-group"><label>Judul Buku</label><input type="text" v-model="form.judul" class="form-control" required @submit.prevent="submitForm"></div>
                 <div class="form-grid">
                     <div class="form-group"><label>Kategori</label>
                         <select v-model="form.kategori" class="form-control" required>
                             <option v-for="kat in listKategori" :value="kat" v-text="kat"></option>
                         </select>
                     </div>
-                    <div class="form-group"><label>Lokasi Rak</label><input type="text" v-model="form.lokasiRak" class="form-control" placeholder="R1-01" required @keyup.enter="submitForm"></div>
+                    <div class="form-group"><label>Lokasi Rak</label><input type="text" v-model="form.lokasiRak" class="form-control" placeholder="R1-A1" required @submit.prevent="submitForm"></div>
                 </div>
                 <div class="form-grid-2">
-                    <div class="form-group"><label>Harga</label><input type="number" min="0" v-model.number="form.harga" class="form-control" required @keyup.enter="submitForm"></div>
-                    <div class="form-group"><label>Qty</label><input type="number" min="0" v-model.number="form.qty" class="form-control" required @keyup.enter="submitForm"></div>
-                    <div class="form-group"><label>Safety</label><input type="number" min="0" v-model.number="form.safety" class="form-control" required @keyup.enter="submitForm"></div>
+                    <div class="form-group"><label>Harga</label><input type="number" min="0" v-model.number="form.harga" class="form-control" required @submit.prevent="submitForm"></div>
+                    <div class="form-group"><label>Qty</label><input type="number" min="0" v-model.number="form.qty" class="form-control" required @submit.prevent="submitForm"></div>
+                    <div class="form-group"><label>Safety</label><input type="number" min="0" v-model.number="form.safety" class="form-control" required @submit.prevent="submitForm"></div>
                 </div>
                 <div class="form-group"><label>Catatan (HTML)</label><textarea v-model="form.catatanHTML" class="form-control" rows="2"></textarea></div>
                 <button type="submit" class="btn-primary" style="width: 100%;">Simpan Data</button>
