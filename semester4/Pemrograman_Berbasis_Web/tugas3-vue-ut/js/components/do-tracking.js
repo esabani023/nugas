@@ -21,26 +21,43 @@ Vue.component('do-tracking', function(resolve, reject) {
                         return new Date(tgl).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
                     },
                     cariDO() {
-                        const key = this.searchString.trim();
-                        if (!key) { this.resultInfo = null; return; }
-                        let foundKey = null; let foundVal = null;
-                        
-                        if (this.trackingData[key]) {
-                            foundKey = key; foundVal = this.trackingData[key];
-                        } else {
-                            for (let k in this.trackingData) {
-                                if (this.trackingData[k].nim === key) {
-                                    foundKey = k; foundVal = this.trackingData[k]; break;
-                                }
+                     const key = this.searchString.trim();
+    
+                    if (!key) {
+                        this.resultInfo = null;
+                        if (typeof window.showToast === 'function') {
+                            window.showToast('Masukkan Nomor DO atau NIM terlebih dahulu!', 'warning');
+                        }
+                        return;
+                    }
+                
+                    let foundKey = null;
+                    let foundVal = null;
+                    
+                    if (this.trackingData[key]) {
+                        foundKey = key;
+                        foundVal = this.trackingData[key];
+                    } else {
+                        for (let k in this.trackingData) {
+                            if (this.trackingData[k].nim === key) {
+                                foundKey = k;
+                                foundVal = this.trackingData[k];
+                                break;
                             }
                         }
-
-                        if (foundVal) {
-                            this.activeDO = foundKey; this.resultInfo = foundVal; this.progressBarWidth = '50%';
-                        } else {
-                            this.resultInfo = null; alert('Nomor DO atau NIM tidak ditemukan.');
+                    }
+                
+                    if (foundVal) {
+                        this.activeDO = foundKey;
+                        this.resultInfo = foundVal;
+                        this.progressBarWidth = '50%';
+                    } else {
+                        this.resultInfo = null;
+                        if (typeof window.showToast === 'function') {
+                            window.showToast('Nomor DO atau NIM tidak ditemukan.', 'error');
                         }
-                    },
+                    }
+                },
                     clearSearch() {
                         this.searchString = ''; this.resultInfo = null; this.activeDO = '';
                     },
