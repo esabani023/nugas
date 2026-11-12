@@ -50,7 +50,7 @@
         <!-- Main Content Area -->
         <main class="main-content">
 
-            <!-- Tab 0: Dashboard -->
+            <!-- Dashboard -->
             <section v-show="tab === 'dashboard'">
                 <header class="page-header">
                     <h1>Dashboard Aplikasi SITTA</h1>
@@ -74,7 +74,7 @@
                 <img src="assets/img/bg-watermark-ut-light.png" alt="" class="bg-watermark">
             </section>
 
-            <!-- Tab 1: Stok Bahan Ajar -->
+            <!-- Stok Bahan Ajar -->
             <section v-show="tab === 'stok'">
                 <ba-stock-table 
                     :stok="state.stok" 
@@ -85,7 +85,7 @@
                 </ba-stock-table>
             </section>
 
-            <!-- Tab 2: Tracking DO -->
+            <!-- Tracking DO -->
             <section v-show="tab === 'tracking'">
                 <do-tracking 
                     :tracking-data="state.tracking" 
@@ -95,7 +95,7 @@
                 </do-tracking>
             </section>
 
-            <!-- Tab 3: Pemesanan / Order Form -->
+            <!-- Pemesanan / Order Form -->
             <section v-show="tab === 'order'">
                 <div class="glass tracking-card">
                     <h2 style="margin-bottom: 20px;">Form Pemesanan / Buat DO Baru</h2>

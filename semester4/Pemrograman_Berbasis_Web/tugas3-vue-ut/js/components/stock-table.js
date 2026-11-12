@@ -1,5 +1,4 @@
 Vue.component('ba-stock-table', function(resolve, reject) {
-    // Memanggil file template dari server Ubuntu
     fetch('/templates/stock-table.html')
     .then(response => {
         if (!response.ok) throw new Error("Gagal memuat template");

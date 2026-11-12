@@ -101,21 +101,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-
-    // Dropdown Laporan Toggle
-    const dropdownBtn = document.querySelector('.dropdown-btn');
-    const dropdownContainer = document.querySelector('.dropdown-container');
-    if (dropdownBtn && dropdownContainer) {
-        dropdownBtn.addEventListener('click', function(e) {
-            e.preventDefault(); 
-            isDropdownLocked = !isDropdownLocked; 
-            if (isDropdownLocked) {
-                dropdownContainer.classList.add('show');
-                dropdownBtn.classList.add('active'); 
-            } else {
-                dropdownContainer.classList.remove('show');
-                dropdownBtn.classList.remove('active'); 
-            }
-        });
-    }
 });
