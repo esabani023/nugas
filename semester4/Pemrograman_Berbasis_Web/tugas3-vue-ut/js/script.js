@@ -56,16 +56,6 @@ function logout() {
     window.location.href = 'login.html';
 }
 
-let isDropdownLocked = false;
-window.hoverDropdown = function(isHovering) {
-    const dropdownContainer = document.querySelector('.dropdown-container');
-    if (isDropdownLocked) return;
-    if (dropdownContainer) {
-        if (isHovering) dropdownContainer.classList.add('show');
-        else dropdownContainer.classList.remove('show');
-    }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     const path = window.location.pathname;
     const isLogin = path.endsWith('login.html');

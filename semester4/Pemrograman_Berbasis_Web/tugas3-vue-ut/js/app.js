@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             clockM: '00',
             clockS: '00',
             currentDateText: '',
+            dropdownLocked: false,
+            dropdownHover: false,
             state: {
                 stok: rawData.stok,
                 tracking: rawData.tracking,

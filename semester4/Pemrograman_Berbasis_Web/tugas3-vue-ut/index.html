@@ -22,9 +22,11 @@
                 <li><a href="#" @click.prevent="tab = 'stok'" :class="{ active: tab === 'stok' }"><i class="bi bi-book"></i> Info Bahan Ajar</a></li>
                 <li><a href="#" @click.prevent="tab = 'tracking'" :class="{ active: tab === 'tracking' }"><i class="bi bi-truck"></i> Tracking DO</a></li>
                 <li><a href="#" @click.prevent="tab = 'order'" :class="{ active: tab === 'order' }"><i class="bi bi-file-earmark-plus"></i> Buat DO Baru</a></li>
-                <li class="dropdown" onmouseenter="hoverDropdown(true)" onmouseleave="hoverDropdown(false)">
-                    <a href="#" class="dropdown-btn"><i class="bi bi-file-earmark-text"></i> Laporan <i class="bi bi-chevron-right chevron-icon"></i></a>
-                    <div class="dropdown-container">
+                <li class="dropdown" @mouseenter="dropdownHover = true" @mouseleave="dropdownHover = false">
+                    <a href="#" class="dropdown-btn" :class="{ 'active': dropdownLocked }" @click.prevent="dropdownLocked = !dropdownLocked">
+                        <i class="bi bi-file-earmark-text"></i> Laporan <i class="bi bi-chevron-right chevron-icon"></i>
+                    </a>
+                    <div class="dropdown-container" :class="{ 'show': dropdownLocked || dropdownHover }">
                         <a href="#" onclick="fiturBelumTersedia(event)">Monitoring Progress DO</a>
                         <a href="#" onclick="fiturBelumTersedia(event)">Rekap Bahan Ajar</a>
                     </div>
