@@ -11,7 +11,18 @@ Vue.component('app-modal', function(resolve, reject) {
                         listUpbjj: [], listKategori: [], isDeleteMode: false, kodeHapus: ''
                     };
                 },
+                mounted() {
+                    document.addEventListener('keydown', this.handleKeydown);
+                },
+                beforeDestroy() {
+                    document.removeEventListener('keydown', this.handleKeydown);
+                },
                 methods: {
+                    handleKeydown(e) {
+                        if (e.key === 'Escape' && this.isOpen) {
+                            this.close();
+                        }
+                    },
                     open(mode, data = null, index = -1, upbjjList = [], katList = []) {
                         this.listUpbjj = upbjjList; this.listKategori = katList;
                         this.isDeleteMode = false; this.isOpen = true; this.isEdit = (mode === 'edit');
