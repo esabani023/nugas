@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Global Filters
     Vue.filter('currency', function(val) {
         if (!val && val !== 0) return 'Rp 0,-';
-        return 'Rp ' + new Intl.NumberFormat('id-ID').format(val) + ',-';
+        return 'Rp ' + new Intl.NumberFormat('id-ID').format(val) + ',-';   
     });
     Vue.filter('satuanBuah', function(val) {
         if (!val && val !== 0) return '0 buah';
