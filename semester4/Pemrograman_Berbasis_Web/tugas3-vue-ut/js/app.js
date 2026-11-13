@@ -1,4 +1,21 @@
 document.addEventListener('DOMContentLoaded', async () => {
+
+    try {
+        // Memuat semua template
+        await ApiService.muatTemplates([
+            { id: "tpl-stock", path: "templates/stock-table.html" },
+            { id: "tpl-badge", path: "templates/status-badge.html" },
+            { id: "tpl-tracking", path: "templates/do-tracking.html" },
+            { id: "tpl-order", path: "templates/order-form.html" },
+            { id: "tpl-modal", path: "templates/app-modal.html" }
+        ]);
+    } catch (err) {
+        console.error("Gagal memuat template:", err);
+        if (typeof window.showToast === 'function') {
+            window.showToast("Gagal memuat template aplikasi.", "error");
+        }
+    }
+
     const rawData = await ApiService.fetchData();
     if (!rawData) return;
 
