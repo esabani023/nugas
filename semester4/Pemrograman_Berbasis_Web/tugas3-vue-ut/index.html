@@ -97,15 +97,12 @@
 
             <!-- Pemesanan / Order Form -->
             <section v-show="tab === 'order'">
-                <div class="glass tracking-card">
-                    <h2 style="margin-bottom: 20px;">Form Pemesanan / Buat DO Baru</h2>
-                    <order-form 
-                        :paket="state.paket" 
-                        :pengiriman-list="state.pengirimanList" 
-                        :tracking-data="state.tracking"
-                        @created="handleCreatedDO">
-                    </order-form>
-                </div>
+                <order-form
+                    :paket="state.paket" 
+                    :pengiriman-list="state.pengirimanList" 
+                    :tracking-data="state.tracking"
+                    @created="handleCreatedDO">
+                </order-form>
             </section>
 
             <app-modal ref="modal" @save-stock="handleSaveStock" @delete-stock="handleDeleteStock"></app-modal>
