@@ -712,3 +712,16 @@ body {
 .status-aman { color: #28a745; font-weight: bold; }
 .status-menipis { color: #fd7e14; font-weight: bold; }
 .status-kosong { color: #dc3545; font-weight: bold; }
+
+.hover-catatan {
+    position: absolute;
+    bottom: 125%;
+    left: 0;
+    background: var(--card-bg);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    z-index: 100;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}

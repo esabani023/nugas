@@ -3,7 +3,7 @@
     <span v-else-if="qty < safety" class="status-menipis"><i class="bi bi-exclamation-triangle-fill"></i> Menipis</span>
     <span v-else class="status-aman"><i class="bi bi-check-circle-fill"></i> Aman</span>
     
-    <div v-if="showTooltip && catatan" class="glass" style="position: absolute; bottom: 125%; left: 0; background: var(--card-bg); padding: 8px 12px; border-radius: 8px; font-size: 0.85rem; z-index: 100; white-space: nowrap; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+    <div v-if="showTooltip && catatan" class="glass hover-catatan">
         <small><strong>Catatan:</strong></small> <span v-html="catatan"></span>
     </div>
 </span>
