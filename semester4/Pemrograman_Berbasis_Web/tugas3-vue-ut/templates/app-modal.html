@@ -39,7 +39,7 @@
                     <div class="form-group"><label>Qty</label><input type="number" min="0" v-model.number="form.qty" class="form-control" required @submit.prevent="submitForm"></div>
                     <div class="form-group"><label>Safety</label><input type="number" min="0" v-model.number="form.safety" class="form-control" required @submit.prevent="submitForm"></div>
                 </div>
-                <div class="form-group"><label>Catatan (HTML)</label><textarea v-model="form.catatanHTML" class="form-control" rows="2"></textarea></div>
+                <div class="form-group"><label>Catatan (HTML)</label><textarea v-model="form.catatanHTML" class="form-control" rows="2" maxlength="100"></textarea></div>
                 <button type="submit" class="btn-primary" style="width: 100%;">Simpan Data</button>
             </form>
         </div>
