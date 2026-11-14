@@ -33,9 +33,20 @@ Vue.component('app-modal', {
         },
         close() { this.isOpen = false; },
         submitForm() {
+            if (!this.form.kode.trim() || !this.form.judul.trim() || !this.form.lokasiRak.trim()) {
+                if (typeof window.showToast === 'function') {
+                    window.showToast('Kode, Judul, dan Lokasi Rak tidak boleh hanya berisi spasi!', 'error');
+                }
+                return;
+            }
+        
+            this.form.kode = this.form.kode.trim().toUpperCase();
+            this.form.judul = this.form.judul.trim();
+            this.form.lokasiRak = this.form.lokasiRak.trim();
             this.form.harga = parseInt(this.form.harga) || 0;
             this.form.qty = parseInt(this.form.qty) || 0;
             this.form.safety = parseInt(this.form.safety) || 0;
+        
             this.$emit('save-stock', { ...this.form }, this.isEdit, this.editIndex);
             this.close();
         },
