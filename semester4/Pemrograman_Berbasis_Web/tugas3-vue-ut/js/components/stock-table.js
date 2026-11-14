@@ -28,7 +28,7 @@ Vue.component('ba-stock-table', {
                 result = result.filter(i => i.kategori === this.filterKategori);
             }
             if (this.filterSafety) {
-                result = result.filter(i => i.qty < i.safety);
+                result = result.filter(i => i.qty < i.safety || i.qty === 0);
             }
             return result.sort((a, b) => {
                 let mod = this.sortOrder === 'asc' ? 1 : -1;
