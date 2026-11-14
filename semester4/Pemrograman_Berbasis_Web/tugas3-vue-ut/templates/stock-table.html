@@ -56,7 +56,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(item, index) in filteredStok" :key="item.kode">
+                <tr v-for="(item, index) in filteredStok" :key="`${item.kode}-${item.upbjj}-${index}`">
                     <td>
                         <strong class="text-brand" v-text="item.kode"></strong><br>
                         <span v-text="item.judul"></span>
