@@ -1,5 +1,5 @@
 <div>
-    <header class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+    <header class="page-header">
         <h1>Tracking DO Bahan Ajar</h1>
     </header>
 
@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <div class="tracking-result" v-if="resultInfo" style="display: block;">
+    <div style="margin-top: 30px;" v-if="resultInfo">
         <div class="glass tracking-main-card">
             <div class="track-header-block">
                 <div class="track-header-flex">
@@ -55,7 +55,7 @@
                 </div>
             </div>
             
-            <div style="margin-top: 20px; display: flex; gap: 10px;">
+            <div class="add-progress-form">
                 <input type="text" v-model="newProgressNote" @keyup.enter="tambahProgress" @keyup.esc="newProgressNote = ''" class="form-control" placeholder="Tambah keterangan progres baru...">
                 <button class="btn-primary" @click="tambahProgress">Tambah Progres</button>
             </div>

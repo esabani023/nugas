@@ -1,11 +1,11 @@
 <div>
-    <header class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+    <header class="page-header stock-page-header">
         <h1>Informasi Stok Bahan Ajar</h1>
         <button class="btn-primary" @click="bukaModal('tambah')"><i class="bi bi-plus-lg"></i> Tambah Data</button>
     </header>
 
-    <div class="glass" style="padding: 20px; border-radius: 15px; margin-bottom: 20px;">
-        <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
+    <div class="glass filter-card">
+        <div class="filter-controls">
             <div style="flex: 1; min-width: 200px;">
                 <input type="text" v-model="filterSearch" class="form-control" placeholder="Cari Judul / Kode Bahan Ajar">
             </div>
@@ -17,7 +17,7 @@
                 <option value="">Semua Kategori</option>
                 <option v-for="kat in listKategori" :value="kat" v-text="kat"></option>
             </select>
-            <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
+            <label class="checkbox-label">
                 <input type="checkbox" v-model="filterSafety"> Stok Menipis/Kosong
             </label>
             <button class="btn-secondary" @click="resetFilter"><i class="bi bi-arrow-counterclockwise"></i> Reset</button>
@@ -25,7 +25,7 @@
     </div>
 
     <div class="glass" style="border-radius: 15px; overflow-x: auto;">
-        <table class="table" style="width: 100%; border-collapse: collapse; min-width: 800px;">
+        <table class="table">
             <thead>
                 <tr>
                     <th style="text-align: left;">
@@ -57,11 +57,11 @@
             </thead>
             <tbody>
                 <tr v-for="(item, index) in filteredStok" :key="item.kode">
-                    <td style="padding: 15px;">
+                    <td>
                         <strong class="text-brand" v-text="item.kode"></strong><br>
                         <span v-text="item.judul"></span>
                     </td>
-                    <td style="padding: 15px;">
+                    <td>
                         <span>UPBJJ {{ item.upbjj }}</span><br>
                         <small class="text-muted">Rak: {{ item.lokasiRak }}</small>
                     </td>
@@ -69,18 +69,18 @@
                     <td style="text-align: center;">
                         <strong>{{ item.qty | satuanBuah }}</strong> <small class="text-muted">({{ item.safety | satuanBuah }})</small>
                     </td>
-                    <td style="padding: 15px;">
+                    <td>
                         <status-badge :qty="item.qty" :safety="item.safety" :catatan="item.catatanHTML"></status-badge>
                     </td>
-                    <td style="padding: 15px;">{{ item.harga | currency }}</td>
+                    <td>{{ item.harga | currency }}</td>
                     <td style="text-align: center;">
                         <button class="btn-secondary btn-sm" @click="bukaModal('edit', item, index)"><i class="bi bi-pencil-square"></i> Edit</button>
                         <button class="btn-danger btn-sm" @click="konfirmasiHapus(item.kode)"><i class="bi bi-trash"></i> Hapus</button>
                     </td>
                 </tr>
                 <tr v-show="filteredStok.length === 0">
-                    <td colspan="7" style="padding: 30px; text-align: center; color: var(--text-muted);">Tidak ada data yang sesuai filter.</td>
-                </tr>
+                    <td colspan="7" class="table-empty">Tidak ada data yang sesuai filter.</td>
+                </tr> 
             </tbody>
         </table>
     </div>

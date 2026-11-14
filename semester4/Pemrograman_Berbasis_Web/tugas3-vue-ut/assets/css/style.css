@@ -276,6 +276,25 @@ body {
     border-radius: 15%;
 }
 
+.input-icon-group  {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    color: var(--text-muted);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
 [data-theme="dark"] .brand img,
 [data-theme="dark"] .login-container img {
     background-color: var(--ut-white);
@@ -330,9 +349,13 @@ body {
     z-index: 1000;
 }
 
+.modal-overlay.is-open {
+    display: flex;
+}
+
 .modal-content {
     width: 90%;
-    max-width: 400px;
+    max-width: 500px;
     padding: 30px;
     border-radius: 15px;
     position: relative;
@@ -344,6 +367,23 @@ body {
     right: 20px;
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+.exclamation-triangle-icon {
+    font-size: 3.5rem;
+    color: #dc3545;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.confirm-button {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.confirm-button button {
+    flex: 1;
 }
 
 /* Tracking Page */
@@ -391,10 +431,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-}
-.tracking-result {
-    display: none;
-    margin-top: 30px;
 }
 .track-detail-table {
     width: 100%;
@@ -497,8 +533,29 @@ body {
     background-color: var(--ut-white);
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
 }
+.add-progress-form {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
 
-/* Tabel Stok Spesifik */
+/* Halaman Stok Spesifik */
+.filter-card {
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+.filter-controls {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
 .table th, .table td {
     border-bottom: 1px solid var(--glass-border);
     vertical-align: middle;
@@ -524,6 +581,11 @@ body {
 [data-theme="dark"] .text-brand {
     color: var(--ut-yellow);
 }
+.table td.table-empty {
+    padding: 30px;
+    text-align: center;
+    color: var(--text-muted);
+}
 .btn-danger {
     background-color: #dc3545;
     color: white;
@@ -536,6 +598,13 @@ body {
 .btn-sm {
     padding: 5px 10px !important;
     font-size: 0.9rem !important;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
 }
 
 /* Dropdown Menu Flyout */
@@ -618,6 +687,12 @@ body {
     color: var(--text-color);
     margin: 0;
     font-weight: 700;
+}
+
+.stock-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* Kontainer rata tengah untuk jam dan greeting */
