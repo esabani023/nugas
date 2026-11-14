@@ -27,7 +27,7 @@
                 <select class="form-control" v-model="formDO.paket" required>
                     <option v-for="pkt in paket" :value="pkt.kode">{{ pkt.kode }} - {{ pkt.nama }}</option>
                 </select>
-                <small class="text-muted" v-if="selectedPaketDetail" style="display: block; margin-top: 5px;">
+                <small v-if="selectedPaketDetail" class="detail-paket">
                     <strong>Isi:</strong> {{ selectedPaketDetail.isi.join(', ') }} | <strong>Total Harga:</strong> {{ selectedPaketDetail.harga | currency }}
                 </small>
             </div>

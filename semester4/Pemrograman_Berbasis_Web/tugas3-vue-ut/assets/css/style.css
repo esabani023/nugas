@@ -386,6 +386,13 @@ body {
     flex: 1;
 }
 
+/* Buat DO Page */
+.detail-paket {
+    display: block;
+    margin-top: 5px;
+    color: var(--text-muted);
+}
+
 /* Tracking Page */
 .tracking-card {
     padding: 30px;
@@ -741,6 +748,7 @@ body {
     font-size: 1.1rem;
     max-width: 600px;
     line-height: 1.6;
+    color: var(--text-muted);
 }
 
 /* Watermark Dashboard */

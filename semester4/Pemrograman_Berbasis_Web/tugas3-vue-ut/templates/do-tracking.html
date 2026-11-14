@@ -50,7 +50,7 @@
             <h3>Perjalanan Paket</h3><br>
             <div class="timeline">
                 <div class="timeline-item" v-for="jalur in resultInfo.perjalanan">
-                    <small class="text-muted" v-text="jalur.waktu"></small>
+                    <small style="color: var(--text-muted);" v-text="jalur.waktu"></small>
                     <p><strong v-text="jalur.keterangan"></strong></p>
                 </div>
             </div>

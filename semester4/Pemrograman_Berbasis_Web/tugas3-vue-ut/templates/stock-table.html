@@ -63,11 +63,11 @@
                     </td>
                     <td>
                         <span>UPBJJ {{ item.upbjj }}</span><br>
-                        <small class="text-muted">Rak: {{ item.lokasiRak }}</small>
+                        <small style="color: var(--text-muted);">Rak: {{ item.lokasiRak }}</small>
                     </td>
                     <td style="padding: 15px;" v-text="item.kategori"></td>
                     <td style="text-align: center;">
-                        <strong>{{ item.qty | satuanBuah }}</strong> <small class="text-muted">({{ item.safety | satuanBuah }})</small>
+                        <strong>{{ item.qty | satuanBuah }}</strong> <small style="color: var(--text-muted);">({{ item.safety | satuanBuah }})</small>
                     </td>
                     <td>
                         <status-badge :qty="item.qty" :safety="item.safety" :catatan="item.catatanHTML"></status-badge>
