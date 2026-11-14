@@ -35,8 +35,8 @@
                             <i class="bi bi-caret-down-fill" style="cursor: pointer;" :style="{ opacity: sortColumn === 'judul' && sortOrder === 'desc' ? '1' : '0.4' }" @click="setSort('judul', 'desc')"></i>
                         </span>
                     </th>
-                    <th style="text-align: left;">Detail Lokasi</th>
                     <th style="text-align: left;">Kategori</th>
+                    <th style="text-align: left;">Detail Lokasi</th>
                     <th style="text-align: center;">
                         Stok (Safety)
                         <span style="margin-left: 8px; font-size: 0.8rem;">
@@ -61,11 +61,11 @@
                         <strong class="text-brand" v-text="item.kode"></strong><br>
                         <span v-text="item.judul"></span>
                     </td>
+                    <td style="padding: 15px;" v-text="item.kategori"></td>
                     <td>
                         <span>UPBJJ {{ item.upbjj }}</span><br>
                         <small style="color: var(--text-muted);">Rak: {{ item.lokasiRak }}</small>
                     </td>
-                    <td style="padding: 15px;" v-text="item.kategori"></td>
                     <td style="text-align: center;">
                         <strong>{{ item.qty | satuanBuah }}</strong> <small style="color: var(--text-muted);">({{ item.safety | satuanBuah }})</small>
                     </td>
